@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {   #Laragon terminal command: php artisan migrate (run the migrations)
+        #Revert changes command: php artisan migrate:rollback
         Schema::create('users', function (Blueprint $table) { #Users Table
             $table->id();
             $table->string('name', 60);
