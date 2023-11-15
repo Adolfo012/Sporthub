@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('partidos_torneo', function (Blueprint $table) { #PartidosTorneo table
+        Schema::create('partido_torneos', function (Blueprint $table) { #PartidosTorneo table
             #FK1
             $table->unsignedBigInteger('torneo_id');
             $table->foreign('torneo_id')->references('id')->on('torneos')->onDelete('cascade'); #Restrict id reference
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('partidos_torneo');
+        Schema::dropIfExists('partido_torneos');
     }
 };
