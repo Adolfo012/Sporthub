@@ -22,6 +22,6 @@ class EquipoSeeder extends Seeder
         //Save the record to the database
         $equipo->save();
         //Create 10 random teams (database\factories\EquipoFactory)
-        Equipo::factory(10)->create();
+        Equipo::factory(40)->create();
     }
 }

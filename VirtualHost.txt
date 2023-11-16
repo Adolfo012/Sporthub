@@ -24,5 +24,7 @@ laravel-blade (Laravel blade sintax)
 Laravel goto view (Quick jump to view)
 Laravel 5 Snippets (routes)
 
+Languaje Command: composer require laravel-lang/common --dev
+php artisan lang:add es //Spanish 
 
 

@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('msurname', 50); #Mother's surname
             $table->string('nickname', 50)->nullable(); 
             $table->string('email')->unique(); #Default length 255
-            $table->string('gender');   #Default length 255
+            $table->string('gender')->default('N/E');   #Default length 255
             $table->string('password'); #Default length 255
-            $table->date('birthdate');
+            $table->date('birthdate')->default("2023/12/1");
             #Attribute outside table definition
             $table->timestamps(); #Date and time of any change
         });
