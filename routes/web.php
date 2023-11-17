@@ -24,35 +24,54 @@ use App\Http\Controllers\EquipoController;
 
 //Get Arguments --> get(route,NameController::class) || get(route[NameController::class,'functionController'])
 //Ex: Route::get('equipos/create',[EquipoController::class,'create']); 
+//Route::post('logout', [LogoutController::class,'logout'])->name('logout.index');
+//return view('welcome');
 //HomeController 
 Route::get('/', HomeController::class);
-//RegisterController (App\Http\Controllers\RegisterController)
 
-Route::post('login', function(){
-    
-});
-//LoginController (App\Http\Controllers\LoginController)
-Route::get('login', [LoginController::class,'index'])->name('login.index');
-Route::post('login', [LoginController::class,'user_login'])->name('login.user');
-//RegisterController (App\Http\Controllers\RegisterController)
-Route::get('register', [RegisterController::class,'index']);
-Route::post('register', [RegisterController::class,'register'])->name('register_user');
-//LogoutController (App\Http\Controllers\LogoutController)
-Route::get('logout', [LogoutController::class,'logout'])->name('logout.index');
-//DashboardController (App\Http\Controllers\DashboardController)
-Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
-//EquipoController (App\Http\Controllers\EquipoController)
-Route::controller(EquipoController::class)->group(function(){ //Group EquipoController get(route,functionController)
-    Route::get('equipos' , 'index')->name('equipos.index');
-    Route::get('equipos/create','create')->name('equipos.crear');
-    Route::post('equipos/create','equipo_create')->name('equipo_create');
-    Route::get('equipos/{equipo}','show')->name('equipos.show');
-    Route::get('equipos/{equipo}/edit','edit')->name('equipos.edit');
-    Route::put('equipos/{equipo}','update')->name('equipos.update');
+// < Routes accessible only to unauthenticated users >
+Route::middleware(['guest'])->group(function () { 
+    //LoginController (App\Http\Controllers\LoginController)
+    Route::get('login', [LoginController::class,'index'])->name('login.index');
+    Route::post('login', [LoginController::class,'user_login'])->name('login.user');
+    Route::get('login/recuperar', [LoginController::class,'recuperar'])->name('login.recuperar');
+    //RegisterController (App\Http\Controllers\RegisterController)
+    Route::get('register', [RegisterController::class,'index']);
+    Route::post('register', [RegisterController::class,'register'])->name('register_user');
 });
 
+#--------------------------------------------------------------------------------------------------
 
-//return view('welcome');
+   // < Routes accessible only to authenticated users >
+Route::middleware(['auth'])->group(function () {
+ 
+    //DashboardController (App\Http\Controllers\DashboardController)
+    Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
+    //LogoutController (App\Http\Controllers\LogoutController)
+    Route::post('dashboard', [LogoutController::class,'logout'])->name('logout.index');
+    //EquipoController (App\Http\Controllers\EquipoController)
+    Route::controller(EquipoController::class)->group(function(){ //Group EquipoController get(route,functionController)
+            Route::get('equipos' , 'index')->name('equipos.index');
+            Route::get('equipos/create','create')->name('equipos.crear');
+            Route::post('equipos/create','equipo_create')->name('equipo_create');
+            Route::get('equipos/{equipo}','show')->name('equipos.show');
+            Route::get('equipos/{equipo}/edit','edit')->name('equipos.edit');
+            Route::put('equipos/{equipo}','update')->name('equipos.update');
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

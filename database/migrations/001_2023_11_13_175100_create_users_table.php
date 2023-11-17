@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('gender')->default('N/E');   #Default length 255
             $table->string('password'); #Default length 255
             $table->date('birthdate')->default("2023/12/1");
+            $table->rememberToken(); #Remember Accont
             #Attribute outside table definition
             $table->timestamps(); #Date and time of any change
         });

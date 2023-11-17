@@ -25,7 +25,7 @@
                     <h1 class="login-h1"> Registro </h1>
                     
                     <div class="inputbox">
-                        <input name="name" type="text" required value="{{old('name')}}"> <br>
+                        <input name="name" type="text" required value="{{old('name')}}" autofocus> <br>
                         <label for=""> Nombre(s) </label>
                         @error('name')  {{-- Checks if there has been an error in the "name" field --}}
                         <span>*{{$message}}</span> {{--print a message if there is an error--}}
