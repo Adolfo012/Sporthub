@@ -49,23 +49,30 @@ Route::middleware(['guest'])->group(function () {
 
    // < Routes accessible only to authenticated users >
 Route::middleware(['auth'])->group(function () {
- 
+    Route::get('prueba',function(){
+        return 'Pruebita';
+     })->middleware('representante');
     //DashboardController (App\Http\Controllers\DashboardController)
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
     //LogoutController (App\Http\Controllers\LogoutController)
     Route::post('dashboard', [LogoutController::class,'logout'])->name('logout.index');
     //EquipoController (App\Http\Controllers\EquipoController)
+    //Route View Us
+    Route::view('dashboard/us','dashboard/us')->name('us'); //Shows a view that will not interact with the database
     Route::controller(EquipoController::class)->group(function(){ //Group EquipoController get(route,functionController)
             Route::get('equipos' , 'index')->name('equipos.index');
             Route::get('equipos/create','create')->name('equipos.crear');
-            Route::post('equipos/create','equipo_create')->name('equipo_create');
-            Route::get('equipos/{equipo}','show')->name('equipos.show');
-            Route::get('equipos/{equipo}/edit','edit')->name('equipos.edit');
-            Route::put('equipos/{equipo}','update')->name('equipos.update');
+            Route::post('equipos/create','equipo_create')->name('equipo_create');    
+            //Protected views for the "Representante" rol using middleware 
+            Route::get('equipos/{equipo}','show')->name('equipos.show')->middleware('representante'); 
+            Route::get('equipos/{equipo}/edit','edit')->name('equipos.edit')->middleware('representante');
+            //---------------------------------------------------------------------------------------------
+            Route::put('equipos/{equipo}','update')->name('equipos.update');             //Update "route::put"
+            Route::delete('equipos/{equipo}','equipo_destroy')->name('equipos.destroy'); //Delete "route::delete"
+            
     });
 
 });
-
 
 
 
