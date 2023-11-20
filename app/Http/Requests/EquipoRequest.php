@@ -24,7 +24,6 @@ class EquipoRequest extends FormRequest
         return [ //Validations Equipo
             'name' => 'required|min:3',
             'tipoJuego' => 'required',
-            'user_id' => 'required:min3'
         ];
     }
 
@@ -44,7 +43,10 @@ class EquipoRequest extends FormRequest
           return[
             'name' => 'nombre',
             'tipoJuego' => 'tipo de juego',
+<<<<<<< HEAD
             'user_id' => 'representante'
+=======
+>>>>>>> main
           ];
     }
 }

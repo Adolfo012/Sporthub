@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\PasswordRequest;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -14,14 +14,8 @@ class PasswordController extends Controller
        return view('Login.reset-password',['request'=>$request]); //Returns the view with the request
     }
 
-    public function store(Request $request){    //Restore-Password function
-      $request->validate([  //Request password validation 
-        'token'=>'required',
-        'email'=>'required|email',
-        'password' => 'required|alpha_num|min:8',
-        'confirmpassword' => 'required|alpha_num|same:password|',
-      ]);  
-
+    public function store(PasswordRequest $request){    //Restore-Password function
+        //if the validation was correct
         $status = Password::reset(     //Reset the password
         $request->only('email','password','token'),
         function ($user,$password) {
