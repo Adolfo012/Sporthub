@@ -8,6 +8,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EquipoController;
+use App\Http\Controllers\TorneoController;
 #Cache command: php artisan config:clear or php artisan route:clear
 
 /*
@@ -63,7 +64,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('equipos/{equipo}/edit','edit')->name('equipos.edit');
             Route::put('equipos/{equipo}','update')->name('equipos.update');
     });
-
+    
+    Route::resource('/torneos',TorneoController::class); //Group TorneoController in simple form of the routes 
 });
 
 
