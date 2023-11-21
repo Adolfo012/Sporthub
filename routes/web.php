@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController; 
 use App\Http\Controllers\LogoutController; 
+use App\Http\Controllers\PasswordController; 
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EquipoController;
@@ -34,7 +35,11 @@ Route::middleware(['guest'])->group(function () {
     //LoginController (App\Http\Controllers\LoginController)
     Route::get('login', [LoginController::class,'index'])->name('login.index');
     Route::post('login', [LoginController::class,'user_login'])->name('login.user');
-    Route::get('login/recuperar', [LoginController::class,'recuperar'])->name('login.recuperar');
+    //Reset Password Accont
+    Route::get('login/recover', [LoginController::class,'recover_show'])->name('login.recover');
+    Route::post('login/recover', [LoginController::class,'recover_accont'])->name('login.accont');
+    Route::get('reset-password/{token}', [PasswordController::class,'create'])->name('password.reset');
+    Route::post('reset-password', [PasswordController::class,'store'])->name('password.update');
     //RegisterController (App\Http\Controllers\RegisterController)
     Route::get('register', [RegisterController::class,'index']);
     Route::post('register', [RegisterController::class,'register'])->name('register_user');
