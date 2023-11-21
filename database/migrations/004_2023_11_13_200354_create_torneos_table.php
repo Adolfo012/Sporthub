@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('fechaInicio');
             $table->date('fechaFin');
             $table->string('tipoTorneo'); 
-            $table->integer('cantEquipo')->unsigned(); # cantEquipo = Natural number
+            $table->integer('cantEquipo')->unsigned()->default(0); # cantEquipo = Natural number
             #FK
             $table->unsignedBigInteger('user_id');     #ID_Usuario_Organizador
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); #Restrict id reference

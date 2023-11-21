@@ -18,12 +18,6 @@
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
     @enderror
-    <label>Nombre del representante: <br>
-        <input type = "text" name="user_id" value="{{ old('user_id',$representante->name) }}"> <br>
-    </label>
-    @error('user_id')  {{-- Checks if there has been an error in the "name" field --}}
-    <span>*{{$message}}</span> {{--print a message if there is an error--}}
-    <br>
-    @enderror
+    
     <button type="submit">Actualizar</button>
     <a href="/equipos">Volver</a>

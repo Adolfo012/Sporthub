@@ -1,4 +1,7 @@
+@extends('Dashboard.dashboard') {{---Inherits dashboard---}}
+@section('title','Crear equipo')
 
+@section('content')
 <h1>Crear Equipo</h1>
 
 <form action="#" method="POST">
@@ -17,13 +20,8 @@
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
     @enderror
-    <label>Nombre del representante: <br>
-        <input type = "text" name="user_id" value="{{ old('user_id') }}"> <br>
-    </label>
-    @error('user_id')  {{-- Checks if there has been an error in the "name" field --}}
-    <span>*{{$message}}</span> {{--print a message if there is an error--}}
-    <br>
-    @enderror
-    <button type="submit">Actualizar</button>
+    
+    <button type="submit">Crear</button>
     
     <a href="/equipos">Volver</a>
+@endsection
