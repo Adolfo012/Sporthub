@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TorneoRequest;
 use App\Models\Torneo;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class TorneoController extends Controller
      */
     public function index()
     {
-        $torneos = Torneo::paginate(); //Take all Torneos by paging
+        $torneos = Torneo::all(); //Take all Equipos
 
         return view('Torneos.index',compact('torneos')); #Passes records to view
     }
@@ -23,21 +24,25 @@ class TorneoController extends Controller
      */
     public function create()
     {
-        
         return view('torneos.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TorneoRequest $request)
     {
         $torneo = new Torneo();
 
         $torneo->name = $request->name;
+        $torneo->ubicacion = $request->ubicacion;
         $torneo->tipoJuego = $request->tipoJuego;
+        $torneo->descripcion = $request->descripcion;
+        $torneo->fechaInicio = $request->fechaInicio;
+        $torneo->fechaFin = $request->fechaFin;
+        $torneo->tipoTorneo = $request->tipoTorneo;
 
-        $torneo->user_id = $organizador->id; //Organizador ID
+        $torneo->user_id = auth()->user()->id; //Organizador ID
 
         $torneo->save();      
         return redirect()->route('torneos.show',$torneo);
@@ -64,7 +69,7 @@ class TorneoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Torneo $torneo)
+    public function update(TorneoRequest $request, Torneo $torneo)
     {
         $torneo->name = $request->name;
         $torneo->ubicacion = $request->ubicacion;
@@ -73,8 +78,7 @@ class TorneoController extends Controller
         $torneo->fechaInicio = $request->fechaInicio;
         $torneo->fechaFin = $request->fechaFin;
         $torneo->tipoTorneo = $request->tipoTorneo;
-        $organizador = User::where('name',$request->user_id)->first(); //Search for the user "Organizador" by name"
-        $torneo->user_id = $organizador->id; //Representante ID
+        $torneo->user_id = auth()->user()->id; //Organizador ID
         $torneo->save();
         return redirect()->route('$torneos.show',$torneo);
     }
@@ -84,6 +88,7 @@ class TorneoController extends Controller
      */
     public function destroy(Torneo $torneo)
     {
-        //
+        $torneo->delete(); 
+        return redirect()->route('torneos.index');
     }
 }

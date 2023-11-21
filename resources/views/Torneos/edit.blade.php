@@ -1,8 +1,9 @@
 
 <h1>Editar Torneo</h1>
 
-<form action="{{ url('torneos') }}" method="POST">
+<form action="{{route('torneos.update', $torneo)}}" method="POST">
     @csrf
+    @method('put') {{-- Change POST to put route --}}
     <label>Nombre de torneo: <br>
         <input type = "text" name="name" value="{{ old('name') }}"> <br>  {{-- old() recovers what was in the field before the error --}}
     </label>

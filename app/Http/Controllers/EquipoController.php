@@ -21,7 +21,7 @@ class EquipoController extends Controller
     public function create(){ //Show the create form 
         return view('Equipos.create');
     }
-    public function equipo_create(EquipoRequest $request){ //Receives the request fields in ""create form"
+    public function store(EquipoRequest $request){ //Receives the request fields in ""create form"
         //EquipoRequest -> validate the fields before continuing with the function (App\Http\Requests\EquipoRequest)
         //ADD RECORD (if the fields are valid)
 
@@ -31,7 +31,7 @@ class EquipoController extends Controller
         $equipo->tipoJuego = $request->tipoJuego;
 
 
-        //$representante = User::where('name',$request->user_id)->first(); //Search for the user "Representante" by name"
+        //$representante = User::where('name',$request->user_id)->first(); //Seartru for the user "Representante" by name"
         //$equipo->user_id = representante->id;
         $equipo->user_id = auth()->user()->id; //Representante ID
         $equipo->save();      
@@ -60,7 +60,7 @@ class EquipoController extends Controller
              $equipo->save();
              return redirect()->route('equipos.show',$equipo);
     }
-    public function equipo_destroy(Equipo $equipo){  //Delete a team 
+    public function destroy(Equipo $equipo){  //Delete a team 
           $equipo->delete(); 
           return redirect()->route('equipos.index');
     }

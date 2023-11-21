@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Carbon\Carbon;
 
-class EquipoRequest extends FormRequest
+class TorneoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +22,12 @@ class EquipoRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [ //Validations Equipo
+        return [ //Validations Torneo
             'name' => 'required|min:3',
             'tipoJuego' => 'required',
+            'fechaInicio' => 'required|date|after_or_equal:today',
+            'fechaFin' => 'required|date|after_or_equal:fechaInicio',
+            'tipoTorneo' => 'required',
         ];
     }
 
@@ -40,10 +44,13 @@ class EquipoRequest extends FormRequest
     }
     public function attributes(): array  //Customize the name of the attributes in the errors
     {
-          return[
+          return [ 
             'name' => 'nombre',
             'tipoJuego' => 'tipo de juego',
-            'user_id' => 'representante'
-          ];
+            'fechaInicio' => 'fecha de inicio',
+            'today' => 'hoy',
+            'fechaFin' => 'fecha de finalización',
+            'tipoTorneo' => 'tipo de torneo',
+        ];
     }
 }

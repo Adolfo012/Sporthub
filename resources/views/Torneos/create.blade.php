@@ -1,8 +1,11 @@
+@extends('Dashboard.dashboard') {{---Inherits dashboard---}}
+@section('title','Crear Torneo')
 
+@section('content')
 <h1>Crear Torneo</h1>
 
-<form action="{{ url('torneos') }}" method="POST">
-    @csrf
+<form action="#" method="POST">
+@csrf
     <label>Nombre de torneo: <br>
         <input type = "text" name="name" value="{{ old('name') }}"> <br>  {{-- old() recovers what was in the field before the error --}}
     </label>
@@ -59,15 +62,7 @@
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
     @enderror
-    
-    <label>Nombre del organizador: <br>
-        <input type = "text" name="user_id" value="{{ old('user_id') }}"> <br>
-    </label>
-    @error('user_id')  {{-- Checks if there has been an error in the "name" field --}}
-    <span>*{{$message}}</span> {{--print a message if there is an error--}}
-    <br>
-    @enderror
-
-    <button type="submit">Actualizar</button>
+    <button type="submit">Crear</button>
     
     <a href="/torneos">Volver</a>
+@endsection
