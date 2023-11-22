@@ -7,7 +7,17 @@
 
 <h1>Mi torneo:{{$torneo->name}}</h1>
         <p>El torneo juega: {{$torneo->tipoJuego}} <br> 
-        Y con Organizador: {{$organizador->name}}</p>
+        Organizador: {{$organizador->name}} <br> 
+        Detalles: {{$torneo->descripcion}}<br> 
+        Ubicacion de torneo: {{$torneo->ubicacion}}<br> 
+        Fecha de comienzo: {{$torneo->fechaInicio}}<br> 
+        Fecha de finalizacion: {{$torneo->fechaFin}}<br> 
+        Tipo de torneo: {{$torneo->tipoTorneo}}<br> 
+        Cantidad de miembros admitida: {{$torneo->cantEquipo}}
+        
+        
+        
+        </p>
 
         <a href="{{route('torneos.edit',$torneo)}}">Editar torneo</a>
         <a href="{{route('torneos.index')}}">Volver a torneos</a>
