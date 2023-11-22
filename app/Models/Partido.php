@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Partido extends Model
 {
     use HasFactory;
+
+    public function local()
+    {
+        return $this->belongsTo(Equipo::class,'equipoLocal_id');
+    }
+    public function visitante()
+    {
+        return $this->belongsTo(Equipo::class,'equipoVisitante_id');
+    }
+    public function estadistica()
+    {
+        return $this->belongsToMany(Estadistica::class,'partido_id');
+    }
+    public function tienen()
+    {
+        return $this->belongsToMany(Torneos::class,'PartidoTorneo');
+    }
 }
