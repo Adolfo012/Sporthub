@@ -18,7 +18,7 @@ class Torneo extends Model
     }
     public function tienen()
     {
-        return $this->belongsToMany(Partido::class,'PartidoTorneo');
+        return $this->belongsToMany(Partido::class,'partido_torneos');
     }
     
 }
