@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
  {{--- Auth User ---}}
- <head>
+<head>
     <meta charset="UTF-8">
     <title>Sporthub</title>
     <link rel="preload" href="{{ asset('css/dashboard.css') }}" as="style">
@@ -9,8 +9,9 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
- </head>
- <body>
+</head>
+
+<body>
   <!-- <div class="sidebar">
       <div class="logo-details">
           <div class="logo_name">SportHub</div>
@@ -86,32 +87,48 @@
       </ul>
     </div> -->
 
-    <main>
+  <main>
 
-        <article class="my-tournaments">
-          <p class="title">Mis Torneos</p>
-            <div class="box">
-              <div class="minibox">
-                <p class="tournament">Torneo 1</p>
-                <p class="description">organizador:</p>
-                <p class="description">Equipo:</p>
-                <p class="description">Rol:</p>
-              </div>
-              <div class="minibox">
-                <p class="tournament">Torneo 2</p>
-                <p class="description">organizador:</p>
-                <p class="description">Equipo:</p>
-                <p class="description">Rol:</p>
-              </div>
-            </div>
-        </article>
-        <article class="two">Mis equipos</article>
-        <article class="three">Próximos partidos</article>
+    <article class="principalbox">
+      <p class="title">Mis Torneos</p>
+        <div class="box">
+          <div class="minibox">
+            <p class="tournament">Torneo 1</p>
+            <p class="description">Organizador:</p>
+            <p class="description">Equipo:</p>
+            <p class="description">Rol:</p>
+          </div>
+          <div class="minibox">
+            <p class="tournament">Torneo 2</p>
+            <p class="description">Organizador:</p>
+            <p class="description">Equipo:</p>
+            <p class="description">Rol:</p>
+          </div>
+        </div>
+    </article>
+    <article class="principalbox">
+      <p class="title">Mis equipos</p>
+        <div class="box">
+        <div class="minibox">
+            <p class="tournament">Equipo 2</p>
+            <p class="description">Organizador:</p>
+            <p class="description">Capitan:</p>
+            <p class="description">Torneo:</p>
+          </div>
+          <div class="minibox">
+            <p class="tournament">Equipo 2</p>
+            <p class="description">Organizador:</p>
+            <p class="description">Capitan:</p>
+            <p class="description">Torneo:</p>
+          </div>
+        </div>
+    </article>
+    <article class="three">Próximos partidos</article>
 
-    </main>
+  </main>
   
   
-  </body>
+</body>
   
   <script src="{{ asset('js/dashboard.js') }}"></script>
 
