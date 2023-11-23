@@ -25,15 +25,19 @@ class TorneoRequest extends FormRequest
         return [ //Validations Torneo
             'name' => 'required|min:3',
             'tipoJuego' => 'required',
+            'ubicacion'=>'required',
             'fechaInicio' => 'required|date|after_or_equal:today',
             'fechaFin' => 'required|date|after_or_equal:fechaInicio',
-            'tipoTorneo' => 'required',
+            'tipoTorneo' => 'required|in:Individual,Equipos',
+            'cantEquipo'=>'required|numeric|gt:0',
         ];
     }
 
     public function messages(): array  //Customize the field error message 
     {
           return[
+            'fechaInicio.after_or_equal' => 'La fecha de inicio del torneo debe ser mayor a la actual.',
+            
             /*
             'name.required' => 'El nombre del equipo es obligatorio',
             'name.min:3' => 'El nombre del equipo debe contener al menos 3 caracteres.',
@@ -46,11 +50,12 @@ class TorneoRequest extends FormRequest
     {
           return [ 
             'name' => 'nombre',
+            'ubicacion'=> 'ubicación',
             'tipoJuego' => 'tipo de juego',
             'fechaInicio' => 'fecha de inicio',
-            'today' => 'hoy',
             'fechaFin' => 'fecha de finalización',
             'tipoTorneo' => 'tipo de torneo',
+            'cantEquipo'=> 'cantidad de miembros'
         ];
     }
 }
