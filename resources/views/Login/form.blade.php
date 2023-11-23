@@ -20,7 +20,7 @@
     <section class="form-section">
         <div class="form-box"></div>
             <div class="form-value">
-                <form  method="POST" action="#">
+                <form method="POST" action="#">
                     @csrf
                     <h1 class="login-h1"> Registro </h1>
                     
@@ -28,7 +28,7 @@
                         <input name="name" type="text" required value="{{old('name')}}" autofocus> <br>
                         <label for=""> Nombre(s) </label>
                         @error('name')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message">*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -36,7 +36,7 @@
                         <input name="fsurname" type="text" required value="{{old('fsurname')}}"> <br>
                         <label for=""> Apellido Paterno </label>
                         @error('fsurname')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message">*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -44,7 +44,7 @@
                         <input name="msurname" type="text" required value="{{old('msurname')}}"> <br>
                         <label for=""> Apellido Materno </label>
                         @error('msurname')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message">*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -52,7 +52,7 @@
                         <label class="birthday">Fecha de Nacimiento</label>
                         <input name="birthdate" type="date" required value="{{old('birthdate')}}"> <br>
                         @error('birthdate')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message">*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -67,7 +67,7 @@
                             <label for="non-binary"><br><br>Sin mencionar</label>
                         </div>
                         @error('gender')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message"*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -75,7 +75,7 @@
                         <input name="nickname"type="text" required value="{{old('nickname')}}"> <br>
                         <label for=""> Apodo </label>
                         @error('nickname')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message">*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -83,7 +83,7 @@
                         <input name="email" type="email" required value="{{old('email')}}"> <br>
                         <label for=""> Correo </label>
                         @error('email')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message">*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -91,7 +91,7 @@
                         <input name="password" type="password" required>
                         <label for=""> Contraseña </label>
                         @error('password')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message">*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -99,7 +99,7 @@
                         <input name="confirmpassword" type="password" required>
                         <label for=""> Confirmar Contraseña </label>
                         @error('confirmpassword')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                        <span class="error-message">*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
@@ -108,5 +108,6 @@
                 </form>
             </div>
     </section>
+    <script src="{{ asset('js/form.js') }}" ></script>
 </body>
 </html>
