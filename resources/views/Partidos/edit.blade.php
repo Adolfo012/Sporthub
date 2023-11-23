@@ -1,8 +1,9 @@
 
 <h1>Editar Partido</h1>
 
-<form action="{{route('partidos.update', $partido)}}" method="POST">
+<form action="{{route('partidos.update',['partido' =>$partido, 'torneoID'=> $torneoID])}}" method="POST">
     @csrf
+    @method('put')
     <label>Fecha del Partido: <br>
         <input type = "date" name="fechaPartido" value="{{ old('fechaPartido') }}"> <br>
     </label>
@@ -50,6 +51,8 @@
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
     @enderror
-    
+
+    <input type="hidden" name="partido_id" value="{{$partido->id}}" />
+
     <button type="submit">Actualizar</button>
-    <a href="/partidos">Volver</a>
+    <a href="{{route('partidos.show',['partido' =>$partido, 'torneoID'=> $torneoID])}}">Volver</a>

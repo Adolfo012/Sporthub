@@ -30,8 +30,7 @@
         </p>
 
         <a href="{{route('torneos.edit',$torneo)}}">Editar torneo</a>
-        <a href="{{route('partidos.crear',$torneo)}}">Crear partido</a>
-        <a href="{{route('partidos.index',$torneo)}}">Ver todos los partidos</a>
+        <a href="{{route('partidos.index',$torneo->id)}}">Ver todos los partidos</a>
         <a href="{{route('torneos.index')}}">Volver a torneos</a>
 
         <form action="{{route('torneos.destroy',$torneo)}}" method="POST">

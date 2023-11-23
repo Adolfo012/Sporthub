@@ -1,5 +1,5 @@
 @extends('Dashboard.dashboard') {{---Inherits dashboard---}}
-@section('title','Equipo')
+@section('title','Partido')
 
 @section('content')
 
@@ -12,10 +12,10 @@
         Fecha: {{$partido->fechaPartido}} <br>
         Jornada: {{$partido->jornada}}<br>
     </p>
-        <a href="{{route('partidos.edit',$partido)}}">Editar partido</a>
-        <a href="{{route('partidos.index')}}">Volver a partidos</a>
+        <a href="{{route('partidos.edit',['partido' =>$partido, 'torneoID'=> $torneoID])}}">Editar partido</a>
+        <a href="{{route('partidos.index',$torneoID)}}">Volver a partidos</a>
 
-        <form action="{{route('partidos.destroy',$partido)}}" method="POST">
+        <form action="{{route('partidos.destroy',['partido' =>$partido, 'torneoID'=> $torneoID])}}" method="POST">
             @csrf
             @method("delete") {{---Change the default "post" route to "delete" ---}}
             <button type="submit"> Eliminar partido </button>

@@ -4,7 +4,7 @@
 @section('content')
 <h1>Crear Partido</h1>
 
-<form action="#" method="POST">
+<form action="{{route('partidos.store', $torneoID)}}" method="POST">
 @csrf
     <label>Fecha del Partido: <br>
         <input type = "date" name="fechaPartido" value="{{ old('fechaPartido') }}"> <br>
@@ -56,5 +56,5 @@
 
     <button type="submit">Crear</button>
     
-    <a href="/torneos">Volver</a>
+    <a href="{{route('partidos.index',$torneoID)}}">Volver</a>
 @endsection
