@@ -95,15 +95,13 @@ Route::middleware(['auth'])->group(function () {
         
     });
     Route::controller(PartidoController::class)->group(function(){ //Group TorneoController get(route,functionController)
-        Route::get('partidos' , 'index')->name('partidos.index');
-        Route::get('partidos/create','create')->name('partidos.crear');
-        Route::post('partidos/create','store')->name('store');    
-        //Protected views for the "Organizador" rol using middleware 
-        Route::get('partidos/{partido}','show')->name('partidos.show'); 
-        Route::get('partidos/{partido}/edit','edit')->name('partidos.edit');
+        Route::get('partidos/{torneoID}','index')->name('partidos.index');
+        Route::get('partidos/create/{torneoID}','create')->name('partidos.crear');
+        Route::post('partidos/create/{torneoID}','store')->name('partidos.store');    
+        Route::get('partidos/edit/{partido}/{torneoID}','edit')->name('partidos.edit');
+        Route::get('partidos/index/{partido}/{torneoID}','show')->name('partidos.show'); 
+        Route::delete('partidos/index/{partido}/{torneoID}','destroy')->name('partidos.destroy'); 
         //---------------------------------------------------------------------------------------------
-        Route::put('partidos/{partido}','update')->name('partidos.update');             //Update "route::put"
-        Route::delete('partidos/{partido}','destroy')->name('partidos.destroy'); //Delete "route::delete"
-        
+        Route::put('partidos/edit/{partido}/{torneoID}','update')->name('partidos.update');             //Update "route::put"        
     });
 });
