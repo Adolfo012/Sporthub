@@ -21,7 +21,7 @@ class Partido extends Model
     {
         return $this->belongsToMany(Estadistica::class,'partido_id');
     }
-    public function tienen()
+    public function estanTorneos()
     {
         return $this->belongsToMany(Torneo::class,'partido_torneos');
     }

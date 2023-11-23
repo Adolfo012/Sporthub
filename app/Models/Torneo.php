@@ -16,7 +16,7 @@ class Torneo extends Model
     {
         return $this->belongsToMany(Equipo::class,'estadisticas')->withPivot('PT','CA','DC','CC');
     }
-    public function tienen()
+    public function tienenPartidos()
     {
         return $this->belongsToMany(Partido::class,'partido_torneos');
     }
