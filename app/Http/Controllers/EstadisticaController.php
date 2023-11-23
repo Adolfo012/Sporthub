@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TorneoRequest;
+use App\Http\Requests\EstadisticaRequest;
+use App\Models\Estadistica;
 use App\Models\Torneo;
-use App\Models\User;
+use App\Models\Equipos;
+
 use Illuminate\Http\Request;
 
-class TorneoController extends Controller
+class EstadisticaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Torneo $torneo)
     {
-        $torneos = Torneo::all(); //Take all Equipos
+        $estadistica = Estadistica::with($torneo->id)->get(); //Take all Equipos
 
-        return view('Torneos.index',compact('torneos')); #Passes records to view
+        return view('Estadistica.index',compact('estadistica')); #Passes records to view
     }
 
     /**
@@ -24,28 +26,27 @@ class TorneoController extends Controller
      */
     public function create()
     {
-        return view('torneos.create');
+        return view('estadisticas.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TorneoRequest $request)
+    public function store(EstadisticaRequest $request, Torneo $torneo)
     {
-        $torneo = new Torneo();
+        $estadistica = new Estadistica();
 
-        $torneo->name = $request->name;
-        $torneo->ubicacion = $request->ubicacion;
-        $torneo->tipoJuego = $request->tipoJuego;
-        $torneo->descripcion = $request->descripcion;
-        $torneo->fechaInicio = $request->fechaInicio;
-        $torneo->fechaFin = $request->fechaFin;
-        $torneo->tipoTorneo = $request->tipoTorneo;
+        $estadistica->PT = $request->name;
+        $estadistica->CA = $request->ubicacion;
+        $estadistica->DC = $request->tipoJuego;
+        $estadistica->CC = $request->descripcion;
+        $estadistica->fechaInicio = $request->fechaInicio;
+        
+        $estadistica->save();      
 
-        $torneo->user_id = auth()->user()->id; //Organizador ID
+        $estadistica->torneo()->attach($torneo->id); //Organizador ID
 
-        $torneo->save();      
-        return redirect()->route('torneos.show',$torneo);
+        return redirect()->route('estadisticas.show',$estadistica);
     }
 
     /**
@@ -53,8 +54,9 @@ class TorneoController extends Controller
      */
     public function show(Torneo $torneo)
     {
-        $organizador = User::find($torneo->user_id); //Search for the user "Organizador" by user_id"
-        return view('torneos.show',compact('torneo','organizador')); #Passes records to view
+        $estadistica = Estadistica::with($torneo->id)->get(); //Take all Equipos
+
+        return view('torneos.show',compact('torneo','estadistica')); #Passes records to view
     }
 
     /**
@@ -62,7 +64,7 @@ class TorneoController extends Controller
      */
     public function edit(Torneo $torneo)
     {
-        $organizador = User::find($torneo->user_id); //Search for the user "Organizador" by user_id"
+        $estadistica = User::find($torneo->user_id); //Search for the user "Organizador" by user_id"
         return view('torneos.edit',compact('torneo','organizador'));
     }
 
@@ -80,7 +82,7 @@ class TorneoController extends Controller
         $torneo->tipoTorneo = $request->tipoTorneo;
         $torneo->user_id = auth()->user()->id; //Organizador ID
         $torneo->save();
-        return redirect()->route('torneos.show',$torneo);
+        return redirect()->route('$torneos.show',$torneo);
     }
 
     /**
@@ -92,3 +94,4 @@ class TorneoController extends Controller
         return redirect()->route('torneos.index');
     }
 }
+
