@@ -13,4 +13,22 @@ class Equipo extends Model
     {
         return 'name'; //Search by team name in url Ex: equipo->name
     }
+    public function miembros()
+    {
+        return $this->hasMany(MiembroEquipo::class,'id');
+    }
+    public function partidoLocal(){
+        return $this->hasMany(Partido::class,'id');
+    }
+    public function partidoVisitante(){
+        return $this->hasMany(Partido::class,'id');
+    }
+    public function estadistica()
+    {
+        return $this->belongsToMany(Torneos::class,'estadisticas')->withPivot('PT','CA','DC','CC');;
+    }
+    public function representante()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
 }
