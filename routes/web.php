@@ -61,8 +61,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
     Route::get('dashboard/nosotros', [DashboardController::class,'nosotros'])->name('dash_nosotros');
     Route::get('dashboard/home', [DashboardController::class,'home'])->name('dash_home');
-    Route::get('dashboard/{equipo}', [DashboardController::class,'equipo'])->name('dashboard.equipo');
-    Route::get('dashboard/{torneo}', [DashboardController::class,'torneo'])->name('dashboard.torneo');
+    Route::get('dashboard/torneos/{torneo}', [DashboardController::class,'torneo'])->name('dashboard.torneo');
+    Route::get('dashboard/equipos/{equipo}', [DashboardController::class,'equipo'])->name('dashboard.equipo');
+    
     //LogoutController (App\Http\Controllers\LogoutController)
     Route::post('dashboard', [LogoutController::class,'logout'])->name('logout.index');
     //EquipoController (App\Http\Controllers\EquipoController)
@@ -95,6 +96,11 @@ Route::middleware(['auth'])->group(function () {
         //---------------------------------------------------------------------------------------------
         Route::put('torneos/{torneo}','update')->name('torneos.update');             //Update "route::put"
         Route::delete('torneos/{torneo}','destroy')->name('torneos.destroy'); //Delete "route::delete"
-        
+       //Tournament teams
+        Route::get('torneos/equipos/agregar/{torneo}','equipos_torneo')->name('equipos.torneo');
+        Route::post('torneos/equipos/agregar/{torneo}','equipos_store')->name('torneos.store'); 
+       //Tournament participants
+        Route::get('torneos/participantes/agregar/{torneo}','participantes_torneo')->name('participantes.torneo');
+        Route::post('torneos/participantes/agregar/{torneo}','participantes_store')->name('participantes.store'); 
 });
 });

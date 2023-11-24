@@ -27,5 +27,18 @@ class UserSeeder extends Seeder
         $usuario->birthdate = "2002/12/12";
         //Save the record to the database
         $usuario->save();
+        //Create a new user object 
+        $usuario = new User();
+        //Assigns attribute values
+        $usuario->name = "Nina";
+        $usuario->fsurname = "Sandoval";
+        $usuario->msurname = "Mora";
+        $usuario->nickname = "Nin";
+        $usuario->email = "nis@gmail.com";
+        $usuario->gender = "Femenino";
+        $usuario->password = static::$password ??= Hash::make('admin123'); #Encrypted password
+        $usuario->birthdate = "2002/12/15";
+        //Save the record to the database
+        $usuario->save();
     }
 }

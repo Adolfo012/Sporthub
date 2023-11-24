@@ -1,3 +1,8 @@
+
+@extends('Dashboard.dashboard') {{---Inherits dashboard---}}
+@section('title','Notificaciones')
+
+@section('content')
 <h1>Notificaciones</h1>
 <h3>¡Hola {{auth()->user()->name}}! Aquí podrás encontrar las notificaciones de tus equipos y torneos que lideres.</h3>
  @foreach ($notifications as $notification)
@@ -15,3 +20,4 @@
 </form>
 @endforeach
 <a href="\dashboard">Volver</a>
+@endsection

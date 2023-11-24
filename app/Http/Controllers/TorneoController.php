@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TorneoRequest;
 use App\Models\Torneo;
+use App\Models\EquipoTorneo;
+use App\Models\ParticipanteTorneo;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -71,7 +73,23 @@ class TorneoController extends Controller
      * Update the specified resource in storage.
      */
     public function update(TorneoRequest $request, Torneo $torneo)
-    {
+    {   
+        
+        if($request->participante == 'true'){
+            if($request->eliminar){
+                $eliminado = substr($request->eliminar, -1);
+                $user_eliminar = "user".$eliminado;
+                ParticipanteTorneo::where('user_id', $request->$user_eliminar)->where('torneo_id', $torneo->id)->delete();
+                return redirect()->route('torneos.show',$torneo);
+            }
+        }
+        if($request->participante == 'false'){
+            if($request->eliminar){
+                $eliminado = substr($request->eliminar, -1);
+                $equipo_eliminar = "equipo".$eliminado;
+                EquipoTorneo::where('equipo_id', $request->$equipo_eliminar)->where('torneo_id', $torneo->id)->delete();
+                return redirect()->route('torneos.show',$torneo);
+        }}
         $torneo->name = $request->name;
         $torneo->ubicacion = $request->ubicacion;
         $torneo->tipoJuego = $request->tipoJuego;
@@ -83,6 +101,7 @@ class TorneoController extends Controller
         $torneo->cantEquipo = $request->cantEquipo;
         $torneo->save();
         return redirect()->route('torneos.show',$torneo);
+        
     }
 
     /**
@@ -93,4 +112,52 @@ class TorneoController extends Controller
         $torneo->delete(); 
         return redirect()->route('torneos.index');
     }
+    //Tournament TEAMS
+    public function equipos_torneo(Torneo $torneo){
+        return view('Torneos.equipos_torneo',compact('torneo'));
+    }
+    public function equipos_store(Request $request, Torneo $torneo){
+        $organizador = User::find($torneo->user_id);
+        $exists = EquipoTorneo::where('equipo_id', $request->equipo_inscrito)->where('torneo_id', $torneo->id)->first();
+        if(!$exists && $request->equipo_inscrito != null){ //Valida si ya se encuentra registrado el equipo en el torneo
+            $conteo = EquipoTorneo::where('torneo_id', $torneo->id)->count();
+            if($conteo < $torneo->cantEquipo){
+                $equipoTorneo = new EquipoTorneo();
+                $equipoTorneo->equipo_id = $request->equipo_inscrito;
+                $equipoTorneo->torneo_id = $torneo->id;
+                $equipoTorneo->save();
+                return view('Torneos.show',compact('torneo','organizador'));
+            }else{
+                return view('Torneos.equipos_torneo',compact('torneo'))->with('mensaje', 'Se ha registrado a la cantidad máxima de equipos admitidos para el torneo.');
+            }
+        }
+        else{
+            
+            return view('Torneos.equipos_torneo',compact('torneo'))->with('mensaje', 'No se encuentran equipos disponibles por añadir.');
+        }  
+    }
+    //Tournament PARTICIPANTS
+    public function participantes_torneo(Torneo $torneo){
+        return view('Torneos.participantes_torneo',compact('torneo'));
+    }
+    public function participantes_store(Request $request, Torneo $torneo){
+        $organizador = User::find($torneo->user_id);
+        $exists = ParticipanteTorneo::where('user_id', $request->participante_inscrito)->where('torneo_id', $torneo->id)->first();
+        if(!$exists && $request->participante_inscrito != null){ //Valida si ya se encuentra registrado el equipo en el torneo
+            $conteo = ParticipanteTorneo::where('torneo_id', $torneo->id)->count();
+            if($conteo < $torneo->cantEquipo){
+                $participanteTorneo = new ParticipanteTorneo();
+                $participanteTorneo->user_id = $request->participante_inscrito;
+                $participanteTorneo->torneo_id = $torneo->id;
+                $participanteTorneo->save();
+                return view('Torneos.show',compact('torneo','organizador'));
+            }else{
+                return view('Torneos.participantes_torneo',compact('torneo'))->with('mensaje', 'Se ha registrado a la cantidad máxima de participantes admitidos para el torneo.');
+            }
+        }
+        else{
+            return view('Torneos.participantes_torneo',compact('torneo'))->with('mensaje', 'No se encuentran participantes disponibles por añadir.');
+        }  
+    }
+
 }

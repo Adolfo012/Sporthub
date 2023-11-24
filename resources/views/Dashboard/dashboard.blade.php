@@ -21,7 +21,7 @@
          <li><a href="{{route('dash_home')}}" class="{{request()->routeIs('dash_home') ? 'active' : ''}}">Home</a></li> {{---Check if it is on the mentioned route style = active ---}}
          <li><a href="{{route('dash_nosotros')}}" class="{{request()->routeIs('dash_nosotros') ? 'active' : ''}}">Nosotros</a></li>
          <li><a href="{{ route('equipos.index') }}" class="{{ request()->routeIs('equipos.*') ? 'active' : '' }}">Equipos</a></li> {{---Asterisk "*" indicates that the style is applied to all routes that belong to that group ---}}
-         <li><a href="{{ route('notification.show')}}">Notificaciones</a></li>
+         <li><a href="{{ route('notification.show')}}" class="{{ request()->routeIs('notification.show') ? 'active' : '' }}">Notificaciones</a></li>
          <li><a href="{{route('torneos.index')}}" class="{{request()->routeIs('torneos.*') ? 'active' : ''}}">Torneos</a></li> {{---Asterisk "*" indicates that the style is applied to all routes that belong to that group ---}}
       </ul>
    </nav>

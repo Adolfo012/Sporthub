@@ -28,5 +28,18 @@ class TorneoSeeder extends Seeder
         $torneo->user_id = 1;        #ID_Usuario_Organizador
         //Save the record to the database
         $torneo->save();
+        //Create a new torneo object 
+        $torneo = new Torneo();
+        $torneo->name = "Bacheritos";
+        $torneo->ubicacion = "Tlajomulco";
+        $torneo->tipoJuego = "Basketball";
+        $torneo->descripcion = "GDL Tournament";
+        $torneo->fechaInicio = "2023/12/11";
+        $torneo->fechaFin = "2023/12/30";
+        $torneo->tipoTorneo = "Individual";
+        $torneo->cantEquipo = 6;    #Max Equipo
+        $torneo->user_id = 1;        #ID_Usuario_Organizador
+        //Save the record to the database
+        $torneo->save();
     }
 }

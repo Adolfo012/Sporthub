@@ -10,4 +10,5 @@
     @enderror
     <input type="hidden" name ="equipo_id" value="{{ $equipo->id }}">
     <button type="submit">Añadir miembro</button>
+    <a href="{{route('equipos.edit',$equipo)}}">Volver</a>
 </form>
