@@ -11,6 +11,9 @@ use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\TorneoController;
 use App\Http\Controllers\PartidoController;
 use App\Http\Controllers\EstadisticaController;
+use App\Http\Controllers\NotificationController;
+use App\Models\Notification;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 #Cache command: php artisan config:clear or php artisan route:clear
 
 /*
@@ -52,13 +55,21 @@ Route::middleware(['guest'])->group(function () {
 
    // < Routes accessible only to authenticated users >
 Route::middleware(['auth'])->group(function () {
+    Route::post('notification/{id}', [NotificationController::class,'index'])->name('notification.index');
+    Route::get('notification/show', [NotificationController::class,'show'])->name('notification.show');
+    Route::post('notification', [NotificationController::class,'send'])->name('notification.send');
     //DashboardController (App\Http\Controllers\DashboardController)
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
+    Route::get('dashboard/nosotros', [DashboardController::class,'nosotros'])->name('dash_nosotros');
+    Route::get('dashboard/home', [DashboardController::class,'home'])->name('dash_home');
+    Route::get('dashboard/{equipo}', [DashboardController::class,'equipo'])->name('dashboard.equipo');
+    Route::get('dashboard/{torneo}', [DashboardController::class,'torneo'])->name('dashboard.torneo');
     //LogoutController (App\Http\Controllers\LogoutController)
     Route::post('dashboard', [LogoutController::class,'logout'])->name('logout.index');
     //EquipoController (App\Http\Controllers\EquipoController)
+    
     //Route View Us
-    Route::view('dashboard/us','dashboard/us')->name('us'); //Shows a view that will not interact with the database
+     //Shows a view that will not interact with the database
     Route::controller(EquipoController::class)->group(function(){ //Group EquipoController get(route,functionController)
             Route::get('equipos' , 'index')->name('equipos.index');
             Route::get('equipos/create','create')->name('equipos.crear');
@@ -68,6 +79,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('equipos/{equipo}/edit','edit')->name('equipos.edit')->middleware('representante');
             //---------------------------------------------------------------------------------------------
             Route::put('equipos/{equipo}','update')->name('equipos.update');             //Update "route::put"
+            //Teams members
+            Route::get('equipos/{equipo}/miembros','miembros')->name('equipos.miembros');
+            Route::post('equipos/{equipo}/miembros','miembros_store')->name('equipos.store');   
+            Route::get('equipos/miembros/{equipo}/{miembro}','miembros_show')->name('miembros_show');          //Update "route::put"
             Route::delete('equipos/{equipo}','destroy')->name('equipos.destroy'); //Delete "route::delete"
             
     });

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Torneo extends Model
 {
     use HasFactory;
+  
     public function organizador()
     {
         return $this->belongsTo(User::class,'user_id');
@@ -20,5 +21,9 @@ class Torneo extends Model
     {
         return $this->belongsToMany(Partido::class,'partido_torneos');
     }
-    
+    public function getRouteKeyName() //Specifies the search field by url
+    {
+        return 'name'; //Search by team name in url Ex: torneo->name
+    }
+
 }

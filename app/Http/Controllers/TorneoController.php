@@ -41,6 +41,7 @@ class TorneoController extends Controller
         $torneo->fechaInicio = $request->fechaInicio;
         $torneo->fechaFin = $request->fechaFin;
         $torneo->tipoTorneo = $request->tipoTorneo;
+        $torneo->cantEquipo = $request->cantEquipo;
 
         $torneo->user_id = auth()->user()->id; //Organizador ID
 
@@ -79,6 +80,7 @@ class TorneoController extends Controller
         $torneo->fechaFin = $request->fechaFin;
         $torneo->tipoTorneo = $request->tipoTorneo;
         $torneo->user_id = auth()->user()->id; //Organizador ID
+        $torneo->cantEquipo = $request->cantEquipo;
         $torneo->save();
         return redirect()->route('torneos.show',$torneo);
     }

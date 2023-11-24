@@ -23,7 +23,7 @@
                 @endif
         @endforeach
       @if($teams < 1)
-          <p>No eres representante de ningún torneo aún.</p>
+          <p>No eres organizador de ningún torneo aún.</p>
       @endif
     </ul>
    {{---{{$torneos->links()}}   <- Torneo::paginate()---}}

@@ -53,13 +53,25 @@
     <br>
     @enderror
     
-    <label>Tipo de torneo: <br>
-        <input type = "text" name="tipoTorneo" value="{{ old('tipoTorneo',$torneo->tipoTorneo) }}"> <br>
-    </label>
+    <label for="individual">Tipo de torneo actual: {{$torneo->tipoTorneo}}</label><br>
+    <label for="individual">Individual</label>
+    <input type="radio" id="Individual" name="tipoTorneo" value="Individual" required value="{{old('tipoTorneo')}}"> <br>
+    <label for="equipos">Equipos</label>
+    <input type="radio" id="Equipos" name="tipoTorneo" value="Equipos" required value="{{old('tipoTorneo')}}"> <br>
+    
     @error('tipoTorneo')  {{-- Checks if there has been an error in the "name" field --}}
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
     @enderror
+    <label for="cantidad">Cantidad de miembros:</label>
+    <input type="number" id="cantEquipo" name="cantEquipo" value="{{$torneo->cantEquipo}}"> 
+    <br>
+    @error('cantEquipo')  {{-- Checks if there has been an error in the "name" field --}}
+    <span>*{{$message}}</span> {{--print a message if there is an error--}}
+    @enderror
+    
+    
+
 
     <button type="submit">Actualizar</button>
     

@@ -54,14 +54,28 @@
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
     @enderror
-    
-    <label>Tipo de torneo: <br>
-        <input type = "text" name="tipoTorneo" value="{{ old('tipoTorneo') }}"> <br>
-    </label>
-    @error('tipoTorneo')  {{-- Checks if there has been an error in the "name" field --}}
+    <label class="tipo torneo" >Elige el tipo de torneo:</label><br>
+    <label for="individual">Individual</label>
+    <input type="radio" id="Individual" name="tipoTorneo" value="Individual" required value="{{old('tipoTorneo')}}"> <br>
+    <label for="equipos">Equipos</label>
+    <input type="radio" id="Equipos" name="tipoTorneo" value="Equipos" required value="{{old('tipoTorneo')}}"> <br>
+     @error('tipoTorneo')  {{-- Checks if there has been an error in the "name" field --}}
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
     @enderror
+    @if(old('tipoTorneo') == 'Individual')
+    <label for="cantidad">Cantidad de participantes:</label>
+    <input type="number" id="cantEquipo" name="cantEquipo">
+    @endif
+    @if(old('tipoTorneo') == 'Equipos')
+    <label for="cantidad">Cantidad de miembros por equipo aceptada:</label>
+    <input type="number" id="cantEquipo" name="cantEquipo">
+    @endif
+    <br>
+    @error('cantEquipo')  {{-- Checks if there has been an error in the "name" field --}}
+    <span>*{{$message}}</span> {{--print a message if there is an error--}}
+    @enderror
+
     <button type="submit">Crear</button>
     
     <a href="/torneos">Volver</a>
