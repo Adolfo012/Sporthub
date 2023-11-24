@@ -18,6 +18,27 @@
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
     @enderror
-    
     <button type="submit">Actualizar</button>
-    <a href="/equipos">Volver</a>
+    @php
+    $miembros = App\Models\MiembroEquipo::all(); 
+    $var1 = '1';
+    @endphp
+    <h2>Miembros del equipo:</h2>
+    @foreach ($miembros as $miembro)
+            @if ($equipo->id == $miembro->equipo_id)
+                <li>
+                 {{-- $equipo = URL team name --}}
+                 {{$miembro->user_miembro}} 
+                 <input type="hidden" name ="user_miembro{{$var1}}" value="{{$miembro->user_miembro}} ">
+                <button type="submit" name="eliminar" value="eliminar{{$var1}}">Eliminar</button><br>{{-- View: equipos.show with argument equipo->id--}}
+            </li>     
+            @php
+            $var1 = $var1+1;
+            @endphp
+            @endif
+    @endforeach
+    
+</form>
+    <a href="{{route('equipos.miembros',$equipo)}}">Agregar miembro</a>
+
+

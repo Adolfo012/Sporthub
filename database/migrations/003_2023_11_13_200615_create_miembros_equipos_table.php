@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('miembro_equipos', function (Blueprint $table) { #MiembrosEquipo table
-            $table->string('user_miembro')->unique();   #Unique user
+            $table->string('user_miembro');
             #FK1
             $table->unsignedBigInteger('equipo_id');
             $table->foreign('equipo_id')->references('id')->on('equipos')->onDelete('cascade'); #Restrict id reference
