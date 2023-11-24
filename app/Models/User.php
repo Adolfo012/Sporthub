@@ -47,4 +47,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    public function equipos(){
+        return $this->hasMany(Equipo::class,'id');
+    }
+    public function torneos(){
+        return $this->hasMany(Torneo::class,'id');
+    }
 }

@@ -1,7 +1,3 @@
-@extends('Dashboard.dashboard') {{---Inherits dashboard---}}
-@section('title','Torneo')
-
-@section('content')
 
 <title>Torneo {{$torneo->name}}</title>
 
@@ -27,4 +23,3 @@
             @method("delete") {{---Change the default "post" route to "delete" ---}}
             <button type="submit"> Eliminar torneo </button>
         </form>
-@endsection

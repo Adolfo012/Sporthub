@@ -1,7 +1,4 @@
-@extends('Dashboard.dashboard') {{---Inherits dashboard---}}
-@section('title','Crear Torneo')
 
-@section('content')
 <h1>Crear Torneo</h1>
 
 <form action="#" method="POST">
@@ -79,4 +76,4 @@
     <button type="submit">Crear</button>
     
     <a href="/torneos">Volver</a>
-@endsection
+

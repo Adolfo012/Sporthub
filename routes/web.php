@@ -80,5 +80,5 @@ Route::middleware(['auth'])->group(function () {
         Route::put('torneos/{torneo}','update')->name('torneos.update');             //Update "route::put"
         Route::delete('torneos/{torneo}','destroy')->name('torneos.destroy'); //Delete "route::delete"
         
-});
+    });
 });

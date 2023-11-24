@@ -90,22 +90,31 @@
   <main>
 
     <article class="principalbox">
+      {{auth()->user()->id}}
       <p class="title">Mis Torneos</p>
-        <div class="box">
+      <a href="{{route('torneos.crear')}}"> Crear Torneo</a>
+      <div class="box">
+      @forelse($torneos as $torneo)
           <div class="minibox">
-            <p class="tournament">Torneo 1</p>
-            <p class="description">Organizador:</p>
-            <p class="description">Equipo:</p>
-            <p class="description">Rol:</p>
+          <p class="tournament">{{$torneo->name}}</p>
+          <p class="description">Organizador:</p>
+          <p class="description">Equipo:</p>
+          <p class="description">Rol:</p>
           </div>
-          <div class="minibox">
-            <p class="tournament">Torneo 2</p>
-            <p class="description">Organizador:</p>
-            <p class="description">Equipo:</p>
-            <p class="description">Rol:</p>
-          </div>
+          @empty
+          <p>No hay </p>
+          @endforelse
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
     </article>
+
     <article class="principalbox">
       <p class="title">Mis equipos</p>
         <div class="box">
