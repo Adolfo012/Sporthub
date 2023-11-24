@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PartidoTorneo;
+use App\Http\Requests\PartidoRequest;
 use App\Models\Partido;
 use App\Models\Equipo;
 use App\Models\Torneo;
@@ -20,7 +20,7 @@ class PartidoController extends Controller
         $equipos = Equipo::all();
         return view('Partidos.create',compact('equipos','torneoID'));
     }
-    public function store(Request $request, $torneoID){ //Receives the request fields in ""create form"
+    public function store(PartidoRequest $request, $torneoID){ //Receives the request fields in ""create form"
         //EquipoRequest -> validate the fields before continuing with the function (App\Http\Requests\EquipoRequest)
         //ADD RECORD (if the fields are valid)
         $partido = new Partido();
@@ -50,7 +50,7 @@ class PartidoController extends Controller
         return view('Partidos.edit',compact('partido','equipos','torneoID'));
     }
 
-    public function update(Request $request, Partido $partido, $torneoID){ //Update a team ($request = Receives the request fields, Equipo instance) 
+    public function update(PartidoRequest $request, Partido $partido, $torneoID){ //Update a team ($request = Receives the request fields, Equipo instance) 
         #return  $partido;
         #$partido = new Partido;
         $partido->fechaPartido = $request->fechaPartido;

@@ -23,7 +23,7 @@
     @enderror
 
     <label>Jornada: <br>
-        <input type = "date" name="jornada" value="{{ ('jornada') }}"> <br>
+        <input type = "date" name="jornada" value="{{ old('jornada') }}"> <br>
     </label>
     @error('jornada')  {{-- Checks if there has been an error in the "name" field --}}
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
