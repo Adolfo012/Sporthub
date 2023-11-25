@@ -26,7 +26,7 @@ class TorneoRequest extends FormRequest
             'name' => 'required|min:3',
             'tipoJuego' => 'required',
             'ubicacion'=>'required',
-            'fechaInicio' => 'required|date|after_or_equal:today',
+            'fechaInicio' => 'required|date|after_or_equal:yesterday',
             'fechaFin' => 'required|date|after_or_equal:fechaInicio',
             'tipoTorneo' => 'required|in:Individual,Equipos',
             'cantEquipo'=>'required|numeric|gt:0',
