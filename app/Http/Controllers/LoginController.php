@@ -70,6 +70,6 @@ class LoginController extends Controller
     }
     $user->save();
 
-    return redirect()->route('user.edit',$user);
+    return redirect()->route('user.edit',$user)->with('mensaje', 'Registro completado.');
   }
 }
