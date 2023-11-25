@@ -60,5 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Notification::class, 'user_id');
     }
+    public function estadisticaIndividual()
+    {
+        return $this->belongsToMany(Torneos::class,'participante_torneos')->withPivot('PT','CA','DC','CC');;
+    }
 
 }

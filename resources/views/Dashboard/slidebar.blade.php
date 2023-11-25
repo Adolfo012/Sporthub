@@ -31,7 +31,7 @@
             </li>
 
             <li>
-                <a href="{{ route('torneos.index') }}">
+                <a href="{{ route('torneos.crear') }}">
                     <i class='bx bx-trophy'></i>
                     <span class="links_name">Crear Torneo</span>
                 </a>
@@ -39,11 +39,19 @@
             </li>
 
             <li>
-                <a href="{{ route('equipos.index') }}">
+                <a href="{{ route('equipos.crear') }}">
                     <i class='bx bx-group'></i>
                     <span class="links_name">Crear Equipos</span>
                 </a>
                 <span class="tooltip">Crear Equipos</span>
+            </li>
+            
+            <li>
+                <a href="{{ route('dash_home') }}"> <!-- Checar movimiento raro del menu-->
+                    <i class='bx bx-search'></i>
+                    <span class="links_name">Torneos y Equipos</span>
+                </a>
+                <span class="tooltip">Torneos y Equipos</span>
             </li>
 
             <li>

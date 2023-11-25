@@ -15,7 +15,11 @@ class Torneo extends Model
     }
     public function estadistica()
     {
-        return $this->belongsToMany(Equipo::class,'estadisticas')->withPivot('PT','CA','DC','CC');
+        return $this->belongsToMany(Equipo::class,'equipo_torneos')->withPivot('PT','CA','DC','CC');
+    }
+    public function estadisticaIndividual()
+    {
+        return $this->belongsToMany(User::class,'participante_torneos')->withPivot('PT','CA','DC','CC');
     }
     public function tienenPartidos()
     {
