@@ -22,7 +22,7 @@
         <ul class="nav-list">
 
         <li>
-            <a href="#">
+            <a href="{{route('dashboard.index')}}">
             <i class='bx bx-home'></i>
             <span class="links_name">Inicio</span>
             </a>
@@ -30,7 +30,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{route('torneos.crear')}}">
             <i class='bx bx-trophy'></i>
             <span class="links_name">Crear Torneo</span>
             </a>
@@ -38,7 +38,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{route('equipos.crear')}}">
             <i class='bx bx-group'></i>
             <span class="links_name">Crear Equipos</span>
             </a>
@@ -46,7 +46,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{ route('notification.show')}}">
             <i class='bx bx-notification'></i>
             <span class="links_name">Notificaciones</span>
             </a>
@@ -62,7 +62,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{route('dash_nosotros')}}">
             <i class='bx bx-info-circle'></i>
             <span class="links_name">Nosotros</span>
             </a>
