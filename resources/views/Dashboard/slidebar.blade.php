@@ -31,7 +31,7 @@
             </li>
 
             <li>
-                <a href="{{ route('torneos.crear') }}">
+                <a href="{{ route('torneos.index') }}">
                     <i class='bx bx-trophy'></i>
                     <span class="links_name">Crear Torneo</span>
                 </a>
@@ -39,7 +39,7 @@
             </li>
 
             <li>
-                <a href="{{ route('equipos.crear') }}">
+                <a href="{{ route('equipos.index') }}">
                     <i class='bx bx-group'></i>
                     <span class="links_name">Crear Equipos</span>
                 </a>
@@ -54,13 +54,13 @@
                 <span class="tooltip">Notificaciones</span>
             </li>
 
-            <li>
-                <a href="#">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">Perfil</span>
-                </a>
-                <span class="tooltip">Perfil</span>
-            </li>
+        <li>
+            <a href="{{route('user.edit', ['userID' => auth()->user()->id])}}">
+            <i class='bx bx-user'></i>
+            <span class="links_name">Perfil</span>
+            </a>
+            <span class="tooltip">Perfil</span>
+        </li>
 
             <li>
                 <a href="{{ route('dash_nosotros') }}">
@@ -82,6 +82,7 @@
                     <a href="#" onclick="this.closest('form').submit()"><i class="bx bx-log-out"
                             id="log_out"></i></a>
                 </li>
+            </form>
         </ul>
     </div>
 
