@@ -9,10 +9,11 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\TorneoController;
+use App\Http\Controllers\PartidoController;
+use App\Http\Controllers\EstadisticaController;
 use App\Http\Controllers\NotificationController;
 use App\Models\Notification;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
-
 #Cache command: php artisan config:clear or php artisan route:clear
 
 /*
@@ -100,11 +101,33 @@ Route::middleware(['auth'])->group(function () {
         //---------------------------------------------------------------------------------------------
         Route::put('torneos/{torneo}','update')->name('torneos.update');             //Update "route::put"
         Route::delete('torneos/{torneo}','destroy')->name('torneos.destroy'); //Delete "route::delete"
+
        //Tournament teams
         Route::get('torneos/equipos/agregar/{torneo}','equipos_torneo')->name('equipos.torneo');
         Route::post('torneos/equipos/agregar/{torneo}','equipos_store')->name('torneos.store'); 
        //Tournament participants
         Route::get('torneos/participantes/agregar/{torneo}','participantes_torneo')->name('participantes.torneo');
         Route::post('torneos/participantes/agregar/{torneo}','participantes_store')->name('participantes.store'); 
-});
-});
+    });
+
+    Route::controller(EstadisticaController::class)->group(function(){ //Group TorneoController get(route,functionController)
+        Route::get('estadisticas' , 'index')->name('estadisticas.index');
+        Route::post('estadisticas/create','store')->name('store');    
+        //Protected views for the "Organizador" rol using middleware 
+        Route::get('estadisticas/{torneo}','show')->name('estadisticas.show')->middleware('organizador'); 
+        Route::get('estadisticas/{torneo}/edit','edit')->name('estadisticas.edit')->middleware('organizador');
+        //---------------------------------------------------------------------------------------------
+        Route::put('estadisticas/{torneo}','update')->name('estadisticas.update');             //Update "route::put"
+        Route::delete('estadisticas/{torneo}','destroy')->name('estadisticas.destroy'); //Delete "route::delete"
+    });
+  
+    Route::controller(PartidoController::class)->group(function(){ //Group TorneoController get(route,functionController)
+        Route::get('partidos/{torneoID}','index')->name('partidos.index');
+        Route::get('partidos/create/{torneoID}','create')->name('partidos.crear');
+        Route::post('partidos/create/{torneoID}','store')->name('partidos.store');    
+        Route::get('partidos/edit/{partido}/{torneoID}','edit')->name('partidos.edit');
+        Route::get('partidos/index/{partido}/{torneoID}','show')->name('partidos.show'); 
+        Route::delete('partidos/index/{partido}/{torneoID}','destroy')->name('partidos.destroy'); 
+        //---------------------------------------------------------------------------------------------
+        Route::put('partidos/edit/{partido}/{torneoID}','update')->name('partidos.update');             //Update "route::put"        
+    });

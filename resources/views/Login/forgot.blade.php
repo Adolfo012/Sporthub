@@ -21,8 +21,8 @@
             <div class="form-value">
                 <form method="POST" action="#">
                     @csrf
-                    <h1 class="login-h1"> Recuperar contraseña </h1>
-                    <div class="inputbox">
+                    <h1 class="login-h1"> Recuperar Cuenta </h1>
+                    <div class="inputbox-forgot">
                         <ion-icon name="mail-outline">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="44" height="44" viewBox="0 0 24" stroke-width="1.5" stroke="#ffae00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -36,17 +36,16 @@
                         <span>*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
-                        @if(session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                        @endif
                     </div>
                     <button class="login-button" type="submit"> Envíar correo </button>
                     <div class="register">
-                        <p><a href="/login">Volver a inicio de sesión<br><br></a>
-                        </p>
-                    </div> 
+                        <p><a href="/login">volver<br><br></a></p>
+                    </div>
+                    @if(session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
                 </form>
             </div>
     </section>
