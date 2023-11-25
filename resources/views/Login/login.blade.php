@@ -31,14 +31,21 @@
                             </svg>
                         </ion-icon>
                         <input name="email" type="email" required autofocus value="{{old('email')}}">
-                        <label for=""> Usuario </label>
+                        <label for=""> Correo </label>
                         @error('email')  {{-- Checks if there has been an error in the "name" field --}}
                         <span>*{{$message}}</span> {{--print a message if there is an error--}}
                         <br>
                         @enderror
                     </div>
+                    
 
                     <div class="inputbox">
+                        <input id="password" name="password" type="password" required>
+                            <label for=""> Contraseña </label>
+                            @error('password')  {{-- Checks if there has been an error in the "name" field --}}
+                            <span>*{{$message}}</span> {{--print a message if there is an error--}}
+                            <br>
+                            @enderror
                         <button type="button" id="togglePassword">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-hide icon-tabler icon-tabler-eye-closed" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ffae00" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -54,12 +61,6 @@
                                 <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" />
                             </svg>
                         </button>
-                        <input id="password" name="password" type="password" required>
-                        <label for=""> Contraseña </label>
-                        @error('password')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
                     </div>
                     <div class="forget">
                         <label for=""><input type="checkbox" name ="remember">Recordar</label>
@@ -72,7 +73,7 @@
                     </div> 
                     <h4 class="credential-h4">
                         @if ($band)
-                        >Sistema: Credenciales Incorrectas  
+                        > Sistema: Credenciales Incorrectas  
                         @endif
                         @if(session('status'))
                         <div class="alert alert-success">
