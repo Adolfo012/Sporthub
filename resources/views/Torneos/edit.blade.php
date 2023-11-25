@@ -54,11 +54,16 @@
     @enderror
     
     <label for="individual">Tipo de torneo actual: {{$torneo->tipoTorneo}}</label><br>
+
     <label for="individual">Individual</label>
-    <input type="radio" id="Individual" name="tipoTorneo" value="Individual" required value="{{old('tipoTorneo')}}"> <br>
+    <input type="radio" id="Individual" name="tipoTorneo" value="Individual" required
+        {{ old('tipoTorneo', $torneo->tipoTorneo) == 'Individual' ? 'checked' : '' }}> <br>
+
     <label for="equipos">Equipos</label>
-    <input type="radio" id="Equipos" name="tipoTorneo" value="Equipos" required value="{{old('tipoTorneo')}}"> <br>
-    
+
+    <input type="radio" id="Equipos" name="tipoTorneo" value="Equipos" required
+     {{ old('tipoTorneo', $torneo->tipoTorneo) == 'Equipos' ? 'checked' : '' }}> <br>
+        
     @error('tipoTorneo')  {{-- Checks if there has been an error in the "name" field --}}
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     <br>
@@ -70,9 +75,56 @@
     <span>*{{$message}}</span> {{--print a message if there is an error--}}
     @enderror
     
-    
-
-
     <button type="submit">Actualizar</button>
-    
-    <a href="/torneos">Volver</a>
+    <a href="{{route('torneos.show',$torneo)}}">Volver</a>
+    @if ($torneo->tipoTorneo == "Equipos")
+    @php
+    $equiposTorneo = App\Models\EquipoTorneo::all(); 
+    $var1 = '1';
+    @endphp
+    <h2>Equipos del torneo</h2>
+    @foreach ($equiposTorneo as $equipoTorneo)
+            @if ($equipoTorneo->torneo_id == $torneo->id)
+                <li>
+                @php
+                   $equipo = App\Models\Equipo::find($equipoTorneo->equipo_id) 
+                @endphp
+                 {{$equipo->name}} 
+                 <input type="hidden" name ="equipo{{$var1}}" value="{{$equipoTorneo->equipo_id}} ">
+                 <input type="hidden" name ="participante" value="false">
+                 <button type="submit" name="eliminar" value="eliminar{{$var1}}">Eliminar</button><br>{{-- View: equipos.show with argument equipo->id--}}
+            </li>     
+            @php
+            $var1 = $var1+1;
+            @endphp
+            @endif
+    @endforeach
+    <a href="{{route('equipos.torneo',$torneo)}}">Agregar equipo</a>
+    @else {{--Show participants--}}
+    @php
+    $participantesTorneo = App\Models\ParticipanteTorneo::all(); 
+    $var1 = '1';
+    @endphp
+    <h2>Participantes del torneo</h2>
+    @foreach ($participantesTorneo as $participanteTorneo)
+            @if ($participanteTorneo->torneo_id == $torneo->id)
+                <li>
+                @php
+                   $user = App\Models\User::find($participanteTorneo->user_id) 
+                @endphp
+                 {{$user->name}} 
+                 <input type="hidden" name ="user{{$var1}}" value="{{$participanteTorneo->user_id}} ">
+                 <input type="hidden" name ="participante" value="true">
+                <button type="submit" name="eliminar" value="eliminar{{$var1}}">Eliminar</button><br>{{-- View: equipos.show with argument equipo->id--}}
+            </li>     
+            @php
+            $var1 = $var1+1;
+            @endphp
+            @endif
+    @endforeach
+    <a href="{{route('participantes.torneo',$torneo)}}">Agregar participante</a>
+    {{--<a href="{{route('participante.torneo')}}">Agregar participante</a>--}}
+    @endif
+    {{--<a href="{{route('equipos.torneos',$torneo)}}">Agregar miembro</a>--}}
+</form>
+ 

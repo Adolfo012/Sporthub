@@ -4,8 +4,7 @@
 @section('title','Pagina de torneos')
 
 @section('content')
-    <h1>Pagina de torneos</h1>   
-    {{auth()->user()->id}}
+    <h1>¡Bienvenido a tus torneos {{auth()->user()->name}}!</h1>  
     <a href="{{route('torneos.crear')}}">Crear torneo</a> 
     <ul>
     @php
