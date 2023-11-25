@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>@yield('title')</title>
+    <link rel="preload" href="{{ asset('css/dashboard.css') }}" as="style">
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo-details">
+            <div class="logo_name">SportHub</div>
+            <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav-list">
+
+        <li>
+            <a href="#">
+            <i class='bx bx-home'></i>
+            <span class="links_name">Inicio</span>
+            </a>
+            <span class="tooltip">Inicio</span>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-trophy'></i>
+            <span class="links_name">Crear Torneo</span>
+            </a>
+            <span class="tooltip">Crear Torneo</span>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-group'></i>
+            <span class="links_name">Crear Equipos</span>
+            </a>
+            <span class="tooltip">Crear Equipos</span>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-notification'></i>
+            <span class="links_name">Notificaciones</span>
+            </a>
+            <span class="tooltip">Notificaciones</span>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-user'></i>
+            <span class="links_name">Perfil</span>
+            </a>
+            <span class="tooltip">Perfil</span>
+        </li>
+
+        <li>
+            <a href="#">
+            <i class='bx bx-info-circle'></i>
+            <span class="links_name">Nosotros</span>
+            </a>
+            <span class="tooltip">Nosotros</span>
+        </li>
+
+        <form action"logout" method="POST"> 
+            @csrf 
+        <li class="profile">
+            <div class="profile-details">
+            <img src="../img/userprofile.webp" alt="profileImg">
+                <div class="name_job">
+                <div class="name">Salir</div>
+                </div>
+            </div>                          
+            <a href="#" onclick="this.closest('form').submit()"><i class="bx bx-log-out" id="log_out" ></i></a>
+        </li>
+        </ul>
+    </div>
+
+    @yield('content')
+
+</body>
+
+<script src="{{ asset('js/dashboard.js') }}"></script>
+
+</html>
