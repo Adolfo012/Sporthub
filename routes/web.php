@@ -73,6 +73,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('dashboard', [LogoutController::class,'logout'])->name('logout.index');
     //EquipoController (App\Http\Controllers\EquipoController)
     
+    //Edit User
+    Route::get('login/edit/{userID}',[LoginController::class,'user_edit'])->name('user.edit');
+    Route::put('login/edit/{userID}',[LoginController::class,'user_update'])->name('user.update');   
+
     //Route View Us
      //Shows a view that will not interact with the database
     Route::controller(EquipoController::class)->group(function(){ //Group EquipoController get(route,functionController)

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->time('horaPartido');
             $table->date('fechaPartido');
             $table->date('jornada');
-            $table->integer('resLocal')->unsigned()->default(0);     # Resultado Local = Natural number
-            $table->integer('resVisitante')->unsigned()->default(0); # Resultado Visitante   = Natural number
+            $table->integer('resLocal')->unsigned()->nullable();     # Resultado Local = Natural number
+            $table->integer('resVisitante')->unsigned()->nullable(); # Resultado Visitante   = Natural number
             #FK1
             $table->unsignedBigInteger('equipoLocal_id');
             $table->foreign('equipoLocal_id')->references('id')->on('equipos')->onDelete('cascade'); #Restrict id reference
