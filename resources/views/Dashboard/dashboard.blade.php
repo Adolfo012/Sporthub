@@ -27,12 +27,11 @@
    </nav>
  </header>
    @yield('content') {{---Add the content of the page that inherits dashboard---}}
-   
-    <form action"logout" method="POST"> 
-    @csrf 
-                                         {{--- Alter logout GET <a href="logout">Cerrar sesion</a> ---}}
-                                             
-    <a href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
+   <form action"logout" method="POST"> 
+      @csrf 
+                                           {{--- Alter logout GET <a href="logout">Cerrar sesion</a> ---}}
+                                               
+      <a href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
  </body>
  <!DOCTYPE html>
  <html lang="en">

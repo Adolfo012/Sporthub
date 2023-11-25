@@ -54,13 +54,17 @@ Route::middleware(['guest'])->group(function () {
 
    // < Routes accessible only to authenticated users >
 Route::middleware(['auth'])->group(function () {
-    Route::post('notification/{id}', [NotificationController::class,'index'])->name('notification.index');
+    
+    Route::post('notification/equipos/{id}', [NotificationController::class,'index'])->name('notification.index');
+    Route::post('notification/torneos/{id}', [NotificationController::class,'torneo'])->name('notification.torneo');
+    Route::post('notification/participantes/{id}', [NotificationController::class,'participante'])->name('notification.participante');
     Route::get('notification/show', [NotificationController::class,'show'])->name('notification.show');
     Route::post('notification', [NotificationController::class,'send'])->name('notification.send');
     //DashboardController (App\Http\Controllers\DashboardController)
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard.index');
     Route::get('dashboard/nosotros', [DashboardController::class,'nosotros'])->name('dash_nosotros');
     Route::get('dashboard/home', [DashboardController::class,'home'])->name('dash_home');
+    Route::post('dashboard/home', [DashboardController::class,'home'])->name('dash_home');
     Route::get('dashboard/torneos/{torneo}', [DashboardController::class,'torneo'])->name('dashboard.torneo');
     Route::get('dashboard/equipos/{equipo}', [DashboardController::class,'equipo'])->name('dashboard.equipo');
     
