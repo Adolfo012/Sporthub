@@ -37,8 +37,8 @@
             @endphp
             @endif
     @endforeach
-    
 </form>
-    <a href="{{route('equipos.miembros',$equipo)}}">Agregar miembro</a>
+    <a href="{{route('equipos.miembros',$equipo)}}">Agregar miembro</a><br>
+    <a href="{{route('equipos.show',$equipo)}}">Volver</a>
 
 

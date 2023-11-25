@@ -15,32 +15,36 @@
         Fecha de finalizacion: {{$torneo->fechaFin}}<br> 
         Tipo de torneo: {{$torneo->tipoTorneo}}<br> 
         Cantidad de miembros admitida: {{$torneo->cantEquipo}}<br> <br> 
-        
-        Equipos registrados:
+
+        @if ($torneo->tipoTorneo == "Equipos")
         @php
-        $teams = 0; 
+        $equiposTorneo = App\Models\EquipoTorneo::all(); 
         @endphp
-        @foreach($torneo->estadistica as $registro){{-- For each equipo in equipos--}}   
-                @if (auth()->user()->id == $torneo->user_id)
-                    <li>
-                    <a href="{{route('equipos.show',$registro)}}">  
-                    {{$registro->name}}</a>
-                     PT: {{$registro->pivot->PT}}
-                     </li> 
-                     @php
-                     $teams++;
-                     @endphp
-                @endif
-                @if($teams < 1)
-                        <p>No hay equipos aun.</p>
-                @endif
-        @endforeach
-
-        </p>
-
-        <a href="{{route('torneos.edit',$torneo)}}">Editar torneo</a>
-        <a href="{{route('partidos.index',$torneo->id)}}">Ver todos los partidos</a>
-        <a href="{{route('torneos.index')}}">Volver a torneos</a>
+        <h2>Equipos en el torneo:</h2>
+        
+            @foreach ($equiposTorneo as $equipoTorneo)
+                    @if($equipoTorneo->torneo_id == $torneo->id)
+                        @php
+                        $equipo = App\Models\Equipo::find($equipoTorneo->equipo_id);
+                        @endphp
+                        Equipo: {{$equipo->name}}<br>
+                    @endif
+            @endforeach
+        @else
+        @php
+        $participantesTorneo = App\Models\ParticipanteTorneo::all(); 
+        @endphp
+        <h2>Participantes en el torneo:</h2>
+        
+            @foreach ($participantesTorneo as $participanteTorneo)
+                    @if($participanteTorneo->torneo_id == $torneo->id)
+                        @php
+                        $user = App\Models\user::find($participanteTorneo->user_id);
+                        @endphp
+                        Participante: {{$user->name}}<br>
+                    @endif
+            @endforeach
+        @endif
 
         <form action="{{route('torneos.destroy',$torneo)}}" method="POST">
             @csrf

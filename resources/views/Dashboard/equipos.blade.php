@@ -16,5 +16,8 @@
         @endforeach
         <form action="{{route('notification.index',['id' => $equipo->id])}}" method="POST">
             @csrf
-            <button type="submit">Enviar solicitud de inscripción </button>
+            <button type="submit">Enviar solicitud de inscripción </button><br>
+            @if(isset($mensaje))
+               <b><p>{{ $mensaje }}</p></b>
+            @endif
         </form>
