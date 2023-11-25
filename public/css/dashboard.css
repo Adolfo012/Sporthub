@@ -99,6 +99,7 @@
   z-index: 3;
   background: var(--primary);
   box-shadow: 0 5px 10px var(--secundary);
+  color: var(--complementA);
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 15px;

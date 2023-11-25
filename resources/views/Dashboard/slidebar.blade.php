@@ -70,7 +70,7 @@
                 <span class="tooltip">Nosotros</span>
             </li>
 
-            <form action"logout" method="POST">
+            <form action="{{ route('logout.index') }}" method="POST">
                 @csrf
                 <li class="profile">
                     <div class="profile-details">
