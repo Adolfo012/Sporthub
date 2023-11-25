@@ -335,3 +335,37 @@ article{
 .description {
   margin-bottom: 5px; /* Agrega espacio después de cada descripción */
 }
+
+.carousel-control-prev {
+  position: absolute;
+  top: 100%; /* Centrar verticalmente */
+  left: 0; /* Alinear a la esquina izquierda */
+  transform: translateY(-50%); /* Ajuste fino para centrar exactamente */
+  z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+}
+
+/* Estilos para el control siguiente */
+.carousel-control-next {
+  position: absolute;
+  top: 100%; /* Centrar verticalmente */
+  right: 0; /* Alinear a la esquina derecha */
+  transform: translateY(-50%); /* Ajuste fino para centrar exactamente */
+  z-index: 1000; /* Asegurarse de que esté sobre otros elementos */
+}
+
+.carousel-control-prev, .carousel-control-next{
+  color: #f7b119;
+  text-decoration: none; 
+  width: 50px; /* Ancho del ícono */
+  height: 50px; /* Altura del ícono */
+}
+
+.carousel-control-prev svg, .carousel-control-next svg{
+  width: 50px; /* Ajustar al contenedor padre */
+  height: auto; /* Mantener la relación de aspecto */
+}
+
+.carousel-control-prev:visited, .carousel-control-next:visited {
+    color: #f7b119;
+    text-decoration: none;
+}

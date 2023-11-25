@@ -3,15 +3,35 @@
  {{--- Auth User ---}}
 <head>
     <meta charset="UTF-8">
-    <title>Sporthub</title>
+    <title>@yield('title')</title>
     <link rel="preload" href="{{ asset('css/dashboard.css') }}" as="style">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
 <body>
+
+  <p>Bienvenido {{auth()->user()->name}} {{auth()->user()->fsurname}}</p>     {{--- Show the username ---}}
+  <header>
+    <h1>Dashboard</h1>
+    <nav>
+        <ul>
+          <li><a href="{{route('dash_home')}}" class="{{request()->routeIs('dash_home') ? 'active' : ''}}">Home</a></li> {{---Check if it is on the mentioned route style = active ---}}
+          <li><a href="{{route('dash_nosotros')}}" class="{{request()->routeIs('dash_nosotros') ? 'active' : ''}}">Nosotros</a></li>
+          <li><a href="{{ route('equipos.index') }}" class="{{ request()->routeIs('equipos.*') ? 'active' : '' }}">Equipos</a></li> {{---Asterisk "*" indicates that the style is applied to all routes that belong to that group ---}}
+          <li><a href="{{ route('notification.show')}}">Notificaciones</a></li>
+          <li><a href="{{route('torneos.index')}}" class="{{request()->routeIs('torneos.*') ? 'active' : ''}}">Torneos</a></li> {{---Asterisk "*" indicates that the style is applied to all routes that belong to that group ---}}
+        </ul>
+    </nav>
+  </header>
+  @yield('content') {{---Add the content of the page that inherits dashboard---}}
+   
+   <form action"logout" method="POST"> 
+   @csrf 
+    {{--- Alter logout GET <a href="logout">Cerrar sesion</a> ---}}
+                                            
+   <a href="#" onclick="this.closest('form').submit()">Cerrar sesión</a>
   <!-- <div class="sidebar">
       <div class="logo-details">
           <div class="logo_name">SportHub</div>
@@ -106,12 +126,20 @@
           @endforelse
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+          <span class="carousel-control-prev-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M15 6l-6 6l6 6" />
+            </svg>
+          </span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+          <span class="carousel-control-next-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M9 6l6 6l-6 6" />
+            </svg>
+          </span>
         </a>
     </article>
 
@@ -135,10 +163,7 @@
     <article class="three">Próximos partidos</article>
 
   </main>
-  
+  <script src="{{ asset('js/dashboard.js') }}"></script>
   
 </body>
-  
-  <script src="{{ asset('js/dashboard.js') }}"></script>
-
 </html>
