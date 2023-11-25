@@ -1,4 +1,12 @@
-    <form action="{{route('user.update',['user' =>$user,'userID' => auth()->user()->id])}}" method="POST">
+   
+   @extends('Dashboard.dashboard') {{-- -Inherits dashboard- --}}
+   @section('title', 'Editar usuario')
+   
+   @section('content')
+       <main class="home-section">
+           <section class="principalbox">
+               <div class="contorno">
+   <form action="{{route('user.update',['user' =>$user,'userID' => auth()->user()->id])}}" method="POST">
         @csrf
         @method('put')
         <h1 class="login-h1"> Perfil </h1>
@@ -70,4 +78,7 @@
         <button class="login-button" type="submit"> Editar </button>
         <a class="back-form" href="/dashboard">volver</a>
     </form>
-
+</div>
+</section>
+</main>
+@endsection
