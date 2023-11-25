@@ -131,3 +131,4 @@ Route::middleware(['auth'])->group(function () {
         //---------------------------------------------------------------------------------------------
         Route::put('partidos/edit/{partido}/{torneoID}','update')->name('partidos.update');             //Update "route::put"        
     });
+});
