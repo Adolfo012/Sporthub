@@ -3,7 +3,6 @@
 @section('content')
 
   <main class="home-section">
-
     <section class="principalbox">
       <p class="title">Mis Torneos</p>
         <div class="box">
@@ -49,5 +48,5 @@
     </section>
 
   </main>
-
 @endsection
+

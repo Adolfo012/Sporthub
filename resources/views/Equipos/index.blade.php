@@ -2,8 +2,8 @@
 @section('title','Pagina de equipos')
 
 @section('content')
-    <h1>Pagina de equipos</h1>   
-    {{auth()->user()->id}}
+    <h1>¡Bienvenido a tus equipos {{auth()->user()->name}}!</h1>   
+
     <a href="{{route('equipos.crear')}}">Crear equipo</a> 
     <ul>
     @php
