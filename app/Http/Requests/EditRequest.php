@@ -26,11 +26,10 @@ class EditRequest extends FormRequest
             'fsurname' => 'required|alpha|max:60',
             'msurname' => 'required|alpha|max:60',
             'nickname' => 'required|alpha_num|max:50',
-            'gender' => ['required', 'in:male,female,non-binary'],
-            'birthdate' => 'required|date',
             'email' => 'required',
-            'password' => 'required|alpha_num|min:8',
-            'confirmpassword' => 'required|alpha_num|same:password|',
+            'password' => 'current_password|nullable',
+            'newpassword' => 'alpha_num|min:8|nullable',
+            'confirmNewpassword' => 'same:newpassword',
         ];
     }
     public function attributes(): array  //Customize the name of the attributes in the errors
@@ -40,11 +39,10 @@ class EditRequest extends FormRequest
             'fsurname' => 'tipo de juego',
             'msurname' => 'representante',
             'nickname' => 'apodo',
-            'gender' => 'género',
-            'birthdate' => 'fecha de nacimiento',
             'email' => 'correo',
             'password' => 'contraseña',
-            'confirmpassword' => 'confirmación de contraseña',
+            'newpassword' => 'contraseña nueva',
+            'confirmNewpassword' => 'confirmación de contraseña',
         ];
     }
 }
