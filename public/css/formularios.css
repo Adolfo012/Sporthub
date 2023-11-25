@@ -28,20 +28,22 @@ input {
 span {
     color: #e74c3c;
     display: block;
-    margin-top: 5px;
+    margin-top: -25px;
+    margin-left: 50px
 }
 
 button {
-    background-color: #3498db;
+    background-color: #e72e57;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #ee1443;
 }
 
 a {
@@ -67,4 +69,18 @@ input[type="radio"] {
 /* Additional Styles for Radio Buttons */
 input[type="radio"]:checked + label {
     color: #3498db;
+}
+
+.button {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: #2980b9;
 }
