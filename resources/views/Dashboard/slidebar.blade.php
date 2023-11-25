@@ -54,7 +54,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="{{route('user.edit', ['userID' => auth()->user()->id])}}">
             <i class='bx bx-user'></i>
             <span class="links_name">Perfil</span>
             </a>
@@ -69,7 +69,7 @@
             <span class="tooltip">Nosotros</span>
         </li>
 
-        <form action"logout" method="POST"> 
+        <form action="logout" method="POST"> 
             @csrf 
         <li class="profile">
             <div class="profile-details">
