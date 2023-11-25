@@ -54,13 +54,13 @@
                 <span class="tooltip">Notificaciones</span>
             </li>
 
-            <li>
-                <a href="#">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">Perfil</span>
-                </a>
-                <span class="tooltip">Perfil</span>
-            </li>
+        <li>
+            <a href="{{route('user.edit', ['userID' => auth()->user()->id])}}">
+            <i class='bx bx-user'></i>
+            <span class="links_name">Perfil</span>
+            </a>
+            <span class="tooltip">Perfil</span>
+        </li>
 
             <li>
                 <a href="{{ route('dash_nosotros') }}">
@@ -69,8 +69,8 @@
                 </a>
                 <span class="tooltip">Nosotros</span>
             </li>
-
-            <form action="{{ route('logout.index') }}" method="POST">
+            
+            <form action="{{ route('logout.index') }}" method="POST">  
                 @csrf
                 <li class="profile">
                     <div class="profile-details">

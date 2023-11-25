@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\EditRequest;
+
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -46,5 +50,26 @@ class LoginController extends Controller
     return view('Login.login',compact('band'));
     
 
+  }
+  public function user_edit($userID){ //ViewEdit Login 
+    $user = User::find($userID); 
+    return view('Login.edit',compact('user'));
+  }
+  public function user_update(EditRequest $request){ //ViewEdit Login 
+    $user = User::find(auth()->user()->id);
+    $user->name = $request->name;
+    $user->fsurname = $request->fsurname;
+    $user->msurname = $request->msurname;
+    $user->nickname = $request->nickname;
+    $user->email = $request->email;
+    
+    if($request->password != null){
+      if ($request->newpassword != null){
+        $user->password = bcrypt($request->newpassword);
+      }
+    }
+    $user->save();
+
+    return redirect()->route('user.edit',$user);
   }
 }
