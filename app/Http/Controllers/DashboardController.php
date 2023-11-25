@@ -6,8 +6,6 @@ use App\Models\Equipo;
 use App\Models\Torneo;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Equipo;
-use App\Models\Torneo;
 use App\Models\Partido;
 
 class DashboardController extends Controller
