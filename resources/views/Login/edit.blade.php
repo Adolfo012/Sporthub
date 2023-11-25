@@ -75,6 +75,9 @@
             <br>
             @enderror
         </div>
+        @if(isset($mensaje))
+            <p>{{ $mensaje }}</p>
+        @endif
         <button class="login-button" type="submit"> Editar </button>
         <a class="back-form" href="/dashboard">volver</a>
     </form>

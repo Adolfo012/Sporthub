@@ -1,4 +1,10 @@
+@extends('Dashboard.dashboard') {{-- -Inherits dashboard- --}}
+@section('title', 'Crear equipo')
 
+@section('content')
+    <main class="home-section">
+        <section class="principalbox">
+            <div class="contorno">
 <h1>Editar Equipo</h1>
 
 <form action="{{route('equipos.update', $equipo)}}" method="POST">
@@ -40,5 +46,8 @@
 </form>
     <a href="{{route('equipos.miembros',$equipo)}}">Agregar miembro</a><br>
     <a href="{{route('equipos.show',$equipo)}}">Volver</a>
-
+</div>
+</section>
+</main>
+@endsection
 
