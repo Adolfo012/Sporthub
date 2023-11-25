@@ -69,8 +69,8 @@
                 </a>
                 <span class="tooltip">Nosotros</span>
             </li>
-
-            <form action="logout" method="POST">
+            
+            <form action="{{ route('logout.index') }}" method="POST">  
                 @csrf
                 <li class="profile">
                     <div class="profile-details">
@@ -82,6 +82,7 @@
                     <a href="#" onclick="this.closest('form').submit()"><i class="bx bx-log-out"
                             id="log_out"></i></a>
                 </li>
+            </form>
         </ul>
     </div>
 

@@ -2,7 +2,23 @@
 @section('title', 'SPORTHUB')
 
 @section('content')
+@php
+      $equipos = App\Models\Equipo::all();
+      $torneos = App\Models\Torneo::all();
+      $equiposDivididos = $equipos->chunk($equipos->count() / 3);
+      $torneosDivididos = $torneos->chunk($torneos->count() / 3);
 
+      // Tercios de grupos
+      $grupoequipo1 = $equiposDivididos[0];
+      $grupoequipo2 = $equiposDivididos[1];
+      $grupoequipo3 = $equiposDivididos[2];
+      // Tercios de torneos
+      $grupoetorneo1 = $torneosDivididos[0];
+      $grupoetorneo2 = $torneosDivididos[1];
+      $grupoetorneo3 = $torneosDivididos[2];
+      $count = 0; //Contador torneo
+      $countEquipo = 0; //Contador equipos
+  @endphp
     <main class="home-section">
         <section class="principalbox">
             <p class="title">Mis Torneos</p>
