@@ -1,5 +1,5 @@
 <?php
-
+//Commit
 namespace App\Http\Controllers;
 
 use App\Models\Equipo;
