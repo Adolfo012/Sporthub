@@ -31,8 +31,12 @@
                         <br>
                     @enderror
 
-                    <button type="submit">Crear</button>
-                    <a href="/equipos" class="button">Volver</a>
+                    <div class="flex-contianer">
+                        <button type="submit" class="button-left" style="height: 45px; margin-top: 13px;">
+                            Crear
+                        </button>
+                        <a href="/equipos" class="button-right">Volver</a>
+                    </div>
 
                     <!-- <a href="/equipos">Volver</a> -->
                 </form>

@@ -13,7 +13,9 @@
                     </label>
                     @error('name')
                         {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                        <span style="margin-top:-30px; margin-left:105px;">
+                            *{{ $message }}
+                        </span> {{-- print a message if there is an error --}}
                         <br>
                     @enderror
 
@@ -23,7 +25,9 @@
                     </label>
                     @error('ubicacion')
                         {{-- Checks if there has been an error in the "ubicacion" field --}}
-                        <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                        <span style="margin-top:-30px; margin-left:100px;">
+                            *{{ $message }}
+                        </span> {{-- print a message if there is an error --}}
                         <br>
                     @enderror
 
@@ -32,7 +36,9 @@
                     </label>
                     @error('tipoJuego')
                         {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                        <span style="margin-top:-30px; margin-left:90px;">
+                            *{{ $message }}
+                        </span> {{-- print a message if there is an error --}}
                         <br>
                     @enderror
 
@@ -41,7 +47,9 @@
                     </label>
                     @error('descripcion')
                         {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                        <span style="margin-top:-30px; margin-left:90px;">
+                            *{{ $message }}
+                        </span> {{-- print a message if there is an error --}}
                         <br>
                     @enderror
 
@@ -50,7 +58,9 @@
                     </label>
                     @error('fechaInicio')
                         {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                        <span style="margin-top:-30px; margin-left:85px;">
+                            *{{ $message }}
+                        </span> {{-- print a message if there is an error --}}
                         <br>
                     @enderror
 
@@ -59,7 +69,9 @@
                     </label>
                     @error('fechaFin')
                         {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                        <span style="margin-top:-30px; margin-left:65px;">
+                            *{{ $message }}
+                        </span> {{-- print a message if there is an error --}}
                         <br>
                     @enderror
                     <label class="tipo torneo">Elige el tipo de torneo:</label><br>
@@ -72,7 +84,9 @@
                     <br>
                     @error('tipoTorneo')
                         {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                        <span>
+                            *{{ $message }}
+                        </span> {{-- print a message if there is an error --}}
                         <br>
                     @enderror
                     @if (old('tipoTorneo') == 'Individual')
@@ -86,12 +100,23 @@
                     <br>
                     @error('cantEquipo')
                         {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                        <span style="margin-top:-10px; margin-left:65px;">
+                            *{{ $message }}</span> {{-- print a message if there is an error --}}
                     @enderror
 
-                    <button type="submit">Crear</button>
+                    <div class="flex-contianer">
+                        <button type="submit" class="button-left" style="height: 45px; margin-top: 13px;">
+                            Crear
+                        </button>
+                        <a href="/equipos" class="button-right">Volver</a>
+                    </div>
 
-                    <a href="/torneos">Volver</a>
+                    <!-- <button type="submit" class="button-left" style="margin-right: 290px">
+                        Crear
+                    </button>
+                    <a href="/equipos" class="button-right">Volver</a>
+
+                    <a href="/torneos">Volver</a> -->
                 </form>
             </div>
         </section>

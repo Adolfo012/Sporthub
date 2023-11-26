@@ -32,20 +32,6 @@ span {
     margin-left: 50px
 }
 
-button {
-    background-color: #e72e57;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #ee1443;
-}
-
 a {
     display: inline-block;
     margin-top: 15px;
@@ -71,7 +57,26 @@ input[type="radio"]:checked + label {
     color: #3498db;
 }
 
-.button {
+.flex-contianer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+.button-left {
+    background-color: #e72e57;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-left:hover {
+    background-color: #ee1443;
+}
+
+.button-right {
     background-color: #3498db;
     color: white;
     padding: 12px 20px;
@@ -81,6 +86,6 @@ input[type="radio"]:checked + label {
     font-size: 16px;
 }
 
-.button:hover {
+.button-right:hover {
     background-color: #2980b9;
 }
