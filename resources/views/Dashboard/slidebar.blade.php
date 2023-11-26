@@ -10,6 +10,8 @@
     <link href="{{ asset('css/formularios.css') }}" rel="stylesheet">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/887a835504.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -31,7 +33,7 @@
             </li>
 
             <li>
-                <a href="{{ route('torneos.index') }}">
+                <a href="{{ route('torneos.crear') }}">
                     <i class='bx bx-trophy'></i>
                     <span class="links_name">Crear Torneo</span>
                 </a>
@@ -39,7 +41,7 @@
             </li>
 
             <li>
-                <a href="{{ route('equipos.index') }}">
+                <a href="{{ route('equipos.crear') }}">
                     <i class='bx bx-group'></i>
                     <span class="links_name">Crear Equipos</span>
                 </a>
