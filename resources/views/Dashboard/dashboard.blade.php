@@ -12,21 +12,21 @@
                 <div class="box">
 
                     <div class="minibox">
-                        <p class="tournament">Torneo 1</p>
+                        <p class="name">Torneo 1</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
                         <p class="description">Rol:</p>
                     </div>
                     
                     <div class="minibox">
-                        <p class="tournament">Torneo 2</p>
+                        <p class="name">Torneo 2</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
                         <p class="description">Rol:</p>
                     </div>
                     
                     <div class="minibox">
-                        <p class="tournament">Torneo 3</p>
+                        <p class="name">Torneo 3</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
                         <p class="description">Rol:</p>
@@ -42,21 +42,21 @@
                 <div class="box">
 
                     <div class="minibox">
-                        <p class="tournament">Equipo 1</p>
+                        <p class="name">Equipo 1</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
                         <p class="description">Rol:</p>
                     </div>
                     
                     <div class="minibox">
-                        <p class="tournament">Equipo 2</p>
+                        <p class="name">Equipo 2</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
                         <p class="description">Rol:</p>
                     </div>
                     
                     <div class="minibox">
-                        <p class="tournament">Equipo 3</p>
+                        <p class="name">Equipo 3</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
                         <p class="description">Rol:</p>
@@ -69,6 +69,33 @@
 
         <section class="principalbox">
             <p class="title">Próximos partidos</p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Equipo Local</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Equipo Visitante</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Ejemplos de datos en la tabla (puedes agregar más filas según tus necesidades) -->
+                <tr>
+                    <td>Equipo A</td>
+                    <td>2023-12-01</td>
+                    <td>15:00</td>
+                    <td>Equipo B</td>
+                </tr>
+                <tr>
+                    <td>Equipo C</td>
+                    <td>2023-12-02</td>
+                    <td>18:30</td>
+                    <td>Equipo D</td>
+                </tr>
+                </tbody>
+            </table>
+
         </section>
 
     </main>

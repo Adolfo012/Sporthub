@@ -78,7 +78,7 @@
                     <div class="profile-details">
                         <img src="../img/userprofile.webp" alt="profileImg">
                         <div class="name_job">
-                            <div class="name">Salir</div>
+                            <div class="out">Salir</div>
                         </div>
                     </div>
                     <a href="#" onclick="this.closest('form').submit()"><i class="bx bx-log-out"
