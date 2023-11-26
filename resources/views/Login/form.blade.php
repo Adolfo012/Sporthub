@@ -6,6 +6,7 @@
     <title>SportHub Registro</title>
     <link rel="preload" href="{{ asset('css/styles.css') }}" as="style">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="form-body">
     <!-- <header>
@@ -20,7 +21,7 @@
     <section class="form-section">
         <div class="form-box"></div>
             <div class="form-value">
-                <form  method="POST" action="#">
+                <form id="register-form" method="POST" action="#">
                     @csrf
                     <h1 class="login-h1"> Registro </h1>
                     
@@ -69,58 +70,9 @@
                     </div>
                     <button class="login-button" type="submit"> Registrarse </button>
                     <a class="back-form" href="/login">volver</a>
-
-                    <h4 class="credential-h4">
-                        
-                        @error('name')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                        @error('fsurname')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                        @error('msurname')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                        @error('birthdate')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                        @error('gender')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                        @error('nickname')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                        @error('email')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                        @error('password')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                        @error('confirmpassword')  {{-- Checks if there has been an error in the "name" field --}}
-                        <span>*{{$message}}</span> {{--print a message if there is an error--}}
-                        <br>
-                        @enderror
-
-                    <h4>
-
                 </form>
             </div>
     </section>
+    <script src="{{ asset('js/form.js') }}" ></script>
 </body>
 </html>

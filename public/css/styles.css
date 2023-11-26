@@ -1,6 +1,6 @@
-/** Styles form & login **/
+/* Styles form & login */
 
-/** principal colors **/
+/* principal colors */
 :root {
     --primary: #F4EDE8;
     --secundary: #645f5f;
@@ -10,7 +10,7 @@
 
 }
 
-/** general styles of HTML **/
+/* general styles of HTML */
 * {
     margin: 0;
     padding: 0;
@@ -54,7 +54,7 @@
 }
 
 
-/** arrange data cells **/
+/* arrange data cells */
 .inputbox, .inputbox-forgot {
     position: relative;
     margin: 20px 0;

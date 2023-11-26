@@ -73,25 +73,28 @@
             <table>
                 <thead>
                 <tr>
+                    <th>Torneo</th>
                     <th>Equipo Local</th>
+                    <th>Equipo Visitante</th>
                     <th>Fecha</th>
                     <th>Hora</th>
-                    <th>Equipo Visitante</th>
                 </tr>
                 </thead>
                 <tbody>
                 <!-- Ejemplos de datos en la tabla (puedes agregar más filas según tus necesidades) -->
                 <tr>
+                    <td>Torneo 1</td>
                     <td>Equipo A</td>
+                    <td>Equipo B</td>
                     <td>2023-12-01</td>
                     <td>15:00</td>
-                    <td>Equipo B</td>
                 </tr>
                 <tr>
+                    <td>Torneo 1</td>
                     <td>Equipo C</td>
+                    <td>Equipo D</td>
                     <td>2023-12-02</td>
                     <td>18:30</td>
-                    <td>Equipo D</td>
                 </tr>
                 </tbody>
             </table>
