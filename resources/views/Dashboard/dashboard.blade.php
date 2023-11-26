@@ -13,10 +13,10 @@
 
                     <div class="minibox">
                         <p class="name">Torneo 1</p>
-                        <p class="description">Organizador:</p>
-                        <p class="description">Equipo:</p>
+                        <p class="description">Organizador: </p>
+                        <p class="description">Equipo: </p>
                         <p class="description">Tipo: Baloncesto</p>
-                        <p class="description">Rol:</p>
+                        <p class="description">Rol: </p>
                     </div>
                     
                     <div class="minibox">
@@ -35,6 +35,22 @@
                         <p class="description">Rol:</p>
                     </div>
 
+                    <div class="minibox">
+                        <p class="name">Torneo 3</p>
+                        <p class="description">Organizador:</p>
+                        <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
+                        <p class="description">Rol:</p>
+                    </div>
+
+                    <div class="minibox">
+                        <p class="name">Torneo 3</p>
+                        <p class="description">Organizador:</p>
+                        <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
+                        <p class="description">Rol:</p>
+                    </div>
+
                 </div>
 
         </section>
@@ -44,25 +60,25 @@
                 
                 <div class="box">
 
-                    <div class="minibox">
-                        <p class="name">Equipo 1</p>
-                        <p class="description">Organizador:</p>
-                        <p class="description">Equipo:</p>
-                        <p class="description">Rol:</p>
+                <div class="minibox">
+                        <p class="teamname">Equipo 1</p>
+                        <p class="teamdescription">Organizador:</p>
+                        <p class="teamdescription">Equipo:</p>
+                        <p class="teamdescription">Rol:</p>
                     </div>
                     
                     <div class="minibox">
-                        <p class="name">Equipo 2</p>
-                        <p class="description">Organizador:</p>
-                        <p class="description">Equipo:</p>
-                        <p class="description">Rol:</p>
+                        <p class="teamname">Equipo 2</p>
+                        <p class="teamdescription">Organizador:</p>
+                        <p class="teamdescription">Equipo:</p>
+                        <p class="teamdescription">Rol:</p>
                     </div>
                     
                     <div class="minibox">
-                        <p class="name">Equipo 3</p>
-                        <p class="description">Organizador:</p>
-                        <p class="description">Equipo:</p>
-                        <p class="description">Rol:</p>
+                        <p class="teamname">Equipo 3</p>
+                        <p class="teamdescription">Organizador:</p>
+                        <p class="teamdescription">Equipo:</p>
+                        <p class="teamdescription">Rol:</p>
                     </div>
 
                 </div>

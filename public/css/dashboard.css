@@ -299,12 +299,14 @@
 }
 
 .minibox {
-  width: 200px;
+  width: 225px;
+  height: 210px;
   margin: 0 10px 10px 0; /* Agrega un margen a la derecha y abajo de cada elemento .box */
   border: 1px solid var(--secundary);
   padding: 10px;
   box-sizing: border-box;
   border-radius: 15px;
+  overflow: hidden;
 }
 
 
@@ -315,10 +317,25 @@
 
 .name {
   font-weight: bold; /* Hace que el nombre del torneo sea más destacado */
-  margin-bottom: 45px; /* Agrega espacio después del nombre del torneo */
+  margin-bottom: 75px; /* Agrega espacio después del nombre del torneo */
 }
 
 .description {
+  margin-bottom: 5px; /* Agrega espacio después de cada descripción */
+}
+
+.name, .description, .teamdescription {
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el contenido que desborda */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) al final del texto truncado */
+}
+
+.teamname {
+  font-weight: bold; /* Hace que el nombre del torneo sea más destacado */
+  margin-bottom: 85px; /* Agrega espacio después del nombre del torneo */
+}
+
+.teamdescription {
   margin-bottom: 5px; /* Agrega espacio después de cada descripción */
 }
 
