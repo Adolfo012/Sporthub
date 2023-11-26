@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name', 60);
             $table->string('fsurname', 50); #Father's surname
             $table->string('msurname', 50); #Mother's surname
-            $table->string('nickname', 50)->nullable(); 
+            $table->string('nickname', 50)->nullable()->unique(); 
             $table->string('email')->unique(); #Default length 255
             $table->string('gender')->default('N/E');   #Default length 255
             $table->string('password'); #Default length 255
