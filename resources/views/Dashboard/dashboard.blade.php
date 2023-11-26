@@ -31,7 +31,7 @@
                                 <p class="description">Organizador:{{$equipoTorneo->nickname}}</p>
                                 <p class="description">Equipo:{{$equipoTorneo->name}}</p>
                                 <p class="description">Tipo: Baloncesto</p>
-                                <p class="description">Rol: Representante Equipo</p>
+                                <p class="description">Rol: Representante</p>
                                 </div>
                             @else
                                 @foreach($miembrosEquipos as $miembro)    {{-- miembro de equipo--}}
@@ -39,9 +39,9 @@
                                         <div class="minibosx">
                                         <p class="tournament">{{$torneo->name}}</p>
                                         <p class="description">Organizador:</p>
-                                        <p class="description">Equipo:</p>
+                                        <p class="description">Equipo:{{$miembro->miembros->name}}</p>
                                         <p class="description">Tipo: Baloncesto</p>
-                                        <p class="description">Rol: Miembro Equipo</p>
+                                        <p class="description">Rol: Miembro</p>
                                         </div>
                                         @continue
                                     @endif
@@ -71,23 +71,19 @@
                     @if (auth()->user()->id == $equipo->user_id)
                         <div class="minibox">
                         <a class="tournament">{{$equipo->name}}</a>
-                        <p class="description">Organizador:</p>
-                        <p class="description">Equipo:</p>
                         <p class="description">Rol: Representante</p>
                         </div>
                         @continue
-                    @endif
-                @endforeach
-                @foreach($miembrosEquipos as $miembro)    {{-- miembro --}}
-                    @if (auth()->user()->name== $miembro->user_miembro)
-                        <div class="minibox">
-                        <p class="tournament">{{$miembro->miembros->name}}</p>
-                        <p class="description">Organizador:</p>
-                        <p class="description">Equipo:</p>
-                        
-                        <p class="description">Rol: solo</p>
-                        </div>
-                        @continue
+                    @else
+                        @foreach($miembrosEquipos as $miembro)    {{-- miembro --}}
+                            @if ((auth()->user()->name== $miembro->user_miembro) && (auth()->user()->id != $miembro->miembros->user_id))
+                                <div class="minibox">
+                                <p class="tournament">{{$miembro->miembros->name}}</p>
+                                <p class="description">Rol: Miembro</p>
+                                </div>
+                                @continue
+                            @endif
+                        @endforeach
                     @endif
                 @endforeach
             </div>
