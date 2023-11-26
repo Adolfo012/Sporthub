@@ -15,6 +15,7 @@
                         <p class="name">Torneo 1</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
                         <p class="description">Rol:</p>
                     </div>
                     
@@ -22,6 +23,7 @@
                         <p class="name">Torneo 2</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
                         <p class="description">Rol:</p>
                     </div>
                     
@@ -29,6 +31,7 @@
                         <p class="name">Torneo 3</p>
                         <p class="description">Organizador:</p>
                         <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
                         <p class="description">Rol:</p>
                     </div>
 
