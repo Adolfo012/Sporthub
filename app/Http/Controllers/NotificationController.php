@@ -85,6 +85,9 @@ class NotificationController extends Controller
                 //Notifies the user that their request was accepted
                 $notification = new Notification();
                 $notification->user_id = auth()->user()->id;
+                $representante = User::find(Equipo::find($miembro->equipo_id)->user_id)->id;
+                $notification->user_id2 = $representante;
+
                 $notification->equipo_id = $request->equipo_id;
                 $notification->status = 'accepted';
                 $notification->save();
