@@ -4,16 +4,20 @@
 @section('content')
 
 @php
-      $equipos = App\Models\Equipo::all();
-      $miembrosEquipos= App\Models\MiembroEquipo::all();
+    $equipos = App\Models\Equipo::all();
+    $miembrosEquipos= App\Models\MiembroEquipo::all();
 
-      $torneos = App\Models\Torneo::all();
-      $participanteTorneos = App\Models\ParticipanteTorneo::all();
-      $equipoTorneos = App\Models\EquipoTorneo::all();
+    $torneos = App\Models\Torneo::all();
+    $participanteTorneos = App\Models\ParticipanteTorneo::all();
+    $equipoTorneos = App\Models\EquipoTorneo::all();
+    $torneo = App\Models\Torneo::find($equipoTorneos);
+    $partidos = App\Models\Partido::all();
+
+    $flag = true
+
 
 @endphp
     <main class="home-section">
-        
         <section class="principalbox">
             <p class="title">Mis Torneos</p>
             <div class="box">
@@ -24,36 +28,54 @@
                         <p class="description">Tipo: Baloncesto</p>
                         <p class="description">Rol: Organizador</p>
                         </div>
-                        
-                    @else
-                        @foreach($torneo->estadistica as $equipoTorneo)    {{-- representante de equipo--}}
-                            @if (auth()->user()->id == $equipoTorneo->user_id)
+                        @php
+                            $flag =false;
+                        @endphp
+                    @elseif($flag == true)
+                        @foreach($partidos as $partido) {{-- Representantes de equipo--}}
+                            @if (auth()->user()->id == $partido->local->user_id && $flag == true)
                                 <div class="minibox">
-                                <a class="tournament">{{$torneo->name}}</a>
-                                <p class="description">Organizador:{{$equipoTorneo->nickname}}</p>
-                                <p class="description">Equipo:{{$equipoTorneo->name}}</p>
-                                <p class="description">Tipo: Baloncesto</p>
-                                <p class="description">Rol: Representante</p>
+                                    <a class="tournament">{{$partido->estanTorneos[0]->name}}</a>
+                                    <p class="description">Organizador: {{$partido->estanTorneos[0]->organizador->nickname}}</p>
+                                    <p class="description">Equipo: {{$partido->local->name}}</p>
+                                    <p class="description">Tipo: Baloncesto</p>
+                                    <p class="description">Rol: Representante </p>
                                 </div>
+                                @php
+                                    $flag =false;
+                                @endphp
+                            @elseif (auth()->user()->id == $partido->visitante->user_id && $flag == true)
+                                <div class="minibox">
+                                    <a class="tournament">{{$partido->estanTorneos[0]->name}}</a>
+                                    <p class="description">Organizador:{{$partido->estanTorneos[0]->organizador->nickname}}</p>
+                                    <p class="description">Equipo: {{$partido->visitante->name}}</p>
+                                    <p class="description">Tipo: Baloncesto</p>
+                                    <p class="description">Rol: Representante </p>
+                                </div>
+                                @php
+                                    $flag =false;
+                                @endphp
                             @else
                                 @foreach($miembrosEquipos as $miembro)    {{-- miembro de equipo--}}
-                                    @if (auth()->user()->name== $miembro->user_miembro)
+                                    @if (auth()->user()->name== $miembro->user_miembro && $flag == true)
                                         <div class="minibox">
-                                        <p class="tournament">{{$torneo->name}}</p>
-                                        <p class="description">Organizador:{{$equipoTorneo->nickname}}</p>
+                                        <p class="tournament">{{$partido->estanTorneos[0]->name}}</p> 
+                                        <p class="description">Organizador:{{$partido->estanTorneos[0]->nickname}}</p>
                                         <p class="description">Equipo:{{$miembro->miembros->name}}</p>
                                         <p class="description">Tipo: Baloncesto</p>
                                         <p class="description">Rol: Miembro</p>
                                         </div>
-                                        @continue
+                                        @php
+                                            $flag =false;
+                                        @endphp
                                     @endif
                                 @endforeach
                             @endif
                         @endforeach
                     @endif
-                @endforeach
-                @foreach($participanteTorneos as $individualTorneo)    {{-- representante individual--}}
-                    @if (auth()->user()->id == $individualTorneo->user_id)
+
+                    @foreach($participanteTorneos as $individualTorneo)    {{-- representante individual--}}
+                    @if (auth()->user()->id == $individualTorneo->user_id && $flag == true)
                         <div class="minibox">
                             @php
                                 $torneo = App\Models\Torneo::find($individualTorneo->torneo_id);
@@ -62,24 +84,27 @@
                         <p class="description">Organizador:{{$torneo->organizador->nickname}}</p>
                         <p class="description">Tipo: Baloncesto</p>
                         <p class="description">Rol: Individual</p>
-                        @continue
                         </div>
+                        @php
+                            $flag =false;
+                        @endphp
                     @endif
+                @endforeach
                 @endforeach
             </div>
         </section>
-
         <section class="principalbox">
             <p class="title">Mis equipos</p>
             <div class="box">
                 @foreach($equipos as $equipo)    {{-- representante de equipo--}}
-                    @if (auth()->user()->id == $equipo->user_id)
+                    @if (auth()->user()->id == $equipo->user_id )
                         <div class="minibox">
                         <a class="tournament">{{$equipo->name}}</a>
                         <p class="description">Rol: Representante</p>
                         </div>
                     @endif
                 @endforeach
+
                 @foreach($miembrosEquipos as $miembro)    {{-- miembro --}}
                     @if ((auth()->user()->name== $miembro->user_miembro) && (auth()->user()->id != $miembro->miembros->user_id))
                         <div class="minibox">
@@ -90,6 +115,7 @@
                 @endforeach
             </div>
         </section>
+        
         <section class="principalbox">
             <p class="title">Próximos partidos</p>
             <table>
@@ -103,25 +129,39 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!-- Ejemplos de datos en la tabla (puedes agregar más filas según tus necesidades) -->
-                <tr>
-                    <td>Torneo 1</td>
-                    <td>Equipo A</td>
-                    <td>Equipo B</td>
-                    <td>2023-12-01</td>
-                    <td>15:00</td>
-                </tr>
-                <tr>
-                    <td>Torneo 1</td>
-                    <td>Equipo C</td>
-                    <td>Equipo D</td>
-                    <td>2023-12-02</td>
-                    <td>18:30</td>
-                </tr>
+                @foreach($partidos as $partido) {{-- Representantes de equipo--}}
+                    @if (auth()->user()->id == $partido->local->user_id)
+                        <tr>
+                            <td>Torneo {{$partido->estanTorneos[0]->name}}</td> {{--checar posibles errores--}}
+                            <td>Equipo {{$partido->local->name}}</td>
+                            <td>Equipo {{$partido->visitante->name}}</td>
+                            <td>{{$partido->fechaPartido}}</td>
+                            <td>{{$partido->horaPartido}}</td>
+                        </tr>
+                    @elseif (auth()->user()->id == $partido->visitante->user_id)
+                        <tr>
+                            <td>Torneo {{$partido->estanTorneos[0]->name}}</td>{{--checar posibles errores--}}
+                            <td>Equipo {{$partido->visitante->name}}</td>
+                            <td>Equipo {{$partido->local->name}}</td>
+                            <td>{{$partido->fechaPartido}}</td>
+                            <td>{{$partido->horaPartido}}</td>
+                        </tr>
+                    @else
+                        @foreach($miembrosEquipos as $miembro) {{-- Participante de partidos--}}   
+                            @if (auth()->user()->name == $miembro->user_miembro)
+                                <tr>
+                                    <td>Torneo {{$partido->estanTorneos[0]->name}}</td> {{--checar posibles errores--}}
+                                    <td>Equipo miembro {{$partido->local->name}}</td>
+                                    <td>Equipo {{$partido->visitante->name}}</td>
+                                    <td>{{$partido->fechaPartido}}</td>
+                                    <td>{{$partido->horaPartido}}</td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
                 </tbody>
             </table>
-
         </section>
-
     </main>
 @endsection

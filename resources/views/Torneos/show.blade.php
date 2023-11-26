@@ -2,7 +2,7 @@
 @section('title','Torneo')
 
 @section('content')
-
+<main class="home-section">
 <title>Torneo {{$torneo->name}}</title>
 
 <h1>Mi torneo:{{$torneo->name}}</h1>
@@ -53,4 +53,5 @@
             @method("delete") {{---Change the default "post" route to "delete" ---}}
             <button type="submit"> Eliminar torneo </button>
         </form>
+    </main>
 @endsection
