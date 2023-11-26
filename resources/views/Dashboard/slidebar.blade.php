@@ -31,7 +31,7 @@
             </li>
 
             <li>
-                <a href="{{ route('torneos.index') }}">
+                <a href="{{ route('torneos.crear') }}">
                     <i class='bx bx-trophy'></i>
                     <span class="links_name">Crear Torneo</span>
                 </a>
@@ -39,7 +39,7 @@
             </li>
 
             <li>
-                <a href="{{ route('equipos.index') }}">
+                <a href="{{ route('equipos.crear') }}">
                     <i class='bx bx-group'></i>
                     <span class="links_name">Crear Equipos</span>
                 </a>

@@ -4,7 +4,7 @@
 @section('content')
 @php
       $equipos = App\Models\Equipo::all();
-      $torneos = App\Models\Torneo::all();
+      $torneos = Torneo::paginate();
       $equiposDivididos = $equipos->chunk($equipos->count() / 3);
       $torneosDivididos = $torneos->chunk($torneos->count() / 3);
 

@@ -147,8 +147,10 @@ class NotificationController extends Controller
         $organizador = User::find($torneo->user_id); 
 
         $existingNotification = Notification::where('user_id', $user_id)->where('torneo_id', $id)->where('equipo_id', $request->equipo_inscrito)->first();
-       
-        if(!$existingNotification){
+        
+
+        if(!$existingNotification && $request->equipo_inscrito != null){
+            
             $notification->user_id = auth()->user()->id;
             $notification->torneo_id = $id;
             $notification->equipo_id = $request->equipo_inscrito;
@@ -170,7 +172,7 @@ class NotificationController extends Controller
         $existingNotification = Notification::where('user_id', $user_id)->where('torneo_id', $id)->where('equipo_id', null)->first();
         #Verificar notificacion
         #$existingUser = null;
-
+        
         
         if(count($existingUser) == 0 && !$existingNotification){
             $notification->user_id = auth()->user()->id;

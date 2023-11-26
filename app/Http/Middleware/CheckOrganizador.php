@@ -18,7 +18,7 @@ class CheckOrganizador
     {   //Note: define tournament routes in "web.php" Ex: "torneos" add a name to the main tournament page Ex: 'torneos.index'
         $torneo = $request->route('torneo'); // 'equipo' Singular name of the route 'equipos'
         if ($torneo->user_id != auth()->user()->id) { //Validates that the tournament belongs to the user
-            return redirect()->route('torneos.index'); //Tournament main page
+            return redirect()->route('dashboard.index'); //Tournament main page
         }else{ //if the tournament belongs to the user <- continue
             return $next($request);
         }
