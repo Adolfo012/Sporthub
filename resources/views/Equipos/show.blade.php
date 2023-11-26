@@ -15,7 +15,8 @@
         @endforeach
     </p>
         <a href="{{route('equipos.edit',$equipo)}}">Editar equipo</a>
-        <a href="{{route('equipos.index')}}">Volver a equipos</a>
+        <a href="{{route('dashboard.index')}}">Volver a equipos</a>
+
         @php
         $miembros = App\Models\MiembroEquipo::all(); 
         @endphp
