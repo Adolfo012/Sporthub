@@ -10,9 +10,12 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){ //View Login 
+
+      $torneos = Torneo::all(); // Obtiene todos los torneos
+      $equipos = Equipo::all(); // Obtiene todos los equipos
   
       //$equipos = Equipo::paginate(); //Take all Equipos by paging
-      return view('Dashboard.dashboard'); //Folder and file (Route)
+      return view('Dashboard.dashboard',  compact('torneos', 'equipos')); //Folder and file (Route)
       }
     public function nosotros(){
       
