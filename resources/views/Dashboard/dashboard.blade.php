@@ -36,9 +36,9 @@
                             @else
                                 @foreach($miembrosEquipos as $miembro)    {{-- miembro de equipo--}}
                                     @if (auth()->user()->name== $miembro->user_miembro)
-                                        <div class="minibosx">
+                                        <div class="minibox">
                                         <p class="tournament">{{$torneo->name}}</p>
-                                        <p class="description">Organizador:</p>
+                                        <p class="description">Organizador:{{$equipoTorneo->nickname}}</p>
                                         <p class="description">Equipo:{{$miembro->miembros->name}}</p>
                                         <p class="description">Tipo: Baloncesto</p>
                                         <p class="description">Rol: Miembro</p>
@@ -48,18 +48,20 @@
                                 @endforeach
                             @endif
                         @endforeach
-                        @foreach($torneo->estadisticaIndividual as $individualTorneo)    {{-- representante individual--}}
-                            @if (auth()->user()->id == $individualTorneo->user_id)
-                                <div class="minibox">
-                                <p class="tournament">{{$torneo->name}}</p>
-                                <p class="description">Organizador:</p>
-                                <p class="description">Equipo:</p>
-                                <p class="description">Tipo: Baloncesto</p>
-                                <p class="description">Rol: Representante Individual</p>
-                                @continue
-                                </div>
-                            @endif
-                        @endforeach
+                    @endif
+                @endforeach
+                @foreach($participanteTorneos as $individualTorneo)    {{-- representante individual--}}
+                    @if (auth()->user()->id == $individualTorneo->user_id)
+                        <div class="minibox">
+                            @php
+                                $torneo = App\Models\Torneo::find($individualTorneo->torneo_id);
+                            @endphp
+                        <p class="tournament">{{$torneo->name}}</p>
+                        <p class="description">Organizador:{{$torneo->organizador->nickname}}</p>
+                        <p class="description">Tipo: Baloncesto</p>
+                        <p class="description">Rol: Individual</p>
+                        @continue
+                        </div>
                     @endif
                 @endforeach
             </div>
@@ -73,17 +75,14 @@
                         <a class="tournament">{{$equipo->name}}</a>
                         <p class="description">Rol: Representante</p>
                         </div>
-                        @continue
-                    @else
-                        @foreach($miembrosEquipos as $miembro)    {{-- miembro --}}
-                            @if ((auth()->user()->name== $miembro->user_miembro) && (auth()->user()->id != $miembro->miembros->user_id))
-                                <div class="minibox">
-                                <p class="tournament">{{$miembro->miembros->name}}</p>
-                                <p class="description">Rol: Miembro</p>
-                                </div>
-                                @continue
-                            @endif
-                        @endforeach
+                    @endif
+                @endforeach
+                @foreach($miembrosEquipos as $miembro)    {{-- miembro --}}
+                    @if ((auth()->user()->name== $miembro->user_miembro) && (auth()->user()->id != $miembro->miembros->user_id))
+                        <div class="minibox">
+                        <p class="tournament">{{$miembro->miembros->name}}</p>
+                        <p class="description">Rol: Miembro</p>
+                        </div>
                     @endif
                 @endforeach
             </div>
