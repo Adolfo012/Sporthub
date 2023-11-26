@@ -148,7 +148,7 @@ class NotificationController extends Controller
 
         $existingNotification = Notification::where('user_id', $user_id)->where('torneo_id', $id)->where('equipo_id', $request->equipo_inscrito)->first();
        
-        if(!$existingNotification){
+        if(!$existingNotification && $request->equipo_inscrito != null){
             $notification->user_id = auth()->user()->id;
             $notification->torneo_id = $id;
             $notification->equipo_id = $request->equipo_inscrito;
