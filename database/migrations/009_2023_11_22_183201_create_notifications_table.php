@@ -21,6 +21,10 @@ return new class extends Migration
             #FK 
             $table->unsignedBigInteger('user_id');  #ID_Usuario_Participante
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); #Restrict id reference
+            #FK 
+            $table->unsignedBigInteger('user_id2');  #ID_Usuario
+            $table->foreign('user_id2')->references('id')->on('users')->onDelete('cascade'); #Restrict id reference
+            #Status
             #Status
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
