@@ -25,7 +25,7 @@ class Equipo extends Model
     }
     public function estadistica()
     {
-        return $this->belongsToMany(Torneos::class,'equipo_torneos')->withPivot('PT','CA','DC','CC');;
+        return $this->belongsToMany(Torneo::class,'equipo_torneos')->withPivot('PT','CA','DC','CC');;
     }
     public function representante()
     {

@@ -110,7 +110,7 @@ class TorneoController extends Controller
     public function destroy(Torneo $torneo)
     {
         $torneo->delete(); 
-        return redirect()->route('torneos.index');
+        return redirect()->route('dashboard.index');
     }
     //Tournament TEAMS
     public function equipos_torneo(Torneo $torneo){
