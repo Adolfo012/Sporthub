@@ -18,6 +18,11 @@ return new class extends Migration
             #FK2
             $table->unsignedBigInteger('equipo_id');
             $table->foreign('equipo_id')->references('id')->on('equipos')->onDelete('cascade'); #Restrict id reference
+            #Atributes
+            $table->integer('PT')->unsigned()->nullable(); # PT = Natural number
+            $table->integer('CA')->unsigned()->nullable(); # CA = Natural number
+            $table->integer('DC')->unsigned()->nullable(); # DC = Natural number
+            $table->integer('CC')->unsigned()->nullable(); # CC = Natural number
             #Attribute outside table definition
             $table->timestamps();
         });

@@ -2,6 +2,8 @@
 @section('title','Home')
 
 @section('content')
+<main class="home-section">
+    
     <h1>Home</h1> 
     @php
       $torneos = App\Models\Torneo::all();
@@ -17,4 +19,5 @@
     <a href="{{route('dashboard.equipo',$equipo)}}">{{$equipo->name}}</a>
         <br>
     @endforeach
+    </main>
 @endsection

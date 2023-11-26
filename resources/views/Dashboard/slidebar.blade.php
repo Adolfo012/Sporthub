@@ -47,6 +47,14 @@
                 </a>
                 <span class="tooltip">Crear Equipos</span>
             </li>
+            
+            <li>
+                <a href="{{ route('dash_home') }}"> <!-- Checar movimiento raro del menu-->
+                    <i class='bx bx-search'></i>
+                    <span class="links_name">Torneos y Equipos</span>
+                </a>
+                <span class="tooltip">Torneos y Equipos</span>
+            </li>
 
             <li>
                 <a href="{{ route('notification.show') }}">

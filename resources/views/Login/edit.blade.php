@@ -76,7 +76,7 @@
             @enderror
         </div>
         @if(session()->has('mensaje'))
-            <p>{{ session()->get('mensaje') }}</p> {{-- Pner de color verde de aceptacion, y ponerle formato centrado FRONT-End }}
+            <p>{{ session()->get('mensaje') }}</p> {{-- Poner de color verde de aceptacion, y ponerle formato centrado FRONT-End --}}
         @endif
         <button class="login-button" type="submit"> Editar </button>
         <a class="back-form" href="/dashboard">volver</a>
