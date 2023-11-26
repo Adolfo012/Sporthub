@@ -1,5 +1,5 @@
 <?php
-
+//Commit
 namespace App\Http\Controllers;
 
 use App\Models\Equipo;
@@ -22,17 +22,18 @@ class NotificationController extends Controller
         $equipo = Equipo::find($id);
         $representante = User::find($equipo->user_id); 
         
-        $existingNotification = Notification::where('user_id', $user_id)->where('equipo_id', $id)->first();
+        $existingNotification = Notification::where('user_id', $representante->id)->where('equipo_id', $id)->where('user_id2', $user_id)->first();
         $existingMember = MiembroEquipo::where('user_miembro', $user->name)->where('equipo_id', $id)->first();
-       
         if($existingNotification || $existingMember){ //validates that the notification has already been sent
             return view('Dashboard.equipos',compact('equipo','representante'))->with('mensaje', '¡Algo salió mal! Has intentado envíar más de una solicitud o ya te encuentras registrado en el equipo.');
         }else{ //If it has not been sent, send it
-            
-            $notification->user_id = auth()->user()->id;
+         
+            $notification->user_id = $representante->id;  //Para quien es
+            $notification->user_id2 = auth()->user()->id; //Quien envia la notificacion
             $notification->equipo_id = $id;
             $notification->status = 'pending';
             $notification->save();
+            
             return view('Dashboard.equipos',compact('equipo','representante'))->with('mensaje', 'Se envió la notificacion al representante.');
           }
         
@@ -146,15 +147,15 @@ class NotificationController extends Controller
         $torneo = Torneo::find($id);
         $organizador = User::find($torneo->user_id); 
 
-        $existingNotification = Notification::where('user_id', $user_id)->where('torneo_id', $id)->where('equipo_id', $request->equipo_inscrito)->first();
-        
-
-        if(!$existingNotification && $request->equipo_inscrito != null){
-            
-            $notification->user_id = auth()->user()->id;
+        $existingNotification = Notification::where('user_id', $organizador->id)->where('torneo_id', $id)->where('equipo_id', $request->equipo_inscrito)->where('user_id2', $user_id)->first();
+       
+        if(!$existingNotification){
+            $notification->user_id = $organizador->id;    //Quien la recibe
+            $notification->user_id2 = auth()->user()->id; //Quien envia la notificacion
             $notification->torneo_id = $id;
             $notification->equipo_id = $request->equipo_inscrito;
             $notification->status = 'pending';
+            
             $notification->save();
             return view('Dashboard.torneos',compact('torneo','organizador'))->with('mensaje', 'Se envió la notificación al organizador.');
         }else{
@@ -169,13 +170,14 @@ class NotificationController extends Controller
         $torneo = Torneo::find($id);
         $organizador = User::find($torneo->user_id); 
         $existingUser = ParticipanteTorneo::where('user_id', $user_id)->where('torneo_id', $id)->get();
-        $existingNotification = Notification::where('user_id', $user_id)->where('torneo_id', $id)->where('equipo_id', null)->first();
+        $existingNotification = Notification::where('user_id', $organizador->id)->where('torneo_id', $id)->where('equipo_id', null)->where('user_id2', $user_id)->first();
         #Verificar notificacion
         #$existingUser = null;
-        
+
         
         if(count($existingUser) == 0 && !$existingNotification){
-            $notification->user_id = auth()->user()->id;
+            $notification->user_id = $organizador->id;
+            $notification->user_id2 = auth()->user()->id;
             $notification->torneo_id = $id;
             $notification->status = 'pending';
             $notification->save();
