@@ -36,7 +36,7 @@
     border: 2px solid; 
     border-color: var(--secundary);
     border-radius: 20px;
-    backdrop-filter: blur(15px); /* blurred */
+    backdrop-filter: blur(15px); /** blurred **/
     display: flex;
     justify-content: center;
     align-items: center;

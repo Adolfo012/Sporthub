@@ -27,7 +27,7 @@
                     
                     <div class="inputbox">
                         <input name="name" type="text" required value="{{old('name')}}" autofocus> <br>
-                        <label for=""> Nombre </label>
+                        <label for=""> Nombre(s) </label>
                     </div>
                     <div class="inputbox">
                         <input name="fsurname" type="text" required value="{{old('fsurname')}}"> <br>

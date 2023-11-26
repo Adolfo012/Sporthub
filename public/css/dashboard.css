@@ -9,7 +9,7 @@
 :root {
   --primary: #F4EDE8;
   --secundary: #645f5f;
-  --complementA: #000000fb;
+  --complementA: #040404fb;
   --complementB: #D0671C;
   --complementC: #1d1b31;
 
@@ -99,6 +99,7 @@
   z-index: 3;
   background: var(--primary);
   box-shadow: 0 5px 10px var(--secundary);
+  color: var(--complementA);
   padding: 6px 12px;
   border-radius: 4px;
   font-size: 15px;
@@ -199,8 +200,7 @@
   border-radius: 6px;
   margin-right: 10px;
 }
-.sidebar li.profile .name,
-.sidebar li.profile .job{
+.sidebar li.profile .out {
   font-size: 15px;
   font-weight: 400;
   color: var(--primary);
@@ -295,14 +295,18 @@
 
 .box {
   margin-left: 100px;
+  margin-right: 100px;
 }
 
 .minibox {
-  width: 200px;
+  width: 225px;
+  height: 210px;
   margin: 0 10px 10px 0; /* Agrega un margen a la derecha y abajo de cada elemento .box */
   border: 1px solid var(--secundary);
   padding: 10px;
   box-sizing: border-box;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 
@@ -311,16 +315,47 @@
 }
 
 
-.two,
-.three {
-  margin-top: 20px; /* Agrega un margen en la parte superior para separar de .my-tournaments */
-}
-
-.tournament {
+.name {
   font-weight: bold; /* Hace que el nombre del torneo sea más destacado */
-  margin-bottom: 45px; /* Agrega espacio después del nombre del torneo */
+  margin-bottom: 75px; /* Agrega espacio después del nombre del torneo */
 }
 
 .description {
   margin-bottom: 5px; /* Agrega espacio después de cada descripción */
+}
+
+.name, .description, .teamdescription {
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  overflow: hidden; /* Oculta el contenido que desborda */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos (...) al final del texto truncado */
+}
+
+.teamname {
+  font-weight: bold; /* Hace que el nombre del torneo sea más destacado */
+  margin-bottom: 85px; /* Agrega espacio después del nombre del torneo */
+}
+
+.teamdescription {
+  margin-bottom: 5px; /* Agrega espacio después de cada descripción */
+}
+
+
+    /* Estilos opcionales para mejorar la apariencia de la tabla */
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+th, td {
+  border: 2px solid var(--secundary);
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: var(--complementA);
+  color: var(--primary);
 }

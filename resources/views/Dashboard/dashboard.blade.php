@@ -2,66 +2,122 @@
 @section('title', 'SPORTHUB')
 
 @section('content')
-@php
-      $equipos = App\Models\Equipo::all();
-      $torneos = App\Models\Torneo::all();
-      $equiposDivididos = $equipos->chunk($equipos->count() / 3);
-      $torneosDivididos = $torneos->chunk($torneos->count() / 3);
 
-      // Tercios de grupos
-      $grupoequipo1 = $equiposDivididos[0];
-      $grupoequipo2 = $equiposDivididos[1];
-      $grupoequipo3 = $equiposDivididos[2];
-      // Tercios de torneos
-      $grupoetorneo1 = $torneosDivididos[0];
-      $grupoetorneo2 = $torneosDivididos[1];
-      $grupoetorneo3 = $torneosDivididos[2];
-      $count = 0; //Contador torneo
-      $countEquipo = 0; //Contador equipos
-  @endphp
+
     <main class="home-section">
+        
         <section class="principalbox">
             <p class="title">Mis Torneos</p>
-            <div class="box">
-                <div class="minibox">
-                    <p class="tournament">Torneo 1</p>
-                    <p class="description">Organizador:</p>
-                    <p class="description">Equipo:</p>
-                    <p class="description">Rol:</p>
+                
+                <div class="box">
+
+                    <div class="minibox">
+                        <p class="name">Torneo 1</p>
+                        <p class="description">Organizador: </p>
+                        <p class="description">Equipo: </p>
+                        <p class="description">Tipo: Baloncesto</p>
+                        <p class="description">Rol: </p>
+                    </div>
+                    
+                    <div class="minibox">
+                        <p class="name">Torneo 2</p>
+                        <p class="description">Organizador:</p>
+                        <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
+                        <p class="description">Rol:</p>
+                    </div>
+                    
+                    <div class="minibox">
+                        <p class="name">Torneo 3</p>
+                        <p class="description">Organizador:</p>
+                        <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
+                        <p class="description">Rol:</p>
+                    </div>
+
+                    <div class="minibox">
+                        <p class="name">Torneo 3</p>
+                        <p class="description">Organizador:</p>
+                        <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
+                        <p class="description">Rol:</p>
+                    </div>
+
+                    <div class="minibox">
+                        <p class="name">Torneo 3</p>
+                        <p class="description">Organizador:</p>
+                        <p class="description">Equipo:</p>
+                        <p class="description">Tipo: Baloncesto</p>
+                        <p class="description">Rol:</p>
+                    </div>
+
                 </div>
-                <div class="minibox">
-                    <p class="tournament">Torneo 2</p>
-                    <p class="description">Organizador:</p>
-                    <p class="description">Equipo:</p>
-                    <p class="description">Rol:</p>
-                </div>
-                <div class="minibox">
-                    <p class="tournament">Torneo 1</p>
-                    <p class="description">Organizador:</p>
-                    <p class="description">Equipo:</p>
-                    <p class="description">Rol:</p>
-                </div>
-            </div>
+
         </section>
+
         <section class="principalbox">
-            <p class="title">Mis equipos</p>
-            <div class="box">
+            <p class="title">Mis Equipos</p>
+                
+                <div class="box">
+
                 <div class="minibox">
-                    <p class="tournament">Equipo 2</p>
-                    <p class="description">Organizador:</p>
-                    <p class="description">Capitan:</p>
-                    <p class="description">Torneo:</p>
+                        <p class="teamname">Equipo 1</p>
+                        <p class="teamdescription">Organizador:</p>
+                        <p class="teamdescription">Equipo:</p>
+                        <p class="teamdescription">Rol:</p>
+                    </div>
+                    
+                    <div class="minibox">
+                        <p class="teamname">Equipo 2</p>
+                        <p class="teamdescription">Organizador:</p>
+                        <p class="teamdescription">Equipo:</p>
+                        <p class="teamdescription">Rol:</p>
+                    </div>
+                    
+                    <div class="minibox">
+                        <p class="teamname">Equipo 3</p>
+                        <p class="teamdescription">Organizador:</p>
+                        <p class="teamdescription">Equipo:</p>
+                        <p class="teamdescription">Rol:</p>
+                    </div>
+
                 </div>
-                <div class="minibox">
-                    <p class="tournament">Equipo 2</p>
-                    <p class="description">Organizador:</p>
-                    <p class="description">Capitan:</p>
-                    <p class="description">Torneo:</p>
-                </div>
-            </div>
+
         </section>
+
+
         <section class="principalbox">
             <p class="title">Próximos partidos</p>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Torneo</th>
+                    <th>Equipo Local</th>
+                    <th>Equipo Visitante</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Ejemplos de datos en la tabla (puedes agregar más filas según tus necesidades) -->
+                <tr>
+                    <td>Torneo 1</td>
+                    <td>Equipo A</td>
+                    <td>Equipo B</td>
+                    <td>2023-12-01</td>
+                    <td>15:00</td>
+                </tr>
+                <tr>
+                    <td>Torneo 1</td>
+                    <td>Equipo C</td>
+                    <td>Equipo D</td>
+                    <td>2023-12-02</td>
+                    <td>18:30</td>
+                </tr>
+                </tbody>
+            </table>
+
         </section>
 
     </main>
