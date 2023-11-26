@@ -15,9 +15,10 @@
                         @php
                             $equipo = App\Models\Equipo::find($notification->equipo_id);
                             $user = App\Models\User::find($notification->user_id);
+                            $userEnvia = App\Models\User::find($notification->user_id2);
                         @endphp
                         @if ($notification->torneo_id == null && $notification->status == 'pending')
-                            El usuario: <b>{{ $user->name }}</b> desea ser miembro del equipo
+                            El usuario: <b>{{ $userEnvia->name }}</b> desea ser miembro del equipo
                             <b>"{{ $equipo->name }}."</b>
                             <input type="hidden" name="user_id" value="{{ $notification->user_id }}" />
                             <input type="hidden" name="equipo_id" value="{{ $notification->equipo_id }}" />
@@ -55,9 +56,10 @@
                         @php
                             $user = App\Models\User::find($notification->user_id);
                             $torneo = App\Models\Torneo::find($notification->torneo_id);
+                            $userEnvia = App\Models\User::find($notification->user_id2);
                         @endphp
-                        @if ($notification->equipo_id == null && $notification->status == 'pending')
-                            El participante: <b>{{ $user->name }}</b> desea ser miembro del torneo individual
+                        @if ($notification->equipo_id == null && $notification->status == 'pending' && $notification->user_id2 != null)
+                            El participante: <b>{{ $userEnvia->name }}</b> desea ser miembro del torneo individual
                             <b>{{ $torneo->name }}.</b>
                             <input type="hidden" name="user_id" value="{{ $notification->user_id }}" />
                             <input type="hidden" name="torneo_id" value="{{ $notification->torneo_id }}" />
@@ -76,7 +78,7 @@
                             $torneo = App\Models\Torneo::find($notification->torneo_id);
                         @endphp
                         @if ($notification->status == 'accepted' && $notification->equipo_id == null)
-                            Tú solicitud fue aceptada <b>{{ $user->name }}</b> y ahora eres participante del torneo
+                            Tú solicitud fue aceptada <b>{{ $userEnvia->name }}</b> y ahora eres participante del torneo
                             <b>{{ $torneo->name }}.</b>
                             <input type="hidden" name="user_id" value="{{ $notification->user_id }}" />
                             <input type="hidden" name="torneo_id" value="{{ $notification->torneo_id }}" />

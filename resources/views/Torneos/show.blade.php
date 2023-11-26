@@ -15,6 +15,8 @@
         Fecha de finalizacion: {{$torneo->fechaFin}}<br> 
         Tipo de torneo: {{$torneo->tipoTorneo}}<br> 
         Cantidad de miembros admitida: {{$torneo->cantEquipo}}<br> <br> 
+        <a href="{{route('torneos.edit',$torneo)}}">Editar torneo</a>
+        <a href="{{route('dashboard.index')}}">Volver a mis torneos</a>
 
         @if ($torneo->tipoTorneo == "Equipos")
         @php

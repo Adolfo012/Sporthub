@@ -23,7 +23,7 @@ class TorneoRequest extends FormRequest
     public function rules(): array
     {
         return [ //Validations Torneo
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|unique:torneos',
             'tipoJuego' => 'required',
             'ubicacion'=>'required',
             'fechaInicio' => 'required|date|after_or_equal:yesterday',

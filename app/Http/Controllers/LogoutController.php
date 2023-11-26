@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Session;
 class LogoutController extends Controller
 {
     public function logout(Request $request){
+        Auth::logout();   #Log out
         $request->session()->invalidate();      #Invalidate session
         $request->session()->regenerateToken(); #Regenerate security token
         Session::flush();    #Release the session flow
-        Auth::logout();   #Log out
         return redirect()->to('login');
     }
 }

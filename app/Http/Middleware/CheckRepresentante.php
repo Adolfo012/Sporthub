@@ -18,7 +18,7 @@ class CheckRepresentante
     {   
         $equipo = $request->route('equipo'); // 'equipo' Singular name of the route 'equipos'
         if ($equipo->user_id != auth()->user()->id) { //Validates that the team belongs to the user
-            return redirect()->route('equipos.index');  //Teams main page: 'equipos.index'
+            return redirect()->route('dashboard.index');  //Teams main page: 'equipos.index'
         }else{ //if the team belongs to the user <- continue
             return $next($request);
         }

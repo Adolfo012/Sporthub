@@ -10,6 +10,8 @@
     <link href="{{ asset('css/formularios.css') }}" rel="stylesheet">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/887a835504.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -77,14 +79,14 @@
                 </a>
                 <span class="tooltip">Nosotros</span>
             </li>
-            
-            <form action="{{ route('logout.index') }}" method="POST">  
+
+            <form action="{{ route('logout.index') }}" method="POST">
                 @csrf
                 <li class="profile">
                     <div class="profile-details">
                         <img src="../img/userprofile.webp" alt="profileImg">
                         <div class="name_job">
-                            <div class="name">Salir</div>
+                            <div class="out">Salir</div>
                         </div>
                     </div>
                     <a href="#" onclick="this.closest('form').submit()"><i class="bx bx-log-out"

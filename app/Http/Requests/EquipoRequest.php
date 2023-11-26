@@ -22,7 +22,7 @@ class EquipoRequest extends FormRequest
     public function rules(): array
     {
         return [ //Validations Equipo
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|unique:equipos',
             'tipoJuego' => 'required',
         ];
     }

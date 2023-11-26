@@ -28,20 +28,8 @@ input {
 span {
     color: #e74c3c;
     display: block;
-    margin-top: 5px;
-}
-
-button {
-    background-color: #3498db;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #2980b9;
+    margin-top: -25px;
+    margin-left: 50px
 }
 
 a {
@@ -68,3 +56,38 @@ input[type="radio"] {
 input[type="radio"]:checked + label {
     color: #3498db;
 }
+
+.flex-contianer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+.button-left {
+    background-color: #e72e57;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-left:hover {
+    background-color: #ee1443;
+}
+
+.button-right {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button-right:hover {
+    background-color: #2980b9;
+}
+
+/* */
