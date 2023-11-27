@@ -54,6 +54,7 @@ class NotificationController extends Controller
                 //Notifies the user that their request was accepted
                 $notification = new Notification();
                 $notification->user_id = auth()->user()->id;
+                $notification->user_id2 = Torneo::find($participanteTorneo->torneo_id)->user_id;
                 $notification->torneo_id = $request->torneo_id;
                 $notification->status = 'accepted';
                 $notification->save();
@@ -85,9 +86,7 @@ class NotificationController extends Controller
                 //Notifies the user that their request was accepted
                 $notification = new Notification();
                 $notification->user_id = auth()->user()->id;
-                $representante = User::find(Equipo::find($miembro->equipo_id)->user_id)->id;
-                $notification->user_id2 = $representante;
-
+                $notification->user_id2 = Equipo::find($miembro->equipo_id)->user_id;
                 $notification->equipo_id = $request->equipo_id;
                 $notification->status = 'accepted';
                 $notification->save();
@@ -112,12 +111,10 @@ class NotificationController extends Controller
                 $equipoTorneo->save();     
                 //Updates current notifications
                 Notification::where('user_id', $request->user_id)->where('torneo_id', $request->torneo_id)->where('equipo_id', $request->equipo_id)->delete();
-                $organizador = User::find(Equipo::find($equipoTorneo->equipo_id)->user_id)->id; 
                 $user = auth()->user();
                 //Notifies the user that their request was accepted
                 $notification = new Notification();
                 $notification->user_id = auth()->user()->id;
-                $notification->user_id2 = $organizador;
                 $notification->equipo_id = $request->equipo_id;
                 $notification->torneo_id = $request->torneo_id;
                 $notification->status = 'accepted';

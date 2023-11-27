@@ -84,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('equipos/create','create')->name('equipos.crear');
             Route::post('equipos/create','store')->name('store');    
             //Protected views for the "Representante" rol using middleware 
-            Route::get('equipos/{equipo}','show')->name('equipos.show')->middleware('representante'); 
+            Route::get('equipos/{equipo}','show')->name('equipos.show'); 
             Route::get('equipos/{equipo}/edit','edit')->name('equipos.edit')->middleware('representante');
             //---------------------------------------------------------------------------------------------
             Route::put('equipos/{equipo}','update')->name('equipos.update');             //Update "route::put"
@@ -100,7 +100,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('torneos/create','create')->name('torneos.crear');
         Route::post('torneos/create','store')->name('store');    
         //Protected views for the "Organizador" rol using middleware 
-        Route::get('torneos/{torneo}','show')->name('torneos.show')->middleware('organizador'); 
+        Route::get('torneos/{torneo}','show')->name('torneos.show');
         Route::get('torneos/{torneo}/edit','edit')->name('torneos.edit')->middleware('organizador');
         //---------------------------------------------------------------------------------------------
         Route::put('torneos/{torneo}','update')->name('torneos.update');             //Update "route::put"

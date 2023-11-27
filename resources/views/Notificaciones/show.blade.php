@@ -20,8 +20,8 @@
                         @if ($notification->torneo_id == null && $notification->status == 'pending')
                             El usuario: <b>{{ $userEnvia->name }}</b> desea ser miembro del equipo
                             <b>"{{ $equipo->name }}."</b>
-                            <input type="hidden" name="user_id" value="{{ $notification->user_id }}" />
                             <input type="hidden" name="equipo_id" value="{{ $notification->equipo_id }}" />
+                            <input type="hidden" name="user_id" value="{{ $notification->user_id }}" />
                             <button type="submit" name="action" value="aceptada">Aceptar</button>
                             <button type="submit" name="action" value="rechazada">Rechazar</button>
                             <br>
@@ -125,7 +125,7 @@
                         @endif
                     </form>
                 @endforeach
-                <a href="\dashboard">Volver</a>
+                <a class="button-right" href="\dashboard">Volver</a>
             </div>
         </section>
     </main>
