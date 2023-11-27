@@ -19,10 +19,10 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); #Restrict id reference
             #Atributes
-            $table->integer('PT')->unsigned()->nullable(); # PT = Natural number
-            $table->integer('CA')->unsigned()->nullable(); # CA = Natural number
-            $table->integer('DC')->unsigned()->nullable(); # DC = Natural number
-            $table->integer('CC')->unsigned()->nullable(); # CC = Natural number
+            $table->integer('PT')->unsigned()->default(0); # PT = Natural number
+            $table->integer('CA')->unsigned()->default(0); # CA = Natural number
+            $table->integer('DC')->default(0); # DC = Natural number
+            $table->integer('CC')->unsigned()->default(0); # CC = Natural number
             #Attribute outside table definition
             $table->timestamps();
         });

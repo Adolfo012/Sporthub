@@ -129,9 +129,13 @@
                 </thead>
                 <tbody>
                 @foreach($partidos as $partido) {{-- Representantes de equipo--}}
+                    @php
+                        $torneo = App\Models\Torneo::find($partido->estanTorneos)->first();
+                    @endphp
+                    @if($torneo != null)
                     @if (auth()->user()->id == $partido->local->user_id)
                         <tr>
-                            <td>Torneo {{$partido->estanTorneos[0]->name}}</td> {{--checar posibles errores--}}
+                            <td>Torneo {{$torneo->name}}</td> {{--checar posibles errores--}}
                             <td>Equipo {{$partido->local->name}}</td>
                             <td>Equipo {{$partido->visitante->name}}</td>
                             <td>{{$partido->fechaPartido}}</td>
@@ -139,7 +143,7 @@
                         </tr>
                     @elseif (auth()->user()->id == $partido->visitante->user_id)
                         <tr>
-                            <td>Torneo {{$partido->estanTorneos[0]->name}}</td>{{--checar posibles errores--}}
+                            <td>Torneo {{$torneo->name}}</td>{{--checar posibles errores--}}
                             <td>Equipo {{$partido->visitante->name}}</td>
                             <td>Equipo {{$partido->local->name}}</td>
                             <td>{{$partido->fechaPartido}}</td>
@@ -149,7 +153,7 @@
                         @foreach($miembrosEquipos as $miembro) {{-- Participante de partidos--}}   
                             @if (auth()->user()->name == $miembro->user_miembro)
                                 <tr>
-                                    <td>Torneo {{$partido->estanTorneos[0]->name}}</td> {{--checar posibles errores--}}
+                                    <td>Torneo {{$torneo->name}}</td> {{--checar posibles errores--}}
                                     <td>Equipo {{$partido->local->name}}</td>
                                     <td>Equipo {{$partido->visitante->name}}</td>
                                     <td>{{$partido->fechaPartido}}</td>
@@ -157,6 +161,7 @@
                                 </tr>
                             @endif
                         @endforeach
+                    @endif
                     @endif
                 @endforeach
                 </tbody>

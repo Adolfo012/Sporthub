@@ -6,9 +6,10 @@ use App\Http\Requests\PartidoRequest;
 use App\Models\Partido;
 use App\Models\Equipo;
 use App\Models\Torneo;
+use App\Models\Estadistica;
 
 use Illuminate\Http\Request;
-#    <p>{{$partidos}}</p>
+
 class PartidoController extends Controller
 {
     public function index($torneoID){ //Homepage Partidos 
@@ -23,6 +24,7 @@ class PartidoController extends Controller
     public function store(PartidoRequest $request, $torneoID){ //Receives the request fields in ""create form"
         //EquipoRequest -> validate the fields before continuing with the function (App\Http\Requests\EquipoRequest)
         //ADD RECORD (if the fields are valid)
+        return "hola";
         $partido = new Partido();
         $partido->horaPartido = $request->horaPartido;
         $partido->fechaPartido = $request->fechaPartido;
@@ -35,8 +37,35 @@ class PartidoController extends Controller
         $partido->equipoLocal_id = $equipoLocal->id;
         
         $partido->save();  
-        #$torneo = $torneo->id;
-        #$torneo->tienen->attach($partido->id);
+        
+        $torneo = Torneo::find($torneoID);
+
+        $estadisticaLocal = new Estadistica();
+        $estadisticaVis = new Estadistica();
+        
+        //Local estadistica
+        $estadisticaLocal->torneo_id = $torneoID;
+        $estadisticaLocal->equipo_id = $equipoLocal->id;
+        $estadisticaLocal->CA = $partido->resLocal;
+        $estadisticaLocal->CC = $partido->resVisitante;
+        $estadisticaLocal->DC = ($estadisticaLocal->CA - $estadisticaLocal->CC);
+
+        //visitante
+        $estadisticaVis->torneo_id = $torneoID;
+        $estadisticaVis->equipo_id = $equipoVis->id;
+        $estadisticaVis->CA = $partido->resVisitante;
+        $estadisticaVis->CC = $partido->resLocal;
+        $estadisticaVis->DC = ($estadisticaVis->CA - $estadisticaVis->CC);
+
+        if($partido->resLocal > $partido->resVisitante){
+            $estadisticaLocal->PT = $estadisticaLocal->PT+3;
+            $estadisticaVis->PT = $estadisticaVis->PT+1;
+        }else{
+            $estadisticaVis->PT = $estadisticaVis->PT+3;
+            $estadisticaLocal->PT = $estadisticaLocal->PT+1;
+        } 
+        $estadisticaLocal->save();
+        $estadisticaVis->save();
         $partido->estanTorneos()->attach($torneoID);
         return redirect()->route('partidos.show', ['partido' =>$partido, 'torneoID'=> $torneoID]);
         

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TorneoRequest;
 use App\Models\Torneo;
-use App\Models\EquipoTorneo;
+use App\Models\Estadistica;
 use App\Models\ParticipanteTorneo;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -136,6 +136,15 @@ class TorneoController extends Controller
             return view('Torneos.equipos_torneo',compact('torneo'))->with('mensaje', 'No se encuentran equipos disponibles por añadir.');
         }  
     }
+    public function equipos_destroy(Torneo $torneo, $equipo_id)
+    {
+        $equipo = Estadistica::where('equipo_id', $user_id)->where('torneo_id', $torneo->id)->first();
+        $partidos = Partido::where('id_local', $equipo_id)->orWhere('id_visitante', $$equipo_id);
+        $partidos->delete();
+        $torneo->estadistica()->detach($equipo_id); 
+        return view('Torneos.edit');
+    }
+
     //Tournament PARTICIPANTS
     public function participantes_torneo(Torneo $torneo){
         return view('Torneos.participantes_torneo',compact('torneo'));
@@ -158,6 +167,14 @@ class TorneoController extends Controller
         else{
             return view('Torneos.participantes_torneo',compact('torneo'))->with('mensaje', 'No se encuentran participantes disponibles por añadir.');
         }  
+    }
+    public function participante_destroy(Torneo $torneo, $user_id)
+    {
+        $participante = ParticipanteTorneo::where('torneo_id', $torneo->id)->where('user_id', $user_id)->first();
+        $participante->delete();
+        return view('Torneos.edit');
+        
+        
     }
 
 }

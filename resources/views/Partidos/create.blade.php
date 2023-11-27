@@ -62,10 +62,30 @@
                                 <br>
                             @enderror
 
-                            <button type="submit">Crear</button>
+                            <label style="margin-top:20px;" for="cantidad" >Resultado de equipo Local: </label>
+                            <input type="number" name="resLocal" value="{{ old('resLocal') }}">
+                            @error('resLocal')
+                                {{-- Checks if there has been an error in the "name" field --}}
+                                <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                                <br>
+                            @enderror
 
-                            <a href="{{ route('partidos.index', $torneoID) }}">Volver</a>
-                </form>
+                            <label for="cantidad" >
+                                Resultado de equipo Visitante:
+                            </label>
+                            <input type="number" name="resVisitante" value="{{ old('resVisitante') }}">
+                            @error('resVisitante')
+                                {{-- Checks if there has been an error in the "name" field --}}
+                                <span>*{{ $message }}</span> {{-- print a message if there is an error --}}
+                                <br>
+                            @enderror
+
+                            <button type="submit">Crear</button>
+                        </form>
+                            @php    
+                                $torneo = App\Models\Torneo::find($torneoID);
+                                @endphp
+                            <a href="{{ route('torneos.show', $torneo) }}">Volver</a>
             </div>
         </section>
     </main>
