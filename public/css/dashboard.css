@@ -338,6 +338,10 @@
   margin-bottom: 75px; /* Agrega espacio después del nombre del torneo */
 }
 
+.name, .teamname {
+  color: var(--complementA);
+}
+
 .description {
   margin-bottom: 5px; /* Agrega espacio después de cada descripción */
 }
@@ -355,6 +359,10 @@
 
 .teamdescription {
   margin-bottom: 5px; /* Agrega espacio después de cada descripción */
+}
+
+.teamdescription, .description {
+  color: var(--complementA);
 }
 
 
