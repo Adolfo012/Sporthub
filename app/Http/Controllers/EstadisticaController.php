@@ -6,6 +6,7 @@ use App\Http\Requests\EstadisticaRequest;
 use App\Models\Estadistica;
 use App\Models\Torneo;
 use App\Models\Equipos;
+use App\Models\Partido;
 
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class EstadisticaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EstadisticaRequest $request, Torneo $torneo)
+    static function store(Torneo $torneo, Partido $partido)
     {
         $estadistica = new Estadistica();
 

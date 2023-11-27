@@ -87,24 +87,25 @@
                     $equiposTorneo = App\Models\Estadistica::all(); 
                     $var1 = '1';
                 @endphp
-                <h2>Equipos del torneo</h2>
+                <h2>Equipos del torneo</h2><br>
                 @foreach ($equiposTorneo as $equipoTorneo)
                     @if ($equipoTorneo->torneo_id == $torneo->id)
                         <li>
                             @php
                                 $equipo = App\Models\Equipo::find($equipoTorneo->equipo_id) 
                             @endphp
-                            {{$equipo->name}} 
-                            <input type="hidden" name ="equipo{{$var1}}" value="{{$equipoTorneo->equipo_id}} ">
-                            <input type="hidden" name ="participante" value="false">
-                            <button type="submit" name="eliminar" value="eliminar{{$var1}}">Eliminar</button><br>{{-- View: equipos.show with argument equipo->id--}}
+                            <form action="{{route('participantes.destroy',['torneo'=> $torneo,'equipo_id'=>$equipo->id])}}" method="POST">
+                                @csrf
+                                @method("delete") {{---Change the default "post" route to "delete" ---}}{{$equipo->name}} 
+                                <button class="button-left" type="submit" style="height: 45px; margin-top: 13px;"> Eliminar torneo </button>
+                            </form>
                         </li>     
                         @php
                             $var1 = $var1+1;
                         @endphp
                     @endif
                 @endforeach
-                <a href="{{route('equipos.torneo',$torneo)}}">Agregar equipo</a>
+                <a class="button-right" href="{{route('equipos.torneo',$torneo)}}">Editar equipo</a>
             @else {{--Show participants--}}
                 @php
                     $participantesTorneo = App\Models\ParticipanteTorneo::all(); 
@@ -113,21 +114,22 @@
                 <h2>Participantes del torneo</h2>
                     @foreach ($participantesTorneo as $participanteTorneo)
                         @if ($participanteTorneo->torneo_id == $torneo->id)
-                            <li>
-                                @php
-                                    $user = App\Models\User::find($participanteTorneo->user_id) 
-                                @endphp
-                                {{$user->name}} 
-                                <input type="hidden" name ="user{{$var1}}" value="{{$participanteTorneo->user_id}} ">
-                                <input type="hidden" name ="participante" value="true">
-                                <button type="submit" name="eliminar" value="eliminar{{$var1}}">Eliminar</button><br>{{-- View: equipos.show with argument equipo->id--}}
+                            @php
+                                $user = App\Models\User::find($participanteTorneo->user_id) 
+                            @endphp
+                                <li>
+                                <form action="{{route('participantes.destroy',['torneo'=> $torneo,'user_id'=>$user->id])}}" method="POST">
+                                    @csrf
+                                    @method("delete") {{---Change the default "post" route to "delete" ---}}{{$user->name}}
+                                    <button class="button-left" type="submit" style="height: 45px; margin-top: 13px;"> Eliminar torneo </button>
+                                </form>
                             </li>     
                             @php
                                 $var1 = $var1+1;
                             @endphp
                         @endif
                     @endforeach
-                <a href="{{route('participantes.torneo',$torneo)}}">Agregar participante</a>
+                <a class="button-right" href="{{route('participantes.torneo',$torneo)}}">Editar participante/s</a>
             {{--<a href="{{route('participante.torneo')}}">Agregar participante</a>--}}
             @endif
             <div class="flex-contianer">

@@ -110,6 +110,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('torneos/equipos/agregar/{torneo}','equipos_torneo')->name('equipos.torneo');
         Route::post('torneos/equipos/agregar/{torneo}','equipos_store')->name('torneos.store'); 
        //Tournament participants
+        Route::delete('torneos/participantes/destroy/{torneo}','participantes_destroy')->name('participantes.destroy'); //Delete "route::delete"
         Route::get('torneos/participantes/agregar/{torneo}','participantes_torneo')->name('participantes.torneo');
         Route::post('torneos/participantes/agregar/{torneo}','participantes_store')->name('participantes.store'); 
     });
@@ -118,19 +119,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('estadisticas' , 'index')->name('estadisticas.index');
         Route::post('estadisticas/create','store')->name('store');    
         //Protected views for the "Organizador" rol using middleware 
-        Route::get('estadisticas/{torneo}','show')->name('estadisticas.show')->middleware('organizador'); 
-        Route::get('estadisticas/{torneo}/edit','edit')->name('estadisticas.edit')->middleware('organizador');
+        Route::get('estadisticas/{torneo}','show')->name('estadisticas.show'); 
+        Route::get('estadisticas/{torneo}/edit','edit')->name('estadisticas.edit');
         //---------------------------------------------------------------------------------------------
         Route::put('estadisticas/{torneo}','update')->name('estadisticas.update');             //Update "route::put"
         Route::delete('estadisticas/{torneo}','destroy')->name('estadisticas.destroy'); //Delete "route::delete"
     });
   
     Route::controller(PartidoController::class)->group(function(){ //Group TorneoController get(route,functionController)
+        Route::post('partidos/create/{torneoID}','store')->name('partidos.store');    
         Route::get('partidos/{torneoID}','index')->name('partidos.index');
         Route::get('partidos/create/{torneoID}','create')->name('partidos.crear');
-        Route::post('partidos/create/{torneoID}','store')->name('partidos.store');    
         Route::get('partidos/edit/{partido}/{torneoID}','edit')->name('partidos.edit')->middleware('organizador'); 
-        Route::get('partidos/index/{partido}/{torneoID}','show')->name('partidos.show')->middleware('organizador'); 
+        Route::get('partidos/index/{partido}/{torneoID}','show')->name('partidos.show'); 
         Route::delete('partidos/index/{partido}/{torneoID}','destroy')->name('partidos.destroy'); 
         //---------------------------------------------------------------------------------------------
         Route::put('partidos/edit/{partido}/{torneoID}','update')->name('partidos.update');             //Update "route::put"        

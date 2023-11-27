@@ -134,7 +134,7 @@
                         <button type="submit" class="button-left" style="height: 45px; margin-top: 13px;">
                             Crear
                         </button>
-                        <a href="/equipos" class="button-right">Volver</a>
+                        <a href="{{route('dashboard.index')}}" class="button-right">Volver</a>
                     </div>
 
                     <!-- <button type="submit" class="button-left" style="margin-right: 290px">

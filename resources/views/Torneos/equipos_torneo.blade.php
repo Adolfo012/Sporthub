@@ -4,27 +4,25 @@
 <title>Torneo: {{$torneo->name}}</title>
 
 @section('content')
-<main class="home-section">
     <section class="principalbox">
         <section class="contorno">
             <form action="{{route('torneos.store',$torneo)}}" method="POST">
             @csrf
             @php
-            $participante = App\Models\Estadistica::where('equipo_id', $equipo->id)->first();
-            @endphp
-            
+                $equipos = App\Models\Equipo::all();
+            @endphp     
             <label for="equipo_inscrito">Selecciona un equipo disponible a inscribir: </label>
             <select id="equipo_inscrito" name="equipo_inscrito">
                 @foreach($equipos as $equipo)
                 @php
-                $participante = App\Models\EquipoTorneo::where('equipo_id', $equipo->id)->first();
+                    $participante = App\Models\Estadistica::where('equipo_id', $equipo->id)->first();
                 @endphp
                     @if (!$participante)  {{--Valida que la cantidad de miembros de un equipo, sea menor que la que se indicó en el torneo--}}
                     <option value="{{ $equipo->id }}">{{ $equipo->name }}</option>
                     @endif
                 @endforeach
             </select>
-            <button type="submit" class="button-left" style="height: 45px; margin-top: 13px;" >Añadir equipo</button>
+            <button type="submit" class="button-left" >Añadir equipo</button>
             @if(isset($mensaje))
                 <p>{{ $mensaje }}</p>
             @endif
@@ -32,4 +30,4 @@
             </form>
         </section>
     </section>
-<main>
+
