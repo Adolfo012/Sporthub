@@ -24,7 +24,6 @@ class PartidoController extends Controller
     public function store(PartidoRequest $request, $torneoID){ //Receives the request fields in ""create form"
         //EquipoRequest -> validate the fields before continuing with the function (App\Http\Requests\EquipoRequest)
         //ADD RECORD (if the fields are valid)
-        return "hola";
         $partido = new Partido();
         $partido->horaPartido = $request->horaPartido;
         $partido->fechaPartido = $request->fechaPartido;
