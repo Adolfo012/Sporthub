@@ -23,7 +23,7 @@
             <div class="box">
                 @foreach($torneos as $torneo)
                     @if (auth()->user()->id == $torneo->user_id)  {{-- organizador--}}
-                        <div class="minibox">
+                        <div href="{{route('torneos.show',$torneo)}}" class="minibox">
                         <a class="name" href="{{route('torneos.show',$torneo)}}"> {{$torneo->name}}</a>
                         <p class="description">Tipo: Baloncesto</p>
                         <p class="description">Rol: Organizador</p>
