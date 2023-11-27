@@ -43,8 +43,8 @@ class NotificationController extends Controller
             if($request->action == 'aceptada'){
                 //When the notification is accepted, the participant is saved as a member
                 $participanteTorneo = new ParticipanteTorneo();
-                $user = User::find($request->user_id);
-                $participanteTorneo->user_id = $request->user_id;
+                // $user = User::find($request->user_id2);
+                $participanteTorneo->user_id = $request->user_id2;
                 $participanteTorneo->torneo_id = $request->torneo_id;
                 
                 $participanteTorneo->save();  
