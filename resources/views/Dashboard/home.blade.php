@@ -4,6 +4,7 @@
 <title>Home</title>
 
 @section('content')
+<main class="home-section">
     <section class="principalbox">
         <section class="contorno">
             <h1>Home</h1> 
@@ -24,4 +25,5 @@
             @endforeach
         </section>
     </section>
+</main>
 @endsection

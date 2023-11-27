@@ -7,6 +7,7 @@
     <title>@yield('title')</title>
     <link rel="preload" href="{{ asset('css/dashboard.css') }}" as="style">
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    <link rel="preload" href="{{ asset('css/formulario.css') }}" as="style">
     <link href="{{ asset('css/formularios.css') }}" rel="stylesheet">
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
