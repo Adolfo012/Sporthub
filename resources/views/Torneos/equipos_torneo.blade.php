@@ -10,8 +10,9 @@
             <form action="{{route('torneos.store',$torneo)}}" method="POST">
             @csrf
             @php
-            $equipos = App\Models\Equipo::all();
+            $participante = App\Models\Estadistica::where('equipo_id', $equipo->id)->first();
             @endphp
+            
             <label for="equipo_inscrito">Selecciona un equipo disponible a inscribir: </label>
             <select id="equipo_inscrito" name="equipo_inscrito">
                 @foreach($equipos as $equipo)

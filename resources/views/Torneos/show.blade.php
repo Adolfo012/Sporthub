@@ -19,7 +19,7 @@
 
             @if ($torneo->tipoTorneo == "Equipos")
                 @php
-                    $equiposTorneo = App\Models\EquipoTorneo::all(); 
+                    $equiposTorneo = App\Models\Estadistica::all(); 
                 @endphp
                 <h2>Equipos en el torneo:</h2>
                     @foreach ($equiposTorneo as $equipoTorneo)

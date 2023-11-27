@@ -2,7 +2,7 @@
 <h1>Torneo: {{$torneo->name}}</h1>
 @if ($torneo->tipoTorneo == "Equipos")
         @php
-        $equiposTorneo = App\Models\EquipoTorneo::all(); 
+        $equiposTorneo = App\Models\Estadistica::all(); 
         $count = 0;
         @endphp
             @foreach ($equiposTorneo as $equipoTorneo)
@@ -17,7 +17,7 @@
                 @csrf
                 @php
                     $equipos = App\Models\Equipo::all();
-                    $equiposTorneo = App\Models\EquipoTorneo::all();
+                    $equiposTorneo = App\Models\Estadistica::all();
                 @endphp
                 <label for="equipo_inscrito">Deseo inscribir a mi equipo: </label>
                 <select id="equipo_inscrito" name="equipo_inscrito">
@@ -44,6 +44,7 @@
               <b><p>{{ $mensaje }}</p></b>
           @endif
             </form>
+            
         {{--Participants--}}
         @else
         @php

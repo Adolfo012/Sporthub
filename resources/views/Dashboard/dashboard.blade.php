@@ -9,7 +9,7 @@
 
     $torneos = App\Models\Torneo::all();
     $participanteTorneos = App\Models\ParticipanteTorneo::all();
-    $equipoTorneos = App\Models\EquipoTorneo::all();
+    $equipoTorneos = App\Models\Estadistica::all();
     $torneo = App\Models\Torneo::find($equipoTorneos);
     $partidos = App\Models\Partido::all();
 
@@ -17,8 +17,8 @@
 
 
 @endphp
-    <main class="home-section">
-        <section class="principalbox">
+<main class="home-section">
+    <section class="principalbox">
             <p class="title">Mis Torneos</p>
             <div class="box">
                 @foreach($torneos as $torneo)
@@ -31,66 +31,61 @@
                         @php
                             $flag =false;
                         @endphp
-                    @elseif($flag == true)
-                        @foreach($partidos as $partido) {{-- Representantes de equipo--}}
-                            @if (auth()->user()->id == $partido->local->user_id && $flag == true)
-                                <div class="minibox">
-                                    <a class="name" href="{{route('torneos.show',$partido->estanTorneos[0])}}">{{$partido->estanTorneos[0]->name}}</a>
-                                    <p class="description">Organizador: {{$partido->estanTorneos[0]->organizador->nickname}}</p>
-                                    <p class="description">Equipo: {{$partido->local->name}}</p>
-                                    <p class="description">Tipo: Baloncesto</p>
-                                    <p class="description">Rol: Capitan </p>
-                                </div>
-                                @php
-                                    $flag =false;
-                                @endphp
-                            @elseif (auth()->user()->id == $partido->visitante->user_id && $flag == true)
-                                <div class="minibox">
-                                    <a href="{{route('torneos.show',$partido->estanTorneos[0])}}" class="name">{{$partido->estanTorneos[0]->name}}</a>
-                                    <p class="description">Organizador:{{$partido->estanTorneos[0]->organizador->nickname}}</p>
-                                    <p class="description">Equipo: {{$partido->visitante->name}}</p>
-                                    <p class="description">Tipo: Baloncesto</p>
-                                    <p class="description">Rol: Capitan </p>
-                                </div>
-                                @php
-                                    $flag =false;
-                                @endphp
-                            @else
-                                @foreach($miembrosEquipos as $miembro)    {{-- miembro de equipo--}}
-                                    @if (auth()->user()->name== $miembro->user_miembro && $flag == true)
-                                        <div class="minibox">
-                                        <p href="{{route('torneos.show',$partido->estanTorneos[0])}}" class="name">{{$partido->estanTorneos[0]->name}}</p> 
-                                        <p class="description">Organizador:{{$partido->estanTorneos[0]->nickname}}</p>
-                                        <p class="description">Equipo:{{$miembro->miembros->name}}</p>
-                                        <p class="description">Tipo: Baloncesto</p>
-                                        <p class="description">Rol: Miembro</p>
-                                        </div>
-                                        @php
-                                            $flag =false;
-                                        @endphp
-                                    @endif
-                                @endforeach
-                            @endif
-                        @endforeach
                     @endif
+                    @endforeach
+                    @foreach($equipoTorneos as $equipoTorneo) {{-- Representantes de equipo--}}
+                        @php
+                            $equipo = App\Models\Equipo::find($equipoTorneo->equipo_id);
+                            $torneo = App\Models\Torneo::find($equipoTorneo->torneo_id);
+                        @endphp
+                        @if (auth()->user()->id == $equipo->user_id)
+                            <div class="minibox">
+                                <a class="tournament" href="{{route('torneos.show',$torneo)}}">{{$torneo->name}}</a>
+                                <p class="description">Organizador: {{$torneo->organizador->nickname}}</p>
+                                <p class="description">Equipo: {{$equipo->name}}</p>
+                                <p class="description">Tipo: Baloncesto</p>
+                                <p class="description">Rol: Capitan </p>
+                            </div>
+                        @endif 
+                    @endforeach
 
-                    @foreach($participanteTorneos as $individualTorneo)    {{-- representante individual--}}
-                    @if (auth()->user()->id == $individualTorneo->user_id && $flag == true)
+                @foreach($miembrosEquipos as $miembro)    {{-- miembro de equipo--}}
+                    @php
+                        $equipo = App\Models\Equipo::find($miembro->equipo_id)->first();
+                        $capitan = App\Models\User::find($miembro->miembros->user_id);
+                        $torneo = App\Models\Torneo::find($equipo->estadistica)->first();
+                    @endphp
+                    @if (auth()->user()->name == $miembro->user_miembro && (auth()->user()->name != $capitan->name))
+                        
                         <div class="minibox">
-                            @php
-                                $torneo = App\Models\Torneo::find($individualTorneo->torneo_id);
-                            @endphp
-                        <p href="{{route('torneos.show',$torneo)}}" class="name">{{$torneo->name}}</p>
+                        <a class="tournament" href="{{route('torneos.show',$torneo)}}">{{$torneo->name}}</a> 
                         <p class="description">Organizador:{{$torneo->organizador->nickname}}</p>
+                        <p class="description">Equipo:{{$miembro->miembros->name}}</p>
                         <p class="description">Tipo: Baloncesto</p>
-                        <p class="description">Rol: Individual</p>
+                        <p class="description">Rol: Miembro</p>
                         </div>
                         @php
                             $flag =false;
                         @endphp
                     @endif
                 @endforeach
-                @endforeach
+                
+                @foreach($participanteTorneos as $individualTorneo)    {{-- representante individual--}}
+                        @if (auth()->user()->id == $individualTorneo->user_id)
+                            <div class="minibox">
+                                @php
+                                    $torneo = App\Models\Torneo::find($individualTorneo->torneo_id);
+                                @endphp
+                            <a href="{{route('torneos.show',$torneo)}}" class="tournament">{{$torneo->name}}</a>
+                            <p class="description">Organizador:{{$torneo->organizador->nickname}}</p>
+                            <p class="description">Tipo: Baloncesto</p>
+                            <p class="description">Rol: Individual</p>
+                            </div>
+                            @php
+                                $flag =false;
+                            @endphp
+                        @endif
+                    @endforeach
             </div>
         </section>
 
@@ -107,14 +102,14 @@
                 @endforeach
 
                 @foreach($miembrosEquipos as $miembro)    {{-- miembro --}}
-                    @if ((auth()->user()->name== $miembro->user_miembro) && (auth()->user()->id != $miembro->miembros->user_id))
-                        @php
-                            $equipo = App\Models\Equipo::find($miembro->miembros)->first();
-                        @endphp
+                    @php
+                        $capitan = App\Models\User::find($miembro->miembros->user_id);
+                    @endphp
+                    @if (auth()->user()->name == $miembro->user_miembro && (auth()->user()->name != $capitan->name))
                         <div class="minibox">
-                            <a class="teamname" href="{{route('equipos.show',$equipo)}}">{{$equipo->name}}</a>
-                            <p class="teamdescription">Rol: Miembro</p>
-                        </div>
+                            <a class="tournament" href="{{route('equipos.show',$miembro->miembros)}}">{{$miembro->miembros->name}}</a>
+                            <p class="description">Rol: Miembro</p>
+
                     @endif
                 @endforeach
             </div>
@@ -155,7 +150,7 @@
                             @if (auth()->user()->name == $miembro->user_miembro)
                                 <tr>
                                     <td>Torneo {{$partido->estanTorneos[0]->name}}</td> {{--checar posibles errores--}}
-                                    <td>Equipo miembro {{$partido->local->name}}</td>
+                                    <td>Equipo {{$partido->local->name}}</td>
                                     <td>Equipo {{$partido->visitante->name}}</td>
                                     <td>{{$partido->fechaPartido}}</td>
                                     <td>{{$partido->horaPartido}}</td>

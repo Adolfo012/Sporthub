@@ -22,6 +22,7 @@
                             <b>"{{ $equipo->name }}."</b>
                             <input type="hidden" name="equipo_id" value="{{ $notification->equipo_id }}" />
                             <input type="hidden" name="user_id" value="{{ $notification->user_id }}" />
+                            <input type="hidden" name="user_id2" value="{{ $notification->user_id2 }}" />
                             <button type="submit" name="action" value="aceptada">Aceptar</button>
                             <button type="submit" name="action" value="rechazada">Rechazar</button>
                             <br>
@@ -62,6 +63,7 @@
                             El participante: <b>{{ $userEnvia->name }}</b> desea ser miembro del torneo individual
                             <b>{{ $torneo->name }}.</b>
                             <input type="hidden" name="user_id" value="{{ $notification->user_id }}" />
+                            <input type="hidden" name="user_id2" value="{{ $notification->user_id2 }}" />
                             <input type="hidden" name="torneo_id" value="{{ $notification->torneo_id }}" />
                             <button type="submit" name="action" value="aceptada">Aceptar</button>
                             <button type="submit" name="action" value="rechazada">Rechazar</button>

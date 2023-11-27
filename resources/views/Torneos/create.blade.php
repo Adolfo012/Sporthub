@@ -2,7 +2,6 @@
 @section('title', 'Crear Torneo')
 
 @section('content')
-    <main class="home-section">
         <section class="principalbox">
             <div class="contorno">
                 <h1>Crear Torneo</h1>
@@ -99,7 +98,7 @@
                         <br>
                     @else
                         <label for="cantidad" style="display: none">
-                            Cantidad de miembros en el torneo aceptada:
+                            Cantidad de equipo/participantes en el torneo:
                         </label>
                         <input type="number" id="cantEquipo" name="cantEquipo" style="display: none"
                             value="{{ old('cantEquipo') }}">
@@ -147,6 +146,5 @@
                 </form>
             </div>
         </section>
-    </main>
 
 @endsection

@@ -84,7 +84,7 @@
             
             @if ($torneo->tipoTorneo == "Equipos")
                 @php
-                    $equiposTorneo = App\Models\EquipoTorneo::all(); 
+                    $equiposTorneo = App\Models\Estadistica::all(); 
                     $var1 = '1';
                 @endphp
                 <h2>Equipos del torneo</h2>
