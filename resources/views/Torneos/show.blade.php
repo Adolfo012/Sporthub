@@ -28,50 +28,22 @@
                     <tr>
                         <th>Equipo</th>
                         <th>Puntaje</th>
-                        <th>PT</th>
                         <th>DC</th>
-                        <th>CT</th>
+                        <th>CA</th>
                         <th>CC</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Representantes de equipo -->
-                    <!-- Primer bucle -->
-                    <tr>
-                        <td><!-- Torneo --></td>
-                        <td><!-- Equipo Local --></td>
-                        <td><!-- Equipo Visitante --></td>
-                        <td><!-- Fecha --></td>
-                        <td><!-- Hora --></td>
-                        <td><!-- Hora --></td>
-                    </tr>
-                    <!-- Segundo bucle -->
-                    <tr>
-                        <td><!-- Torneo --></td>
-                        <td><!-- Equipo Visitante --></td>
-                        <td><!-- Equipo Local --></td>
-                        <td><!-- Fecha --></td>
-                        <td><!-- Hora --></td>
-                        <td><!-- Hora --></td>
-                    </tr>
-                    <!-- Tercer bucle -->
-                    <tr>
-                        <td><!-- Torneo --></td>
-                        <td><!-- Equipo Local --></td>
-                        <td><!-- Equipo Visitante --></td>
-                        <td><!-- Fecha --></td>
-                        <td><!-- Hora --></td>
-                        <td><!-- Hora --></td>
-                    </tr>
-                    <!-- Participante de partidos -->
-                    <tr>
-                        <td><!-- Torneo --></td>
-                        <td><!-- Equipo Local --></td>
-                        <td><!-- Equipo Visitante --></td>
-                        <td><!-- Fecha --></td>
-                        <td><!-- Hora --></td>
-                        <td><!-- Hora --></td>
-                    </tr>
+                    @foreach($torneo->estadistica as $equipo)
+                        <tr>
+                            <td>{{$equipo->name}}</td><!--equipo-->
+                            <td>{{$equipo->pivot->PT}}</td><!-- Puntos a favor -->
+                            <td>{{$equipo->pivot->DC}}</td><!-- diferencia de canasta -->
+                            <td>{{$equipo->pivot->CA}}</td><!--canasta anotadas-->
+                            <td>{{$equipo->pivot->CC}}</td><!-- canastas en contra-->
+                        </tr>
+                    @endforeach
+                    
                 </tbody>
             </table>
 
@@ -85,46 +57,23 @@
                         <th>Equipo Visitante</th>
                         <th>Fecha</th>
                         <th>Hora</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Representantes de equipo -->
-                    <!-- Primer bucle -->
-                    <tr>
-                        <td><!-- Torneo --></td>
-                        <td><!-- Equipo Local --></td>
-                        <td><!-- Equipo Visitante --></td>
-                        <td><!-- Fecha --></td>
-                        <td><!-- Hora --></td>
-                        <td><!-- Hora --></td>
-                    </tr>
-                    <!-- Segundo bucle -->
-                    <tr>
-                        <td><!-- Torneo --></td>
-                        <td><!-- Equipo Visitante --></td>
-                        <td><!-- Equipo Local --></td>
-                        <td><!-- Fecha --></td>
-                        <td><!-- Hora --></td>
-                        <td><!-- Hora --></td>
-                    </tr>
-                    <!-- Tercer bucle -->
-                    <tr>
-                        <td><!-- Torneo --></td>
-                        <td><!-- Equipo Local --></td>
-                        <td><!-- Equipo Visitante --></td>
-                        <td><!-- Fecha --></td>
-                        <td><!-- Hora --></td>
-                        <td><!-- Hora --></td>
-                    </tr>
-                    <!-- Participante de partidos -->
-                    <tr>
-                        <td><!-- Torneo --></td>
-                        <td><!-- Equipo Local --></td>
-                        <td><!-- Equipo Visitante --></td>
-                        <td><!-- Fecha --></td>
-                        <td><!-- Hora --></td>
-                        <td><!-- Hora --></td>
-                    </tr>
+                    @php
+                        $torneoEquipo = App\Models\Partido::find($torneo);
+                    @endphp
+                    @foreach($torneoEquipo as $equipo)
+                        <tr>
+                            <td>{{$equipo->local->name}}</td><!--Local-->
+                            <td>{{$equipo->resLocal}}</td><!-- PL -->
+                            <td>{{$equipo->resVisitante}}</td><!-- PV -->
+                            <td>{{$equipo->visitante->name}}</td><!--Visitante-->
+                            <td>{{$equipo->fechaPartido}}</td><!-- Fecha -->
+                            <td>{{$equipo->horaPartido}}</td><!-- Hora -->
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 
@@ -158,15 +107,15 @@
             @endif
 
             <div class="flex-contianer">
-                @if(auth()->user()->id == $torneo->user_id) {{-- Verifica si el usuario es el representante --}}
+                @if(auth()->user()->id == $organizador->id) {{-- Verifica si el usuario es el representante --}}
                     <a class="button-right" href="{{route('torneos.edit',$torneo)}}">Editar torneo</a>
                     <form action="{{route('torneos.destroy',$torneo)}}" method="POST">
                         @csrf
                         @method("delete") {{---Change the default "post" route to "delete" ---}}
                         <button class="button-left" type="submit" style="height: 45px; margin-top: 13px;"> Eliminar torneo </button>
                     </form>
+                    <a class="button-right" href="{{route('partidos.crear',['torneoID'=>$torneo->id])}}">Crear partidos</a>
                 @endif
-
                 <a class="button-right" href="{{route('dashboard.index')}}">Volver</a>
             </div>
     </section>
