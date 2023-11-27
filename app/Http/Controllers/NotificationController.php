@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipo;
 use App\Models\Torneo;
-use App\Models\EquipoTorneo;
+use App\Models\Estadistica;
 use App\Models\MiembroEquipo;
 use App\Models\Notification;
 use App\Models\ParticipanteTorneo;
@@ -76,7 +76,7 @@ class NotificationController extends Controller
             if($request->action == 'aceptada'){
                 //When the notification is accepted, the participant is saved as a member
                 $miembro = new MiembroEquipo();
-                $user = User::find($request->user_id);
+                $user = User::find($request->user_id2);
                 $miembro->user_miembro = $user->name;
                 $miembro->equipo_id = $request->equipo_id;
                 $miembro->save();     
@@ -105,9 +105,9 @@ class NotificationController extends Controller
         }else{
             if($request->action == 'aceptada'){
                 //When the notification is accepted, the participant is saved as a member
-                $equipoTorneo = new EquipoTorneo();
+                $equipoTorneo = new Estadistica();
                 $equipoTorneo->torneo_id = $request->torneo_id;
-                $equipoTorneo->equipo_id = $request->equipo_id;
+                $equipoTorneo->equipo_id = $request->equipo_id; //Equipo que desea entrar
                 $equipoTorneo->save();     
                 //Updates current notifications
                 Notification::where('user_id', $request->user_id)->where('torneo_id', $request->torneo_id)->where('equipo_id', $request->equipo_id)->delete();

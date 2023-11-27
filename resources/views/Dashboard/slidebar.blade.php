@@ -101,5 +101,20 @@
 </body>
 
 <script src="{{ asset('js/dashboard.js') }}"></script>
+<script type="text/javascript">
+    function text(x) {
+        switch (x) {
+            case 0:
+                document.getElementById("individualInput").style.visibility = 'visible';
+                document.getElementById("equiposInput").style.visibility = 'hidden';
+                break;
+            case 1:
+                document.getElementById("equiposInput").style.visibility = 'visible';
+                document.getElementById("individualInput").style.visibility = 'hidden';
+                break;
+        }
+        return;
+    }
+</script>
 
 </html>

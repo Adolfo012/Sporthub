@@ -22,6 +22,7 @@
                             <b>"{{ $equipo->name }}."</b>
                             <input type="hidden" name="equipo_id" value="{{ $notification->equipo_id }}" />
                             <input type="hidden" name="user_id" value="{{ $notification->user_id }}" />
+                            <input type="hidden" name="user_id2" value="{{ $notification->user_id2 }}" />
                             <button type="submit" name="action" value="aceptada">Aceptar</button>
                             <button type="submit" name="action" value="rechazada">Rechazar</button>
                             <br>
