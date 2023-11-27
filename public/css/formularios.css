@@ -1,32 +1,37 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
+/* principal colors */
+:root {
+    --primary: #F4EDE8;
+    --secundary: #645f5f;
+    --complementA: #040404fb;
+    --complementB: #D0671C;
+    --complementC: #1d1b31;
+
 }
 
 h1 {
-    color: #333;
+    color: var(--complementA);
     text-align: center;
+    margin-bottom: 25px;
 }
 
 label {
     display: block;
     margin-bottom: 15px;
-    color: #555;
+    color: var(--complementA);
 }
 
 input {
     width: 100%;
     padding: 10px;
+    margin-top: 15px;
     margin-bottom: 20px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid var(--complementA);
     border-radius: 5px;
 }
 
 span {
-    color: #e74c3c;
+    color: var(--complementB);
     display: block;
 }
 
@@ -34,16 +39,16 @@ a {
     display: inline-block;
     margin-top: 15px;
     text-decoration: none;
-    color: #555;
+    color: var(--secundary);
 }
 
 .contorno {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #f3f0f0;
+    background-color: var(--primary);
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px 0 var(--complementA);
 }
 
 input[type="radio"] {
@@ -52,7 +57,7 @@ input[type="radio"] {
 
 /* Additional Styles for Radio Buttons */
 input[type="radio"]:checked + label {
-    color: #3498db;
+    color: var(--complementA);
 }
 
 .flex-contianer {
@@ -61,8 +66,8 @@ input[type="radio"]:checked + label {
   }
 
 .button-left {
-    background-color: #e72e57;
-    color: white;
+    background-color: var(--secundary);
+    color: var(--primary);
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
@@ -71,12 +76,12 @@ input[type="radio"]:checked + label {
 }
 
 .button-left:hover {
-    background-color: #ee1443;
+    background-color: var(--complementB);
 }
 
 .button-right {
-    background-color: #3498db;
-    color: white;
+    background-color: var(--secundary);
+    color: var(--primary);
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
@@ -85,7 +90,5 @@ input[type="radio"]:checked + label {
 }
 
 .button-right:hover {
-    background-color: #2980b9;
+    background-color: var(--secundary);
 }
-
-/* */
