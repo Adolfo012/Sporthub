@@ -24,7 +24,7 @@
   transition: var(--tran-05);
 }
 
-.sidebar{
+.sidebar {
   position: fixed;
   left: 0;
   top: 0;
@@ -78,9 +78,11 @@
   cursor: pointer;
   transition: all 0.5s ease;
 }
-.sidebar.open .logo-details #btn{
+
+.sidebar.open .logo-details #btn {
   text-align: right;
 }
+
 .sidebar i{
   color: var(--primary);
   height: 60px;
@@ -89,16 +91,19 @@
   text-align: center;
   line-height: 60px;
 }
+
 .sidebar .nav-list{
   margin-top: 20px;
   height: 100%;
 }
+
 .sidebar li{
   position: relative;
   margin: 8px 0;
   list-style: none;
 }
-.sidebar li .tooltip{
+
+.sidebar li .tooltip {
   position: absolute;
   top: -20px;
   left: calc(100% + 15px);
@@ -115,17 +120,20 @@
   pointer-events: none;
   transition: 0s;
 }
-.sidebar li:hover .tooltip{
+
+.sidebar li:hover .tooltip {
   opacity: 1;
   pointer-events: auto;
   transition: all 0.4s ease;
   top: 50%;
   transform: translateY(-50%);
 }
-.sidebar.open li .tooltip{
+
+.sidebar.open li .tooltip {
   display: none;
 }
-.sidebar input{
+
+.sidebar input {
   font-size: 15px;
   color: var(--primary);
   font-weight: 400;
@@ -138,12 +146,13 @@
   transition: all 0.5s ease;
   background: var(--complementA);
 }
-.sidebar.open input{
+
+.sidebar.open input {
   padding: 0 20px 0 50px;
   width: 100%;
 }
 
-.sidebar li a{
+.sidebar li a {
   display: flex;
   height: 8%;
   width: 100%;
@@ -280,10 +289,11 @@
   position: absolute;
   top: 0;
   left: 250px;
-  height: 100vh;
-  width: calc(100%-250px);
+  height: auto;
+  width: 100%;
   background-color: var(--primary);
   transition: all 0.4s ease;
+  margin-bottom: 200px;
 }
 
 .home-section .title {
@@ -295,8 +305,8 @@
 
 .sidebar ~ .home-section {
   left: 78px;
-  height: 100vh;
-  width: calc(100%-78px);
+  height: auto;
+  width: calc(100% - 78px);
 }
 
 .principalbox {
@@ -338,6 +348,10 @@
   margin-bottom: 75px; /* Agrega espacio después del nombre del torneo */
 }
 
+.name, .teamname {
+  color: var(--complementA);
+}
+
 .description {
   margin-bottom: 5px; /* Agrega espacio después de cada descripción */
 }
@@ -357,6 +371,10 @@
   margin-bottom: 5px; /* Agrega espacio después de cada descripción */
 }
 
+.teamdescription, .description {
+  color: var(--complementA);
+}
+
 
     /* Estilos opcionales para mejorar la apariencia de la tabla */
 table {
@@ -365,6 +383,7 @@ table {
   margin-top: 20px;
   margin-left: 100px;
   margin-right: 100px;
+  margin-bottom: 20px;
 }
 
 th, td {
@@ -376,4 +395,15 @@ th, td {
 th {
   background-color: var(--complementA);
   color: var(--primary);
+}
+
+.bold {
+  font-weight: bold;
+  color: var(--complementB)
+}
+
+.nosotrosp {
+  font-size: 16px; 
+  line-height: 1.5;
+  margin: 20px;
 }

@@ -24,7 +24,7 @@
                 @foreach($torneos as $torneo)
                     @if (auth()->user()->id == $torneo->user_id)  {{-- organizador--}}
                         <div class="minibox">
-                        <a class="tournament" href="{{route('torneos.show',$torneo)}}"> {{$torneo->name}}</a>
+                        <a class="name" href="{{route('torneos.show',$torneo)}}"> {{$torneo->name}}</a>
                         <p class="description">Tipo: Baloncesto</p>
                         <p class="description">Rol: Organizador</p>
                         </div>
@@ -95,8 +95,8 @@
                 @foreach($equipos as $equipo)    {{-- representante de equipo--}}
                     @if (auth()->user()->id == $equipo->user_id )
                         <div class="minibox">
-                            <a class="tournament" href="{{route('equipos.show',$equipo)}}">{{$equipo->name}}</a>
-                            <p class="description">Rol: Capitan</p>
+                            <a class="teamname" href="{{route('equipos.show',$equipo)}}">{{$equipo->name}}</a>
+                            <p class="teamdescription">Rol: Capitan</p>
                         </div>
                     @endif
                 @endforeach
@@ -109,7 +109,7 @@
                         <div class="minibox">
                             <a class="tournament" href="{{route('equipos.show',$miembro->miembros)}}">{{$miembro->miembros->name}}</a>
                             <p class="description">Rol: Miembro</p>
-                        </div>
+
                     @endif
                 @endforeach
             </div>
