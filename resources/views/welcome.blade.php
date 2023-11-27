@@ -26,7 +26,7 @@
         <div class="text">
             <h2>TORNEOS</h2>
             <h3>DE BALONCESTO</h3>
-            <p>SportHub es una plataforma web que permite la creación de torneos locales en donde los usuarios pueden disfrutar de participar en eventos competitivos y así, promover el deporte, la diversión y el entusiasmo.</p>
+            <p>SportHub es una plataforma web que permite la creación de torneos locales en donde los usuarios pueden disfrutar de participar en eventos competitivos y así promover el deporte, la diversión y el entusiasmo.</p>
                 <p>Contacto: 33-22-11-44-55</p>
                 <p>Correo de contacto: <i>sporthub@gmail.com</i></p>
                 <p>© Coopyright todos los derechos reservados.</p>

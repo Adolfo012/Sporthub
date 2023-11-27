@@ -388,7 +388,7 @@ table {
 
 th, td {
   border: 2px solid var(--secundary);
-  text-align: left;
+  text-align: center;
   padding: 8px;
 }
 
