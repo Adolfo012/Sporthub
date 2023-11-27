@@ -29,7 +29,7 @@ class TorneoRequest extends FormRequest
             'fechaInicio' => 'required|date|after_or_equal:yesterday',
             'fechaFin' => 'required|date|after_or_equal:fechaInicio',
             'tipoTorneo' => 'required|in:Individual,Equipos',
-            'cantEquipo'=>'required|numeric|gt:0',
+            'cantEquipo'=>'required|numeric|gt:3',
         ];
     }
 
@@ -37,7 +37,7 @@ class TorneoRequest extends FormRequest
     {
           return[
             'fechaInicio.after_or_equal' => 'La fecha de inicio del torneo debe ser mayor a la actual.',
-            
+            'cantEquipo.gt' => 'La cantidad de miembros aceptada para crear un torneo debe ser mínimo de 4',
             /*
             'name.required' => 'El nombre del equipo es obligatorio',
             'name.min:3' => 'El nombre del equipo debe contener al menos 3 caracteres.',

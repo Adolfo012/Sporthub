@@ -25,4 +25,8 @@
       @endif
     </ul>
    {{---{{$equipos->links()}}   <- Equipo::paginate()---}}
+  </div>
+</section>
+</main>
 @endsection
+
