@@ -345,7 +345,7 @@
 
 .name {
   font-weight: bold; /* Hace que el nombre del torneo sea más destacado */
-  margin-bottom: 75px; /* Agrega espacio después del nombre del torneo */
+  margin-bottom: 60px; /* Agrega espacio después del nombre del torneo */
 }
 
 .name, .teamname {
