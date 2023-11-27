@@ -5,7 +5,8 @@
        <main class="home-section">
            <section class="principalbox">
                <div class="contorno">
-                   <form action="{{ route('user.update', ['user' => $user, 'userID' => auth()->user()->id]) }}" method="POST">
+                   <form action="{{ route('user.update', ['user' => $user, 'userID' => auth()->user()->id]) }}"
+                       method="POST">
                        @csrf
                        @method('put')
                        <h1>Perfil</h1>
@@ -76,13 +77,13 @@
                            <p>{{ session()->get('mensaje') }}</p> {{-- Poner de color verde de aceptacion, y ponerle formato centrado FRONT-End --}}
                        @endif
                        <!-- <button class="login-button" type="submit"> Editar </button>
-            <a class="back-form" href="/dashboard">volver</a> -->
+                    <a class="back-form" href="/dashboard">volver</a> -->
 
                        <div class="flex-contianer">
                            <button type="submit" class="button-left" style="height: 45px; margin-top: 13px;">
                                Crear
                            </button>
-                           <a href="/equipos" class="button-right">Volver</a>
+                           <a href="/dashboard" class="button-right">Volver</a>
                        </div>
                    </form>
                </div>
