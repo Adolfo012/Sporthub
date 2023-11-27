@@ -21,7 +21,7 @@ class PartidoController extends Controller
         $equipos = Equipo::all();
         return view('Partidos.create',compact('equipos','torneoID'));
     }
-    public function store(PartidoRequest $request, $torneoID){ //Receives the request fields in ""create form"
+    public function store(Request $request, $torneoID){ //Receives the request fields in ""create form"
         //EquipoRequest -> validate the fields before continuing with the function (App\Http\Requests\EquipoRequest)
         //ADD RECORD (if the fields are valid)
         $partido = new Partido();
@@ -63,7 +63,11 @@ class PartidoController extends Controller
             $estadisticaVis->PT = $estadisticaVis->PT+3;
             $estadisticaLocal->PT = $estadisticaLocal->PT+1;
         } 
+        $estadisticaLocal->CC = 2;
+        $estadisticaLocal->CA = 5;
         $estadisticaLocal->save();
+        $estadisticaVis->CC = 2;
+        $estadisticaVis->CA = 5;
         $estadisticaVis->save();
         $partido->estanTorneos()->attach($torneoID);
         return redirect()->route('partidos.show', ['partido' =>$partido, 'torneoID'=> $torneoID]);

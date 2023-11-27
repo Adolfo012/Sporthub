@@ -2,9 +2,12 @@
 @section('title','Pagina de equipos')
 
 @section('content')
+<main class="home-section">
+        <section class="principalbox">
+            <div class="contorno">
     <h1>Partidos del Torneo</h1>   
     <!--- {{$partidos}}--->
-    <a href="{{route('partidos.crear',$torneoID)}}">Crear partido</a>
+    <a class="button-left" href="{{route('partidos.crear',$torneoID)}}">Crear partido</a>
     <ul>
     @php
     $teams = 0;
@@ -24,5 +27,8 @@
       @endif
   </ul>
    {{---{{$partidos->links()}}   <- Partido::paginate()---}}
-   <a href="{{route('torneos.show',$torneoID)}}">Volver a torneos</a>
+   <a class="button-left" href="{{route('dashboard.index',$torneoID)}}">Volver a torneos</a>
+            </div>
+        </section>
+</main>
 @endsection
