@@ -1,11 +1,11 @@
-   
-   @extends('Dashboard.dashboard') {{-- -Inherits dashboard- --}}
-   @section('title', 'Editar usuario')
+@extends('Dashboard.slidebar')
+@section('title', 'Editar usuario')
    
    @section('content')
        <main class="home-section">
            <section class="principalbox">
                <div class="contorno">
+               <img src="{{ $user->image }}" alt="profileImg">
    <form action="{{route('user.update',['user' =>$user,'userID' => auth()->user()->id])}}" method="POST">
         @csrf
         @method('put')
@@ -51,6 +51,17 @@
             <br>
             @enderror
         </div>
+
+        <div class="inputbox">
+            <label for=""> Imagen </label>
+            <input name="image" type="file" required value="{{old('image',$user->image)}}"> <br>
+            @error('email')  {{-- Checks if there has been an error in the "name" field --}}
+            <span>*{{$message}}</span> {{--print a message if there is an error--}}
+            <br>
+            @enderror
+        </div>
+
+
         <div class="inputbox">
             <label for=""> Contraseña Actual</label>
             <input name="password" type="password" value="{{old('password')}}">

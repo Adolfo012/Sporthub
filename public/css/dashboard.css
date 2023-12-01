@@ -159,7 +159,7 @@
   border-radius: 12px;
   align-items: center;
   text-decoration: none;
-  transition: all 0.4s ease;
+  transition: var(--tran-05);
 }
 
 .sidebar li a:hover {
@@ -279,6 +279,52 @@
 
 @media (max-width: 420px) {
   .sidebar li .tooltip{
+    display: none;
+  }
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media (max-width: 768px) {
+  .sidebar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px; /* Ajusta el relleno según sea necesario */
+    background-color: #333; /* Ajusta el color de fondo según tus preferencias */
+    width: 100%; /* Asegura que ocupe toda la anchura */
+    height: 75px;
+  }
+
+  .nav-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+
+  .nav-list li {
+      margin-right: 15px; /* Ajusta el margen entre elementos según sea necesario */
+  }
+
+  .nav-list {
+      align-items: center;
+  }
+
+  .sidebar .logo-details .logo_name {
+      display: none;
+  }
+
+  .nav-list a {
+      text-decoration: none;
+      color: white; /* Cambia el color del texto según tus preferencias */
+  }
+
+  .home-section{
+    margin-top: 75px;
+  }
+
+  .profile{
     display: none;
   }
 }

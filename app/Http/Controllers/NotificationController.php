@@ -188,4 +188,5 @@ class NotificationController extends Controller
             return view('Dashboard.torneos',compact('torneo','organizador'))->with('mensaje', '¡Algo salió mal! Has intentado envíar más de una solicitud o ya te encuentras registrado en el torneo.');
         }
     }
+
 }

@@ -7,6 +7,8 @@ use App\Models\Estadistica;
 use App\Models\Torneo;
 use App\Models\Equipos;
 use App\Models\Partido;
+use App\Models\User;
+use App\Http\Requests\TorneoRequest;
 
 use Illuminate\Http\Request;
 
@@ -33,7 +35,7 @@ class EstadisticaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    static function store(Torneo $torneo, Partido $partido)
+    static function store(Torneo $torneo, Partido $partido, Request $request)
     {
         $estadistica = new Estadistica();
 
@@ -95,4 +97,3 @@ class EstadisticaController extends Controller
         return redirect()->route('torneos.index');
     }
 }
-

@@ -31,4 +31,9 @@ class DashboardController extends Controller
         $organizador = User::find($torneo->user_id); //Search for the user "Representante" by user_id"
         return view('Dashboard.torneos',compact('torneo','organizador')); #Passes records to view
       }
+
+      public function slidebar(){
+        $user = User::all();
+        return view('Dashboard.slidebar',compact('user'));
+      }
 }

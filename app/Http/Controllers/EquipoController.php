@@ -96,5 +96,6 @@ class EquipoController extends Controller
     public function miembros_show(Equipo $equipo, MiembroEquipo $miembro){
         
         return view('Equipos.miembro_show',compact('equipo','miembro'));
-    } 
+    }
+
 }

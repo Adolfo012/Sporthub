@@ -52,9 +52,10 @@ class LoginController extends Controller
 
   }
   public function user_edit($userID){ //ViewEdit Login 
-    $user = User::find($userID); 
+    $user = User::find($userID);
     return view('Login.edit',compact('user'));
   }
+
   public function user_update(EditRequest $request){ //ViewEdit Login 
     $user = User::find(auth()->user()->id);
     $user->name = $request->name;
@@ -62,6 +63,7 @@ class LoginController extends Controller
     $user->msurname = $request->msurname;
     $user->nickname = $request->nickname;
     $user->email = $request->email;
+    $user->image = $request->image;
     
     if($request->password != null){
       if ($request->newpassword != null){
@@ -72,4 +74,5 @@ class LoginController extends Controller
 
     return redirect()->route('user.edit',$user)->with('mensaje', 'Registro completado.');
   }
+
 }

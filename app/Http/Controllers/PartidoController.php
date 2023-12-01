@@ -7,6 +7,7 @@ use App\Models\Partido;
 use App\Models\Equipo;
 use App\Models\Torneo;
 use App\Models\Estadistica;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -109,4 +110,5 @@ class PartidoController extends Controller
         $partido->delete(); 
         return redirect()->route('partidos.index',$torneoID);
     }
+
 }

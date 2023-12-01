@@ -75,7 +75,8 @@ Route::middleware(['auth'])->group(function () {
     
     //Edit User
     Route::get('login/edit/{userID}',[LoginController::class,'user_edit'])->name('user.edit');
-    Route::put('login/edit/{userID}',[LoginController::class,'user_update'])->name('user.update');   
+    Route::put('login/edit/{userID}',[LoginController::class,'user_update'])->name('user.update');
+    Route::get('dashboard/slide', [DashboardController::class,'slidebar'])->name('slide.index');
 
     //Route View Us
      //Shows a view that will not interact with the database

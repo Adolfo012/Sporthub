@@ -8,6 +8,8 @@ use App\Models\Estadistica;
 use App\Models\ParticipanteTorneo;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\EquipoRequest;
+use App\Models\Partido;
 
 class TorneoController extends Controller
 {
@@ -176,5 +178,4 @@ class TorneoController extends Controller
         
         
     }
-
 }
